@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "364190033630",
+    "project_id": "peek-paseo-de-mascotas",
+    "storage_bucket": "peek-paseo-de-mascotas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364190033630:android:33a5dca8c051a1b04c844f",
+        "android_client_info": {
+          "package_name": "com.example.peek_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364190033630-i3h8gllasdg5d61p09jkbkjh4t3cq02s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjl-aXoqygH--YhNVEcNkMfH60XGU99lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364190033630-i3h8gllasdg5d61p09jkbkjh4t3cq02s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
