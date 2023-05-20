@@ -71,8 +71,8 @@ class WelcomeScreen extends StatelessWidget {
                                                                   getHorizontalSize(
                                                                       221),
                                                               margin: getMargin(
-                                                                  left: 3,
-                                                                  top: 10),
+                                                                  left: 5,
+                                                                  top: 0),
                                                               child: Text(
                                                                   "msg_peek_paseo_de"
                                                                       .tr,
@@ -82,7 +82,9 @@ class WelcomeScreen extends StatelessWidget {
                                                                       TextAlign
                                                                           .center,
                                                                   style: AppStyle
-                                                                      .txtArtographieMedium25)),
+                                                                      .welcome)
+                                                              //añadir la otra parte
+                                                              ),
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant

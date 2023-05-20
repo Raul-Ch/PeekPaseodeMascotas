@@ -11,6 +11,15 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle welcome = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      70,
+    ),
+    fontFamily: 'Artographie Bold',
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle txtPoppinsSemiBold15 = TextStyle(
     color: ColorConstant.gray900,
     fontSize: getFontSize(

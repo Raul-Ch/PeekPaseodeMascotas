@@ -7,12 +7,14 @@ import 'package:peek_app/core/app_export.dart';
 //import 'package:peek_app/pages/registro_due_o_four_dialog/registro_due_o_four_dialog.dart';
 
 class AppNavigationScreen extends StatelessWidget {
+  const AppNavigationScreen({super.key});
+
   static Widget builder(BuildContext context) {
     return BlocProvider<AppNavigationBloc>(
         create: (context) => AppNavigationBloc(
             AppNavigationState(appNavigationModelObj: AppNavigationModel()))
           ..add(AppNavigationInitialEvent()),
-        child: AppNavigationScreen());
+        child: const AppNavigationScreen());
   }
 
   @override
@@ -22,7 +24,7 @@ class AppNavigationScreen extends StatelessWidget {
       return SafeArea(
           child: Scaffold(
               backgroundColor: ColorConstant.whiteA700,
-              body: Container(
+              body: SizedBox(
                   width: double.maxFinite,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -878,7 +880,7 @@ class AppNavigationScreen extends StatelessWidget {
   onTapRegistroDueoThree(BuildContext context) {
     showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (_) => const AlertDialog(
               //content: RegistroDueOThreeDialog.builder(context),
               backgroundColor: Colors.transparent,
               contentPadding: EdgeInsets.zero,
@@ -889,7 +891,7 @@ class AppNavigationScreen extends StatelessWidget {
   onTapRegistroPaseadorThree(BuildContext context) {
     showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (_) => const AlertDialog(
               //content: RegistroPaseadorThreeDialog.builder(context),
               backgroundColor: Colors.transparent,
               contentPadding: EdgeInsets.zero,
@@ -900,7 +902,7 @@ class AppNavigationScreen extends StatelessWidget {
   onTapRegistroDueoFour(BuildContext context) {
     showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (_) => const AlertDialog(
               //content: RegistroDueOFourDialog.builder(context),
               backgroundColor: Colors.transparent,
               contentPadding: EdgeInsets.zero,

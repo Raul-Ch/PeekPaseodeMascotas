@@ -73,10 +73,17 @@ flutter:
           weight: 700
         - asset: assets/fonts/UrbanistRomanSemiBold.ttf
           weight: 600
+
     - family: Artographie Medium
       fonts: 
         - asset: assets/fonts/ArtographieMedium.ttf
           weight: 400
+
+    - family: Artographie Bold
+      fonts:
+        - asset: assets/fonts/ArtographieBold.ttf
+          #weight: 800
+
     - family: Poppins
       fonts: 
         - asset: assets/fonts/PoppinsSemiBold.ttf
