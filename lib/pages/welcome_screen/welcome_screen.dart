@@ -64,27 +64,43 @@ class WelcomeScreen extends StatelessWidget {
                                                     child: Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                                .spaceBetween,
+                                                                .end,
                                                         children: [
-                                                          Container(
-                                                              width:
-                                                                  getHorizontalSize(
-                                                                      221),
-                                                              margin: getMargin(
-                                                                  left: 5,
-                                                                  top: 0),
-                                                              child: Text(
-                                                                  "msg_peek_paseo_de"
-                                                                      .tr,
-                                                                  maxLines:
-                                                                      null,
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: AppStyle
-                                                                      .welcome)
-                                                              //añadir la otra parte
-                                                              ),
+                                                          Padding(
+                                                              padding:
+                                                                  getPadding(
+                                                                      top: 9),
+                                                              child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Padding(
+                                                                        padding: getPadding(
+                                                                            left:
+                                                                                8),
+                                                                        child: Text(
+                                                                            "lbl_peek"
+                                                                                .tr,
+                                                                            overflow:
+                                                                                TextOverflow.ellipsis,
+                                                                            textAlign: TextAlign.right,
+                                                                            style: AppStyle.welcome)),
+                                                                    Text(
+                                                                        "msg_paseo_de_mascotas"
+                                                                            .tr,
+                                                                        overflow:
+                                                                            TextOverflow
+                                                                                .ellipsis,
+                                                                        textAlign:
+                                                                            TextAlign
+                                                                                .left,
+                                                                        style: AppStyle
+                                                                            .txtArtographieMedium25)
+                                                                  ])),
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
@@ -100,6 +116,7 @@ class WelcomeScreen extends StatelessWidget {
                                                                       getHorizontalSize(
                                                                           22)),
                                                               margin: getMargin(
+                                                                  left: 4,
                                                                   top: 10,
                                                                   bottom: 5))
                                                         ])),

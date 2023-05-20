@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ColorConstant {
+  static Color lightGreen20001 = fromHex('#d5df97');
+
   static Color black9007f = fromHex('#7f000000');
 
   static Color orangeA200 = fromHex('#fda541');

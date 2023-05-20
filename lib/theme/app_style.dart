@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class AppStyle {
+  static TextStyle txtUrbanistRomanSemiBold20 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      20,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w600,
+  );
+
   static TextStyle txtArtographieMedium25 = TextStyle(
     color: ColorConstant.gray900,
     fontSize: getFontSize(
@@ -107,6 +116,32 @@ class AppStyle {
       16,
     ),
     fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtUrbanistRomanMedium12 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      12,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle txtLatoMedium18 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      18,
+    ),
+    fontFamily: 'Lato',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtLatoMedium12 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      12,
+    ),
+    fontFamily: 'Lato',
     fontWeight: FontWeight.w500,
   );
 }

@@ -11,6 +11,10 @@ class AppDecoration {
           ),
         ),
       );
+  static BoxDecoration get fillLightgreen20001 => BoxDecoration(
+        color: ColorConstant.lightGreen20001,
+      );
+
   static BoxDecoration get fillLightgreen200 => BoxDecoration(
         color: ColorConstant.lightGreen200,
       );

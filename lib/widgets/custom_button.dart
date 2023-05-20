@@ -3,7 +3,8 @@ import 'package:peek_app/core/app_export.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton(
-      {super.key, this.shape,
+      {super.key,
+      this.shape,
       this.padding,
       this.variant,
       this.fontStyle,

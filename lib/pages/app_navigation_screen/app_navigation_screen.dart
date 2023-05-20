@@ -2,19 +2,14 @@ import 'bloc/app_navigation_bloc.dart';
 import 'models/app_navigation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
-//import 'package:peek_app/pages/registro_due_o_three_dialog/registro_due_o_three_dialog.dart';
-//import 'package:peek_app/pages/registro_paseador_three_dialog/registro_paseador_three_dialog.dart';
-//import 'package:peek_app/pages/registro_due_o_four_dialog/registro_due_o_four_dialog.dart';
 
 class AppNavigationScreen extends StatelessWidget {
-  const AppNavigationScreen({super.key});
-
   static Widget builder(BuildContext context) {
     return BlocProvider<AppNavigationBloc>(
         create: (context) => AppNavigationBloc(
             AppNavigationState(appNavigationModelObj: AppNavigationModel()))
           ..add(AppNavigationInitialEvent()),
-        child: const AppNavigationScreen());
+        child: AppNavigationScreen());
   }
 
   @override
@@ -24,7 +19,7 @@ class AppNavigationScreen extends StatelessWidget {
       return SafeArea(
           child: Scaffold(
               backgroundColor: ColorConstant.whiteA700,
-              body: SizedBox(
+              body: Container(
                   width: double.maxFinite,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -73,8 +68,7 @@ class AppNavigationScreen extends StatelessWidget {
                                         children: [
                                           GestureDetector(
                                               onTap: () {
-                                                onTapOlvidarContraseaThree(
-                                                    context);
+                                                onTapLogin(context);
                                               },
                                               child: Container(
                                                   decoration:
@@ -98,7 +92,7 @@ class AppNavigationScreen extends StatelessWidget {
                                                                         bottom:
                                                                             10),
                                                                 child: Text(
-                                                                    "msg_olvidar_contrase_a"
+                                                                    "lbl_login"
                                                                         .tr,
                                                                     overflow:
                                                                         TextOverflow
@@ -172,55 +166,6 @@ class AppNavigationScreen extends StatelessWidget {
                                                       ]))),
                                           GestureDetector(
                                               onTap: () {
-                                                onTapLogin(context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "lbl_login"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
                                                 onTapRegistro(context);
                                               },
                                               child: Container(
@@ -270,7 +215,7 @@ class AppNavigationScreen extends StatelessWidget {
                                                       ]))),
                                           GestureDetector(
                                               onTap: () {
-                                                onTapRegistroDueo(context);
+                                                onTapRegistroDuenio(context);
                                               },
                                               child: Container(
                                                   decoration:
@@ -294,7 +239,7 @@ class AppNavigationScreen extends StatelessWidget {
                                                                         bottom:
                                                                             10),
                                                                 child: Text(
-                                                                    "lbl_registro_due_o"
+                                                                    "lbl_registro_duenio"
                                                                         .tr,
                                                                     overflow:
                                                                         TextOverflow
@@ -319,7 +264,58 @@ class AppNavigationScreen extends StatelessWidget {
                                                       ]))),
                                           GestureDetector(
                                               onTap: () {
-                                                onTapRegistroPaseador(context);
+                                                onTapOlvidarContrasenia(
+                                                    context);
+                                              },
+                                              child: Container(
+                                                  decoration:
+                                                      AppDecoration.white,
+                                                  child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Align(
+                                                            alignment: Alignment
+                                                                .centerLeft,
+                                                            child: Padding(
+                                                                padding:
+                                                                    getPadding(
+                                                                        left:
+                                                                            20,
+                                                                        top: 10,
+                                                                        right:
+                                                                            20,
+                                                                        bottom:
+                                                                            10),
+                                                                child: Text(
+                                                                    "msg_olvidar_contrasenia"
+                                                                        .tr,
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: AppStyle
+                                                                        .txtRobotoRegular20))),
+                                                        Padding(
+                                                            padding: getPadding(
+                                                                top: 5),
+                                                            child: Divider(
+                                                                height:
+                                                                    getVerticalSize(
+                                                                        1),
+                                                                thickness:
+                                                                    getVerticalSize(
+                                                                        1),
+                                                                color: ColorConstant
+                                                                    .blueGray40001))
+                                                      ]))),
+                                          GestureDetector(
+                                              onTap: () {
+                                                onTapRegistroPaseadorTarifa(
+                                                    context);
                                               },
                                               child: Container(
                                                   decoration:
@@ -344,104 +340,6 @@ class AppNavigationScreen extends StatelessWidget {
                                                                             10),
                                                                 child: Text(
                                                                     "msg_registro_paseador"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapOlvidarContrasea(context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_olvidar_contrase_a2"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapRegistroDueoTwo(context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_registro_due_o_two"
                                                                         .tr,
                                                                     overflow:
                                                                         TextOverflow
@@ -513,313 +411,15 @@ class AppNavigationScreen extends StatelessWidget {
                                                                         1),
                                                                 color: ColorConstant
                                                                     .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapOlvidarContraseaTwo(
-                                                    context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_olvidar_contrase_a3"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapRegistroDueoThree(context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_registro_due_o_three"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapRegistroPaseadorThree(
-                                                    context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_registro_paseador3"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapRegistroDueoFour(context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_registro_due_o_four"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapRegistroPaseadorFour(
-                                                    context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_registro_paseador4"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
-                                                      ]))),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapRegistroPaseadorFive(
-                                                    context);
-                                              },
-                                              child: Container(
-                                                  decoration:
-                                                      AppDecoration.white,
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Padding(
-                                                                padding:
-                                                                    getPadding(
-                                                                        left:
-                                                                            20,
-                                                                        top: 10,
-                                                                        right:
-                                                                            20,
-                                                                        bottom:
-                                                                            10),
-                                                                child: Text(
-                                                                    "msg_registro_paseador5"
-                                                                        .tr,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: AppStyle
-                                                                        .txtRobotoRegular20))),
-                                                        Padding(
-                                                            padding: getPadding(
-                                                                top: 5),
-                                                            child: Divider(
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                thickness:
-                                                                    getVerticalSize(
-                                                                        1),
-                                                                color: ColorConstant
-                                                                    .blueGray40001))
                                                       ])))
                                         ]))))
                       ]))));
     });
   }
 
-  onTapOlvidarContraseaThree(BuildContext context) {
+  onTapLogin(BuildContext context) {
     NavigatorService.pushNamed(
-      AppRoutes.olvidarContraseAThreeScreen,
+      AppRoutes.loginScreen,
     );
   }
 
@@ -829,96 +429,33 @@ class AppNavigationScreen extends StatelessWidget {
     );
   }
 
-  onTapLogin(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.loginScreen,
-    );
-  }
-
   onTapRegistro(BuildContext context) {
     NavigatorService.pushNamed(
       AppRoutes.registroScreen,
     );
   }
 
-  onTapRegistroDueo(BuildContext context) {
+  onTapRegistroDuenio(BuildContext context) {
     NavigatorService.pushNamed(
-      AppRoutes.registroDueOScreen,
+      AppRoutes.registroDuenioScreen,
     );
   }
 
-  onTapRegistroPaseador(BuildContext context) {
+  onTapOlvidarContrasenia(BuildContext context) {
     NavigatorService.pushNamed(
-      AppRoutes.registroPaseadorScreen,
+      AppRoutes.olvidarContraseniaScreen,
     );
   }
 
-  onTapOlvidarContrasea(BuildContext context) {
+  onTapRegistroPaseadorTarifa(BuildContext context) {
     NavigatorService.pushNamed(
-      AppRoutes.olvidarContraseAScreen,
-    );
-  }
-
-  onTapRegistroDueoTwo(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.registroDueOTwoScreen,
+      AppRoutes.registroPaseadorTarifaScreen,
     );
   }
 
   onTapRegistroPaseadorTwo(BuildContext context) {
     NavigatorService.pushNamed(
       AppRoutes.registroPaseadorTwoScreen,
-    );
-  }
-
-  onTapOlvidarContraseaTwo(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.olvidarContraseATwoScreen,
-    );
-  }
-
-  onTapRegistroDueoThree(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(
-              //content: RegistroDueOThreeDialog.builder(context),
-              backgroundColor: Colors.transparent,
-              contentPadding: EdgeInsets.zero,
-              insetPadding: EdgeInsets.only(left: 0),
-            ));
-  }
-
-  onTapRegistroPaseadorThree(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(
-              //content: RegistroPaseadorThreeDialog.builder(context),
-              backgroundColor: Colors.transparent,
-              contentPadding: EdgeInsets.zero,
-              insetPadding: EdgeInsets.only(left: 0),
-            ));
-  }
-
-  onTapRegistroDueoFour(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(
-              //content: RegistroDueOFourDialog.builder(context),
-              backgroundColor: Colors.transparent,
-              contentPadding: EdgeInsets.zero,
-              insetPadding: EdgeInsets.only(left: 0),
-            ));
-  }
-
-  onTapRegistroPaseadorFour(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.registroPaseadorFourScreen,
-    );
-  }
-
-  onTapRegistroPaseadorFive(BuildContext context) {
-    NavigatorService.pushNamed(
-      AppRoutes.registroPaseadorFiveScreen,
     );
   }
 }
