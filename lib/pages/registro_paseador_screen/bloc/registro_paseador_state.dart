@@ -4,84 +4,95 @@ part of 'registro_paseador_bloc.dart';
 
 class RegistroPaseadorState extends Equatable {
   RegistroPaseadorState({
-    this.nameinputController,
-    this.apellido1inputController,
-    this.apellido2inputController,
+    this.emailController,
+    this.firstnameController,
+    this.lastnameController,
+    this.lastnameoneController,
+    this.passwordController,
     this.confirmpasswordController,
-    this.phoneinputController,
-    this.cpinputController,
-    this.streetnuminputController,
-    this.streetinputController,
-    this.muninputController,
-    this.cityinputController,
+    this.phoneController,
+    this.zipcodeController,
+    this.streetnumberController,
+    this.streetController,
+    this.municipalityController,
+    this.cityController,
     this.registroPaseadorModelObj,
   });
 
-  TextEditingController? nameinputController;
+  TextEditingController? emailController;
 
-  TextEditingController? apellido1inputController;
+  TextEditingController? firstnameController;
 
-  TextEditingController? apellido2inputController;
+  TextEditingController? lastnameController;
+
+  TextEditingController? lastnameoneController;
+
+  TextEditingController? passwordController;
 
   TextEditingController? confirmpasswordController;
 
-  TextEditingController? phoneinputController;
+  TextEditingController? phoneController;
 
-  TextEditingController? cpinputController;
+  TextEditingController? zipcodeController;
 
-  TextEditingController? streetnuminputController;
+  TextEditingController? streetnumberController;
 
-  TextEditingController? streetinputController;
+  TextEditingController? streetController;
 
-  TextEditingController? muninputController;
+  TextEditingController? municipalityController;
 
-  TextEditingController? cityinputController;
+  TextEditingController? cityController;
 
   RegistroPaseadorModel? registroPaseadorModelObj;
 
   @override
   List<Object?> get props => [
-        nameinputController,
-        apellido1inputController,
-        apellido2inputController,
+        emailController,
+        firstnameController,
+        lastnameController,
+        lastnameoneController,
+        passwordController,
         confirmpasswordController,
-        phoneinputController,
-        cpinputController,
-        streetnuminputController,
-        streetinputController,
-        muninputController,
-        cityinputController,
+        phoneController,
+        zipcodeController,
+        streetnumberController,
+        streetController,
+        municipalityController,
+        cityController,
         registroPaseadorModelObj,
       ];
   RegistroPaseadorState copyWith({
-    TextEditingController? nameinputController,
-    TextEditingController? apellido1inputController,
-    TextEditingController? apellido2inputController,
+    TextEditingController? emailController,
+    TextEditingController? firstnameController,
+    TextEditingController? lastnameController,
+    TextEditingController? lastnameoneController,
+    TextEditingController? passwordController,
     TextEditingController? confirmpasswordController,
-    TextEditingController? phoneinputController,
-    TextEditingController? cpinputController,
-    TextEditingController? streetnuminputController,
-    TextEditingController? streetinputController,
-    TextEditingController? muninputController,
-    TextEditingController? cityinputController,
+    TextEditingController? phoneController,
+    TextEditingController? zipcodeController,
+    TextEditingController? streetnumberController,
+    TextEditingController? streetController,
+    TextEditingController? municipalityController,
+    TextEditingController? cityController,
     RegistroPaseadorModel? registroPaseadorModelObj,
   }) {
     return RegistroPaseadorState(
-      nameinputController: nameinputController ?? this.nameinputController,
-      apellido1inputController:
-          apellido1inputController ?? this.apellido1inputController,
-      apellido2inputController:
-          apellido2inputController ?? this.apellido2inputController,
+      emailController: emailController ?? this.emailController,
+      firstnameController: firstnameController ?? this.firstnameController,
+      lastnameController: lastnameController ?? this.lastnameController,
+      lastnameoneController:
+          lastnameoneController ?? this.lastnameoneController,
+      passwordController: passwordController ?? this.passwordController,
       confirmpasswordController:
           confirmpasswordController ?? this.confirmpasswordController,
-      phoneinputController: phoneinputController ?? this.phoneinputController,
-      cpinputController: cpinputController ?? this.cpinputController,
-      streetnuminputController:
-          streetnuminputController ?? this.streetnuminputController,
-      streetinputController:
-          streetinputController ?? this.streetinputController,
-      muninputController: muninputController ?? this.muninputController,
-      cityinputController: cityinputController ?? this.cityinputController,
+      phoneController: phoneController ?? this.phoneController,
+      zipcodeController: zipcodeController ?? this.zipcodeController,
+      streetnumberController:
+          streetnumberController ?? this.streetnumberController,
+      streetController: streetController ?? this.streetController,
+      municipalityController:
+          municipalityController ?? this.municipalityController,
+      cityController: cityController ?? this.cityController,
       registroPaseadorModelObj:
           registroPaseadorModelObj ?? this.registroPaseadorModelObj,
     );

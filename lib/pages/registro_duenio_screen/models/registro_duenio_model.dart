@@ -1,20 +1,28 @@
 import 'package:equatable/equatable.dart';
-import 'registro_duenio_item_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // ignore: must_be_immutable
 class RegistroDuenioModel extends Equatable {
-  RegistroDuenioModel({this.registroDuenioItemList = const []});
-
-  List<RegistroDuenioItemModel> registroDuenioItemList;
-
-  RegistroDuenioModel copyWith(
-      {List<RegistroDuenioItemModel>? registroDuenioItemList}) {
-    return RegistroDuenioModel(
-      registroDuenioItemList:
-          registroDuenioItemList ?? this.registroDuenioItemList,
-    );
+  RegistroDuenioModel copyWith() {
+    return RegistroDuenioModel();
   }
 
   @override
-  List<Object?> get props => [registroDuenioItemList];
+  List<Object?> get props => [];
+}
+
+addDuenioDetails(
+    String name,
+    String lastname,
+    String lastnameone,
+    DateTime date,
+    int phone,
+    int cp,
+    int numstreet,
+    String street,
+    String mun,
+    String city) async {
+  final duenio =
+      FirebaseAuth.instance.collection('duenios').doc(duenio.uid).set({});
 }

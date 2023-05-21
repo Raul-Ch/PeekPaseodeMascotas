@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'bloc/login_bloc.dart';
 import 'models/login_model.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,8 @@ import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class LoginScreen extends StatelessWidget {
   static Widget builder(BuildContext context) {
@@ -12,6 +16,21 @@ class LoginScreen extends StatelessWidget {
         create: (context) => LoginBloc(LoginState(loginModelObj: LoginModel()))
           ..add(LoginInitialEvent()),
         child: LoginScreen());
+  }
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
   }
 
   @override

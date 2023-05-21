@@ -35,7 +35,7 @@ class RegistroScreen extends StatelessWidget {
                             width: 41,
                             margin: getMargin(left: 25, top: 13),
                             onTap: () {
-                              onTapBtnArrowleft(context);
+                              onTapArrowLeft(context);
                             },
                             child: CustomImageView(
                                 svgPath: ImageConstant.imgArrowleft)),
@@ -103,12 +103,12 @@ class RegistroScreen extends StatelessWidget {
                             imagePath: ImageConstant.imgframe,
                             height: getVerticalSize(32),
                             width: getHorizontalSize(375),
-                            margin: getMargin(top: 7))
+                            margin: getMargin(top: 20))
                       ]))));
     });
   }
 
-  onTapBtnArrowleft(BuildContext context) {
+  onTapArrowLeft(BuildContext context) {
     NavigatorService.goBack();
   }
 

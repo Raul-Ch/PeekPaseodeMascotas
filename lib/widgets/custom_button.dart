@@ -3,8 +3,7 @@ import 'package:peek_app/core/app_export.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton(
-      {super.key,
-      this.shape,
+      {this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -67,13 +66,13 @@ class CustomButton extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          prefixWidget ?? const SizedBox(),
+          prefixWidget ?? SizedBox(),
           Text(
             text ?? "",
             textAlign: TextAlign.center,
             style: _setFontStyle(),
           ),
-          suffixWidget ?? const SizedBox(),
+          suffixWidget ?? SizedBox(),
         ],
       );
     } else {
@@ -102,20 +101,17 @@ class CustomButton extends StatelessWidget {
 
   _setPadding() {
     switch (padding) {
+      case ButtonPadding.PaddingAll15:
+        return getPadding(
+          all: 15,
+        );
       case ButtonPadding.PaddingAll19:
         return getPadding(
           all: 19,
         );
-      case ButtonPadding.PaddingT9:
-        return getPadding(
-          left: 7,
-          top: 9,
-          right: 7,
-          bottom: 9,
-        );
       default:
         return getPadding(
-          all: 11,
+          all: 9,
         );
     }
   }
@@ -200,9 +196,9 @@ enum ButtonShape {
 }
 
 enum ButtonPadding {
-  PaddingAll11,
+  PaddingAll9,
+  PaddingAll15,
   PaddingAll19,
-  PaddingT9,
 }
 
 enum ButtonVariant {

@@ -1,6 +1,7 @@
-import '../registro_duenio_screen/widgets/registro_duenio_item_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
+
 import 'bloc/registro_duenio_bloc.dart';
-import 'models/registro_duenio_item_model.dart';
 import 'models/registro_duenio_model.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
@@ -9,6 +10,56 @@ import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
 class RegistroDuenioScreen extends StatelessWidget {
+  final emailController = TextEditingController();
+  final nameinputController = TextEditingController();
+  final apellido1inputController = TextEditingController();
+  final phoneinputController = TextEditingController();
+  final cpinputController = TextEditingController();
+  final streetnuminputController = TextEditingController();
+  final streetinputController = TextEditingController();
+  final muninputController = TextEditingController();
+  final cityinputController = TextEditingController();
+  final passwordinputController = TextEditingController();
+  final confirmpasswordinputController = TextEditingController();
+
+  final dateController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    nameinputController.dispose();
+    apellido1inputController.dispose();
+    phoneinputController.dispose();
+    cpinputController.dispose();
+    streetnuminputController.dispose();
+    streetinputController.dispose();
+    muninputController.dispose();
+    cityinputController.dispose();
+    passwordinputController.dispose();
+    confirmpasswordinputController.dispose();
+    dateController.dispose();
+    dispose();
+  }
+
+  bool passwordConfirm() {
+    if (passwordinputController.text.trim() ==
+        confirmpasswordinputController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future register() async {
+    if (passwordConfirm()) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordinputController.text.trim());
+
+      addDuenioDetails(nameinputController.text.trim());
+    }
+  }
+
   static Widget builder(BuildContext context) {
     return BlocProvider<RegistroDuenioBloc>(
         create: (context) => RegistroDuenioBloc(
@@ -35,12 +86,12 @@ class RegistroDuenioScreen extends StatelessWidget {
                                   children: [
                             CustomImageView(
                                 imagePath: ImageConstant.imgframe,
-                                height: getVerticalSize(32),
+                                height: getVerticalSize(30),
                                 width: getHorizontalSize(375)),
                             CustomIconButton(
                                 height: 41,
                                 width: 41,
-                                margin: getMargin(left: 19, top: 11),
+                                margin: getMargin(left: 19, top: 13),
                                 alignment: Alignment.centerLeft,
                                 onTap: () {
                                   onTapBtnArrowleft(context);
@@ -57,53 +108,64 @@ class RegistroDuenioScreen extends StatelessWidget {
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtKonnectRegular25))),
                             GestureDetector(
-                              onTap: () {
-                                onTapButtons(context);
-                              },
-                              child: Padding(
-                                  padding:
-                                      getPadding(left: 28, top: 7, right: 28),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                            child: CustomButton(
-                                                height: getVerticalSize(37),
-                                                text: "lbl_due_o".tr,
-                                                margin: getMargin(right: 21),
-                                                variant: ButtonVariant
-                                                    .FillIndigo50)),
-                                        Expanded(
-                                            child: CustomButton(
-                                                height: getVerticalSize(37),
-                                                text: "lbl_paseador".tr,
-                                                margin: getMargin(left: 21)))
-                                      ])),
-                            ),
+                                onTap: () {
+                                  onTapButtons(context);
+                                },
+                                child: Padding(
+                                    padding:
+                                        getPadding(left: 28, top: 9, right: 28),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                              child: CustomButton(
+                                                  height: getVerticalSize(32),
+                                                  text: "lbl_due_o".tr,
+                                                  margin: getMargin(right: 21),
+                                                  variant: ButtonVariant
+                                                      .FillIndigo50)),
+                                          Expanded(
+                                              child: CustomButton(
+                                                  height: getVerticalSize(32),
+                                                  text: "lbl_paseador".tr,
+                                                  margin: getMargin(left: 21)))
+                                        ]))),
                             BlocSelector<
                                     RegistroDuenioBloc,
                                     RegistroDuenioState,
                                     TextEditingController?>(
-                                selector: (state) => state.nameinputController,
-                                builder: (context, nameinputController) {
+                                selector: (state) => state.emailController,
+                                builder: (context, emailController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: nameinputController,
-                                      hintText: "lbl_nombre".tr,
+                                      controller: emailController,
+                                      hintText: "lbl_correo".tr,
                                       margin: getMargin(
-                                          left: 24, top: 14, right: 20));
+                                          left: 24, top: 19, right: 20));
                                 }),
                             BlocSelector<
                                     RegistroDuenioBloc,
                                     RegistroDuenioState,
                                     TextEditingController?>(
-                                selector: (state) =>
-                                    state.apellido1inputController,
-                                builder: (context, apellido1inputController) {
+                                selector: (state) => state.firstnameController,
+                                builder: (context, firstnameController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: apellido1inputController,
+                                      controller: firstnameController,
+                                      hintText: "lbl_nombre".tr,
+                                      margin: getMargin(
+                                          left: 24, top: 12, right: 20));
+                                }),
+                            BlocSelector<
+                                    RegistroDuenioBloc,
+                                    RegistroDuenioState,
+                                    TextEditingController?>(
+                                selector: (state) => state.lastnameController,
+                                builder: (context, lastnameController) {
+                                  return CustomTextFormField(
+                                      focusNode: FocusNode(),
+                                      controller: lastnameController,
                                       hintText: "msg_apellido_paterno".tr,
                                       margin: getMargin(
                                           left: 24, top: 12, right: 20));
@@ -113,24 +175,30 @@ class RegistroDuenioScreen extends StatelessWidget {
                                     RegistroDuenioState,
                                     TextEditingController?>(
                                 selector: (state) =>
-                                    state.apellido2inputController,
-                                builder: (context, apellido2inputController) {
+                                    state.lastnameoneController,
+                                builder: (context, lastnameoneController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: apellido2inputController,
+                                      controller: lastnameoneController,
                                       hintText: "msg_apellido_materno".tr,
                                       margin: getMargin(
                                           left: 24, top: 12, right: 20),
                                       variant: TextFormFieldVariant
                                           .OutlineIndigo50_1);
                                 }),
-                            CustomImageView(
-                                svgPath: ImageConstant.imgPasswordinput,
-                                height: getVerticalSize(56),
-                                width: getHorizontalSize(331),
-                                radius:
-                                    BorderRadius.circular(getHorizontalSize(8)),
-                                margin: getMargin(top: 12)),
+                            BlocSelector<
+                                    RegistroDuenioBloc,
+                                    RegistroDuenioState,
+                                    TextEditingController?>(
+                                selector: (state) => state.passwordController,
+                                builder: (context, passwordController) {
+                                  return CustomTextFormField(
+                                      focusNode: FocusNode(),
+                                      controller: passwordController,
+                                      hintText: "lbl_contrase_a".tr,
+                                      margin: getMargin(
+                                          left: 24, top: 10, right: 20));
+                                }),
                             BlocSelector<
                                     RegistroDuenioBloc,
                                     RegistroDuenioState,
@@ -143,128 +211,80 @@ class RegistroDuenioScreen extends StatelessWidget {
                                       controller: confirmpasswordController,
                                       hintText: "msg_confirmar_contrase_a".tr,
                                       margin: getMargin(
-                                          left: 24, top: 8, right: 20));
+                                          left: 22, top: 10, right: 22));
                                 }),
                             Align(
                                 alignment: Alignment.centerLeft,
                                 child: Padding(
-                                    padding: getPadding(left: 24, top: 25),
+                                    padding: getPadding(left: 22, top: 19),
                                     child: Text("msg_selecciona_tu_fecha".tr,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle
                                             .txtUrbanistRomanMedium15))),
-                            Container(
-                                margin: getMargin(left: 13, top: 7, right: 13),
-                                padding: getPadding(
-                                    left: 19, top: 11, right: 19, bottom: 11),
-                                decoration: AppDecoration.fillLightgreen20001,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                          padding: getPadding(
-                                              left: 16, top: 2, right: 16),
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                CustomImageView(
-                                                    svgPath: ImageConstant
-                                                        .imgArrowleftGray900,
-                                                    height: getSize(24),
-                                                    width: getSize(24)),
-                                                Text("lbl_marzo_2023".tr,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtUrbanistRomanSemiBold20),
-                                                CustomImageView(
-                                                    svgPath: ImageConstant
-                                                        .imgArrowright,
-                                                    height: getSize(24),
-                                                    width: getSize(24))
-                                              ])),
-                                      Padding(
-                                          padding: getPadding(left: 2, top: 32),
-                                          child: BlocSelector<
-                                                  RegistroDuenioBloc,
-                                                  RegistroDuenioState,
-                                                  RegistroDuenioModel?>(
-                                              selector: (state) =>
-                                                  state.registroDuenioModelObj,
-                                              builder: (context,
-                                                  registroDuenioModelObj) {
-                                                return ListView.separated(
-                                                    physics:
-                                                        NeverScrollableScrollPhysics(),
-                                                    shrinkWrap: true,
-                                                    separatorBuilder:
-                                                        (context, index) {
-                                                      return SizedBox(
-                                                          height:
-                                                              getVerticalSize(
-                                                                  25));
-                                                    },
-                                                    itemCount:
-                                                        registroDuenioModelObj
-                                                                ?.registroDuenioItemList
-                                                                .length ??
-                                                            0,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      RegistroDuenioItemModel
-                                                          model =
-                                                          registroDuenioModelObj
-                                                                      ?.registroDuenioItemList[
-                                                                  index] ??
-                                                              RegistroDuenioItemModel();
-                                                      return RegistroDuenioItemWidget(
-                                                          model);
-                                                    });
-                                              }))
-                                    ])),
+                            Padding(
+                                padding:
+                                    getPadding(top: 6, left: 100, right: 100),
+                                child: TextField(
+                                    textAlign: TextAlign.center,
+                                    controller: dateController,
+                                    onTap: () {
+                                      onTapFechaone(context);
+                                    })),
                             BlocSelector<
                                     RegistroDuenioBloc,
                                     RegistroDuenioState,
                                     TextEditingController?>(
-                                selector: (state) => state.phoneinputController,
-                                builder: (context, phoneinputController) {
+                                selector: (state) => state.phoneController,
+                                builder: (context, phoneController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: phoneinputController,
+                                      controller: phoneController,
                                       hintText: "lbl_tel_fono".tr,
                                       margin: getMargin(
-                                          left: 22, top: 25, right: 22));
+                                          left: 24, top: 30, right: 20));
                                 }),
                             BlocSelector<
                                     RegistroDuenioBloc,
                                     RegistroDuenioState,
                                     TextEditingController?>(
-                                selector: (state) => state.cpinputController,
-                                builder: (context, cpinputController) {
+                                selector: (state) => state.zipcodeController,
+                                builder: (context, zipcodeController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: cpinputController,
+                                      controller: zipcodeController,
                                       hintText: "lbl_c_digo_postal".tr,
                                       margin: getMargin(
-                                          left: 22, top: 12, right: 22));
+                                          left: 24, top: 12, right: 20));
                                 }),
                             BlocSelector<
                                     RegistroDuenioBloc,
                                     RegistroDuenioState,
                                     TextEditingController?>(
                                 selector: (state) =>
-                                    state.streetnuminputController,
-                                builder: (context, streetnuminputController) {
+                                    state.streetnumberController,
+                                builder: (context, streetnumberController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: streetnuminputController,
+                                      controller: streetnumberController,
                                       hintText: "lbl_n_m_calle".tr,
                                       margin: getMargin(
-                                          left: 22, top: 12, right: 22),
+                                          left: 24, top: 12, right: 20),
+                                      variant: TextFormFieldVariant
+                                          .OutlineIndigo50_1);
+                                }),
+                            BlocSelector<
+                                    RegistroDuenioBloc,
+                                    RegistroDuenioState,
+                                    TextEditingController?>(
+                                selector: (state) => state.streetController,
+                                builder: (context, streetController) {
+                                  return CustomTextFormField(
+                                      focusNode: FocusNode(),
+                                      controller: streetController,
+                                      hintText: "lbl_calle".tr,
+                                      margin: getMargin(
+                                          left: 24, top: 12, right: 20),
                                       variant: TextFormFieldVariant
                                           .OutlineIndigo50_1);
                                 }),
@@ -273,55 +293,40 @@ class RegistroDuenioScreen extends StatelessWidget {
                                     RegistroDuenioState,
                                     TextEditingController?>(
                                 selector: (state) =>
-                                    state.streetinputController,
-                                builder: (context, streetinputController) {
+                                    state.municipalityController,
+                                builder: (context, municipalityController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: streetinputController,
-                                      hintText: "lbl_calle".tr,
-                                      margin: getMargin(
-                                          left: 22, top: 12, right: 22),
-                                      variant: TextFormFieldVariant
-                                          .OutlineIndigo50_1);
-                                }),
-                            BlocSelector<
-                                    RegistroDuenioBloc,
-                                    RegistroDuenioState,
-                                    TextEditingController?>(
-                                selector: (state) => state.muninputController,
-                                builder: (context, muninputController) {
-                                  return CustomTextFormField(
-                                      focusNode: FocusNode(),
-                                      controller: muninputController,
+                                      controller: municipalityController,
                                       hintText: "lbl_municipio".tr,
                                       margin: getMargin(
-                                          left: 22, top: 13, right: 22));
+                                          left: 24, top: 13, right: 20));
                                 }),
                             BlocSelector<
                                     RegistroDuenioBloc,
                                     RegistroDuenioState,
                                     TextEditingController?>(
-                                selector: (state) => state.cityinputController,
-                                builder: (context, cityinputController) {
+                                selector: (state) => state.cityController,
+                                builder: (context, cityController) {
                                   return CustomTextFormField(
                                       focusNode: FocusNode(),
-                                      controller: cityinputController,
+                                      controller: cityController,
                                       hintText: "lbl_ciudad".tr,
                                       margin: getMargin(
-                                          left: 22, top: 13, right: 22),
+                                          left: 24, top: 13, right: 20),
                                       textInputAction: TextInputAction.done);
                                 }),
                             CustomButton(
-                                height: getVerticalSize(56),
+                                height: getVerticalSize(48),
                                 text: "lbl_registrarme".tr,
-                                margin: getMargin(left: 22, top: 23, right: 22),
-                                padding: ButtonPadding.PaddingAll19),
+                                margin: getMargin(left: 24, top: 33, right: 20),
+                                padding: ButtonPadding.PaddingAll15),
                             GestureDetector(
                                 onTap: () {
                                   onTapTxtYatienesunacuenta(context);
                                 },
                                 child: Padding(
-                                    padding: getPadding(top: 26),
+                                    padding: getPadding(top: 16),
                                     child: RichText(
                                         text: TextSpan(children: [
                                           TextSpan(
@@ -349,8 +354,8 @@ class RegistroDuenioScreen extends StatelessWidget {
                             CustomImageView(
                                 imagePath: ImageConstant.imgframe,
                                 height: getVerticalSize(32),
-                                width: getHorizontalSize(375),
-                                margin: getMargin(top: 7))
+                                width: getHorizontalSize(373),
+                                margin: getMargin(top: 13))
                           ])))
                     ]))));
   }
@@ -363,6 +368,21 @@ class RegistroDuenioScreen extends StatelessWidget {
     NavigatorService.pushNamed(
       AppRoutes.registroPaseadorScreen,
     );
+  }
+
+  Future<void> onTapFechaone(BuildContext context) async {
+    var initialState = BlocProvider.of<RegistroDuenioBloc>(context).state;
+    DateTime? dateTime = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1970),
+            lastDate: DateTime.now())
+        .then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      dateController.text = DateFormat.yMd().format(pickedDate);
+    });
   }
 
   onTapTxtYatienesunacuenta(BuildContext context) {
