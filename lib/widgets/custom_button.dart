@@ -193,6 +193,7 @@ class CustomButton extends StatelessWidget {
 enum ButtonShape {
   Square,
   RoundedBorder8,
+  RoundedBorder30,
 }
 
 enum ButtonPadding {
@@ -205,10 +206,14 @@ enum ButtonVariant {
   FillGray900,
   White,
   FillIndigo50,
+  OutlineBlack9003f,
+  OutlineBlack9003f_1,
 }
 
 enum ButtonFontStyle {
   UrbanistRomanSemiBold15,
   UrbanistRomanMedium15,
   UrbanistRomanMedium15Gray900,
+  UrbanistRomanSemiBold25,
+  UrbanistRomanSemiBold25WhiteA700,
 }

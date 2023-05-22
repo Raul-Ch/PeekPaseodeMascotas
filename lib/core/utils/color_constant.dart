@@ -32,4 +32,14 @@ class ColorConstant {
     buffer.write(hexString.replaceFirst('#', ''));
     return Color(int.parse(buffer.toString(), radix: 16));
   }
+
+  static Color lightGreen20001 = fromHex('#d5df96');
+
+  static Color black9007f = fromHex('#7f000000');
+
+  static Color lightGreen20002 = fromHex('#d5df97');
+
+  static Color black9003f = fromHex('#3f000000');
+
+  static Color blueGray40002 = fromHex('#888888');
 }

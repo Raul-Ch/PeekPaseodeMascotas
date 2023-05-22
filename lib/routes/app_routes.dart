@@ -8,6 +8,8 @@ import 'package:peek_app/presentation/olvidar_contrasenia_screen/olvidar_contras
 import 'package:peek_app/presentation/registro_paseador_screen/registro_paseador_two_screen/registro_paseador_tarifa_screen/registro_paseador_tarifa_screen.dart';
 import 'package:peek_app/presentation/registro_paseador_screen/registro_paseador_two_screen/registro_paseador_two_screen.dart';
 import 'package:peek_app/presentation/app_navigation_screen/app_navigation_screen.dart';
+import 'package:peek_app/presentation/menu_duenio_screen/menu_duenio_screen.dart';
+import 'package:peek_app/presentation/menu_paseador_screen/menu_paseador_screen.dart';
 
 class AppRoutes {
   static const String loginScreen = '/login_screen';
@@ -28,6 +30,10 @@ class AppRoutes {
   static const String registroPaseadorTwoScreen =
       '/registro_paseador_two_screen';
 
+  static const String menuDuenioScreen = '/menu_duenio_screen';
+
+  static const String menuPaseadorScreen = '/menu_paseador_screen';
+
   static const String appNavigationScreen = '/app_navigation_screen';
 
   static Map<String, WidgetBuilder> routes = {
@@ -39,6 +45,8 @@ class AppRoutes {
     olvidarContraseniaScreen: (context) => OlvidarContraseniaScreen(),
     registroPaseadorTarifaScreen: (context) => RegistroPaseadorTarifaScreen(),
     registroPaseadorTwoScreen: (context) => RegistroPaseadorTwoScreen(),
+    menuDuenioScreen: (context) => MenuDuenioScreen(),
+    menuPaseadorScreen: (context) => MenuPaseadorScreen(),
     appNavigationScreen: (context) => AppNavigationScreen()
   };
 }

@@ -82,4 +82,67 @@ class AppStyle {
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
   );
+
+  static TextStyle txtUrbanistRomanBold20 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      20,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle txtUrbanistRomanMedium16Gray900 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      16,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtUrbanistRomanBold16 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      16,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle txtUrbanistRomanMedium18 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      18,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtUrbanistRomanMedium16Indigo50 = TextStyle(
+    color: ColorConstant.indigo50,
+    fontSize: getFontSize(
+      16,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtUrbanistRomanBlack16 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      16,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w900,
+  );
+
+  static TextStyle txtUrbanistRomanMedium16Bluegray40001 = TextStyle(
+    color: ColorConstant.blueGray40001,
+    fontSize: getFontSize(
+      16,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
 }

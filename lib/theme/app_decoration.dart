@@ -5,8 +5,15 @@ class AppDecoration {
   static BoxDecoration get fillLightgreen200 => BoxDecoration(
         color: ColorConstant.lightGreen200,
       );
+  static BoxDecoration get fillOrangeA200 => BoxDecoration(
+        color: ColorConstant.orangeA200,
+      );
   static BoxDecoration get white => BoxDecoration(
         color: ColorConstant.whiteA700,
+      );
+  static BoxDecoration get txtOutlineBlack90066 => BoxDecoration();
+  static BoxDecoration get fillLightgreen20001 => BoxDecoration(
+        color: ColorConstant.lightGreen20001,
       );
 }
 
@@ -14,6 +21,24 @@ class BorderRadiusStyle {
   static BorderRadius roundedBorder22 = BorderRadius.circular(
     getHorizontalSize(
       22,
+    ),
+  );
+
+  static BorderRadius roundedBorder1 = BorderRadius.circular(
+    getHorizontalSize(
+      1,
+    ),
+  );
+
+  static BorderRadius roundedBorder74 = BorderRadius.circular(
+    getHorizontalSize(
+      74,
+    ),
+  );
+
+  static BorderRadius circleBorder38 = BorderRadius.circular(
+    getHorizontalSize(
+      38,
     ),
   );
 }

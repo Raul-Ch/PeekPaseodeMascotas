@@ -68,6 +68,7 @@ flutter:
   assets: 
     - assets/
     - assets/images/
+    - assets/images/frame.png
   fonts: 
     - family: Urbanist
       fonts: 

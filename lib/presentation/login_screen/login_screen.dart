@@ -1,9 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
+
+import 'models/users.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -13,15 +17,40 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreen extends State<LoginScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   Future logIn() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    final uid2 = user.uid;
+
+    //var collectionRef = FirebaseFirestore.instance.collection('duenios');
+    //var doc = await collectionRef.doc(uid2).get();
+
+    //bool flag = doc.exists;
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim());
-      Navigator.pushNamed(context, AppRoutes.olvidarContraseniaScreen);
+      //print(flag);
+      final doc = await FirebaseFirestore.instance
+          .collection('duenios')
+          .doc(uid2)
+          .get();
+      if (doc.exists) {
+        Navigator.pushNamed(context, AppRoutes.menuDuenioScreen);
+      } else {
+        Navigator.pushNamed(context, AppRoutes.menuPaseadorScreen);
+      }
     } on FirebaseAuthException catch (e) {
       print(e);
       showDialog(
@@ -32,13 +61,6 @@ class _LoginScreen extends State<LoginScreen> {
             );
           });
     }
-  }
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
   }
 
   @override
