@@ -240,10 +240,10 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
                                       onTapFechaone(context);
                                     },
                                     style: AppStyle.txtUrbanistRomanMedium15)),
-                            CustomButton(
+/*                             CustomButton(
                                 height: getVerticalSize(32),
                                 text: "Fecha",
-                                margin: getMargin(left: 24, top: 5, right: 24)),
+                                margin: getMargin(left: 24, top: 5, right: 24)), */
                             CustomTextFormField(
                                 focusNode: FocusNode(),
                                 controller: phoneController,

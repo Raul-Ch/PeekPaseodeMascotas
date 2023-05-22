@@ -1,33 +1,106 @@
+import 'dart:ffi';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-class RegistroPaseadorScreen extends StatelessWidget {
-  TextEditingController emailController = TextEditingController();
+import 'model/registro_paseador_model.dart';
 
-  TextEditingController firstnameController = TextEditingController();
+class RegistroPaseadorScreen extends StatefulWidget {
+  const RegistroPaseadorScreen({Key? key}) : super(key: key);
+  @override
+  State<RegistroPaseadorScreen> createState() => _RegistroPaseadorScreen();
+}
 
-  TextEditingController lastnameController = TextEditingController();
+class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmpasswordController = TextEditingController();
 
-  TextEditingController lastnameoneController = TextEditingController();
+  final firstnameController = TextEditingController();
+  final lastnameController = TextEditingController();
+  final lastnameoneController = TextEditingController();
+  final dateController = TextEditingController();
+  final phoneController = TextEditingController();
+  final zipcodeController = TextEditingController();
+  final streetnumberController = TextEditingController();
+  final streetController = TextEditingController();
+  final municipalityController = TextEditingController();
+  final cityController = TextEditingController();
 
-  TextEditingController passwordController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmpasswordController.dispose();
+    firstnameController.dispose();
+    lastnameController.dispose();
+    lastnameoneController.dispose();
+    dateController.dispose();
+    phoneController.dispose();
+    zipcodeController.dispose();
+    streetnumberController.dispose();
+    streetController.dispose();
+    municipalityController.dispose();
+    cityController.dispose();
+    super.dispose();
+  }
 
-  TextEditingController confirmpasswordController = TextEditingController();
+  bool passwordConfirm() {
+    if (passwordController.text.trim() ==
+        confirmpasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  TextEditingController phoneController = TextEditingController();
+  Future register() async {
+    try {
+      if (passwordConfirm()) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim());
 
-  TextEditingController zipcodeController = TextEditingController();
-
-  TextEditingController streetnumberController = TextEditingController();
-
-  TextEditingController streetController = TextEditingController();
-
-  TextEditingController municipalityController = TextEditingController();
-
-  TextEditingController cityController = TextEditingController();
+        addPaseadorDetails(
+          firstnameController.text.trim(),
+          lastnameController.text.trim(),
+          lastnameoneController.text.trim(),
+          dateController.text.trim(),
+          int.parse(phoneController.text.trim()),
+          int.parse(zipcodeController.text.trim()),
+          int.parse(streetnumberController.text.trim()),
+          streetController.text.trim(),
+          municipalityController.text.trim(),
+          cityController.text.trim(),
+        );
+        //Navigator.pop(context);
+        onTapRegistrarme(context);
+        ;
+      } else {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text("Las contraseñas no coinciden"),
+              );
+            });
+      }
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,15 +212,19 @@ class RegistroPaseadorScreen extends StatelessWidget {
                                         style: AppStyle
                                             .txtUrbanistRomanMedium15))),
                             Padding(
-                                padding: getPadding(top: 6),
-                                child: Text("Fecha",
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
+                                padding:
+                                    getPadding(top: 6, left: 100, right: 100),
+                                child: TextField(
+                                    textAlign: TextAlign.center,
+                                    controller: dateController,
+                                    onTap: () {
+                                      onTapFechaone(context);
+                                    },
                                     style: AppStyle.txtUrbanistRomanMedium15)),
-                            CustomButton(
+/*                             CustomButton(
                                 height: getVerticalSize(32),
                                 text: "Fecha",
-                                margin: getMargin(left: 24, top: 6, right: 24)),
+                                margin: getMargin(left: 24, top: 6, right: 24)), */
                             CustomTextFormField(
                                 focusNode: FocusNode(),
                                 controller: phoneController,
@@ -191,9 +268,7 @@ class RegistroPaseadorScreen extends StatelessWidget {
                                 text: "Registrarme",
                                 margin: getMargin(left: 24, top: 33, right: 20),
                                 padding: ButtonPadding.PaddingAll15,
-                                onTap: () {
-                                  onTapRegistrarme(context);
-                                }),
+                                onTap: register),
                             GestureDetector(
                                 onTap: () {
                                   onTapTxtYatienesunacuenta(context);
@@ -246,7 +321,21 @@ class RegistroPaseadorScreen extends StatelessWidget {
     Navigator.pushNamed(context, AppRoutes.registroPaseadorTwoScreen);
   }
 
+  Future<void> onTapFechaone(BuildContext context) async {
+    DateTime? dateTime = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1970),
+            lastDate: DateTime.now())
+        .then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      dateController.text = DateFormat.yMd().format(pickedDate);
+    });
+  }
+
   onTapTxtYatienesunacuenta(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.registroScreen);
+    Navigator.pushNamed(context, AppRoutes.loginScreen);
   }
 }

@@ -133,7 +133,7 @@ class _LoginScreen extends State<LoginScreen> {
                                       onTapTxtAnnotienesuna(context);
                                     },
                                     child: Padding(
-                                        padding: getPadding(left: 14),
+                                        padding: getPadding(left: 35),
                                         child: RichText(
                                             text: TextSpan(children: [
                                               TextSpan(

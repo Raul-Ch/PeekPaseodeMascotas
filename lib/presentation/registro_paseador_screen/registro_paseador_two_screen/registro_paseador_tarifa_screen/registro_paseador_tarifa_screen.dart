@@ -1,13 +1,48 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
+import 'package:peek_app/presentation/registro_paseador_screen/registro_paseador_two_screen/registro_paseador_tarifa_screen/model/registro_paseador_tarifa.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-class RegistroPaseadorTarifaScreen extends StatelessWidget {
-  TextEditingController rateController = TextEditingController();
+class RegistroPaseadorTarifaScreen extends StatefulWidget {
+  const RegistroPaseadorTarifaScreen({Key? key}) : super(key: key);
+  @override
+  State<RegistroPaseadorTarifaScreen> createState() =>
+      _RegistroPaseadorTarifaScreen();
+}
 
-  TextEditingController experienceController = TextEditingController();
+class _RegistroPaseadorTarifaScreen
+    extends State<RegistroPaseadorTarifaScreen> {
+  final rateController = TextEditingController();
+  final experienceController = TextEditingController();
+
+  @override
+  void dispose() {
+    rateController.dispose();
+    experienceController.dispose();
+    super.dispose();
+  }
+
+  Future tarifanueva() async {
+    try {
+      addPaseadorLast(
+        int.parse(rateController.text.trim()),
+        experienceController.text.trim(),
+      );
+      Navigator.pushNamed(context, AppRoutes.loginScreen);
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +98,9 @@ class RegistroPaseadorTarifaScreen extends StatelessWidget {
                         height: 41,
                         width: 41,
                         alignment: Alignment.topLeft,
+                        onTap: () {
+                          onTapBtnArrowleft(context);
+                        },
                         child: CustomImageView(
                           svgPath: ImageConstant.imgArrowleft,
                         ),
@@ -89,8 +127,9 @@ class RegistroPaseadorTarifaScreen extends StatelessWidget {
                           138,
                         ),
                         text: "Tarifa establecida",
+                        variant: ButtonVariant.FillIndigo50,
                       ),
-                      CustomButton(
+/*                       CustomButton(
                         height: getVerticalSize(
                           37,
                         ),
@@ -101,8 +140,7 @@ class RegistroPaseadorTarifaScreen extends StatelessWidget {
                         margin: getMargin(
                           left: 35,
                         ),
-                        variant: ButtonVariant.FillIndigo50,
-                      ),
+                      ), */
                     ],
                   ),
                 ),
@@ -135,6 +173,7 @@ class RegistroPaseadorTarifaScreen extends StatelessWidget {
                   56,
                 ),
                 text: "Registrarme",
+                onTap: tarifanueva,
                 margin: getMargin(
                   left: 23,
                   right: 21,
@@ -158,5 +197,9 @@ class RegistroPaseadorTarifaScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  onTapBtnArrowleft(BuildContext context) {
+    Navigator.pop(context);
   }
 }

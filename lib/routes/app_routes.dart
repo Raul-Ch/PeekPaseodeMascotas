@@ -5,8 +5,8 @@ import 'package:peek_app/presentation/registro_screen/registro_screen.dart';
 import 'package:peek_app/presentation/registro_duenio_screen/registro_duenio_screen.dart';
 import 'package:peek_app/presentation/registro_paseador_screen/registro_paseador_screen.dart';
 import 'package:peek_app/presentation/olvidar_contrasenia_screen/olvidar_contrasenia_screen.dart';
-import 'package:peek_app/presentation/registro_paseador_tarifa_screen/registro_paseador_tarifa_screen.dart';
-import 'package:peek_app/presentation/registro_paseador_two_screen/registro_paseador_two_screen.dart';
+import 'package:peek_app/presentation/registro_paseador_screen/registro_paseador_two_screen/registro_paseador_tarifa_screen/registro_paseador_tarifa_screen.dart';
+import 'package:peek_app/presentation/registro_paseador_screen/registro_paseador_two_screen/registro_paseador_two_screen.dart';
 import 'package:peek_app/presentation/app_navigation_screen/app_navigation_screen.dart';
 
 class AppRoutes {
