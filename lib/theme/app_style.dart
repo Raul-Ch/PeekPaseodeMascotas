@@ -2,30 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class AppStyle {
-  static TextStyle txtUrbanistRomanSemiBold20 = TextStyle(
-    color: ColorConstant.gray900,
-    fontSize: getFontSize(
-      20,
-    ),
-    fontFamily: 'Urbanist',
-    fontWeight: FontWeight.w600,
-  );
-
   static TextStyle txtArtographieMedium25 = TextStyle(
     color: ColorConstant.gray900,
     fontSize: getFontSize(
       25,
     ),
     fontFamily: 'Artographie Medium',
-    fontWeight: FontWeight.w400,
-  );
-
-  static TextStyle welcome = TextStyle(
-    color: ColorConstant.gray900,
-    fontSize: getFontSize(
-      70,
-    ),
-    fontFamily: 'Artographie Bold',
     fontWeight: FontWeight.w400,
   );
 
@@ -48,7 +30,7 @@ class AppStyle {
   );
 
   static TextStyle txtUrbanistRomanMedium16 = TextStyle(
-    color: ColorConstant.blueGray400,
+    color: ColorConstant.blueGray500,
     fontSize: getFontSize(
       16,
     ),
@@ -65,15 +47,6 @@ class AppStyle {
     fontWeight: FontWeight.w500,
   );
 
-  static TextStyle txtUrbanistRomanSemiBold15 = TextStyle(
-    color: ColorConstant.whiteA700,
-    fontSize: getFontSize(
-      15,
-    ),
-    fontFamily: 'Urbanist',
-    fontWeight: FontWeight.w600,
-  );
-
   static TextStyle txtUrbanistRomanSemiBold14 = TextStyle(
     color: ColorConstant.teal900,
     fontSize: getFontSize(
@@ -81,15 +54,6 @@ class AppStyle {
     ),
     fontFamily: 'Urbanist',
     fontWeight: FontWeight.w600,
-  );
-
-  static TextStyle txtUrbanistRomanBold30 = TextStyle(
-    color: ColorConstant.gray900,
-    fontSize: getFontSize(
-      30,
-    ),
-    fontFamily: 'Urbanist',
-    fontWeight: FontWeight.w700,
   );
 
   static TextStyle txtKonnectRegular25 = TextStyle(
@@ -101,6 +65,15 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle txtUrbanistRomanBold30 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      30,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle txtRobotoRegular20 = TextStyle(
     color: ColorConstant.black900,
     fontSize: getFontSize(
@@ -108,40 +81,5 @@ class AppStyle {
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
-  );
-
-  static TextStyle txtUrbanistRomanMedium16Bluegray500 = TextStyle(
-    color: ColorConstant.blueGray500,
-    fontSize: getFontSize(
-      16,
-    ),
-    fontFamily: 'Urbanist',
-    fontWeight: FontWeight.w500,
-  );
-
-  static TextStyle txtUrbanistRomanMedium12 = TextStyle(
-    color: ColorConstant.gray900,
-    fontSize: getFontSize(
-      12,
-    ),
-    fontFamily: 'Urbanist',
-    fontWeight: FontWeight.w500,
-  );
-  static TextStyle txtLatoMedium18 = TextStyle(
-    color: ColorConstant.gray900,
-    fontSize: getFontSize(
-      18,
-    ),
-    fontFamily: 'Lato',
-    fontWeight: FontWeight.w500,
-  );
-
-  static TextStyle txtLatoMedium12 = TextStyle(
-    color: ColorConstant.gray900,
-    fontSize: getFontSize(
-      12,
-    ),
-    fontFamily: 'Lato',
-    fontWeight: FontWeight.w500,
   );
 }

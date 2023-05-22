@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 // This is where the magic happens.
 // This functions are responsible to make UI responsive across all the mobile devices.
-//Función responsable del diseño UI responsivo
 
 Size size = WidgetsBinding.instance.window.physicalSize /
     WidgetsBinding.instance.window.devicePixelRatio;
@@ -22,8 +21,8 @@ get width {
 ///This method is used to get device viewport height.
 get height {
   num statusBar =
-      MediaQueryData.fromView(WidgetsBinding.instance.window).viewPadding.top;
-  num bottomBar = MediaQueryData.fromView(WidgetsBinding.instance.window)
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window).viewPadding.top;
+  num bottomBar = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
       .viewPadding
       .bottom;
   num screenHeight = size.height - statusBar - bottomBar;
