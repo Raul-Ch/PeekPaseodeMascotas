@@ -59,4 +59,27 @@ class ImageConstant {
   static String imgImage4 = 'assets/images/img_image4.png';
 
   static String imgStar318x16 = 'assets/images/img_star3_18x16.svg';
+
+  static String imgCasa = 'assets/images/img_casa.png';
+
+  static String imgPeek4 = 'assets/images/img_peek4.png';
+
+  static String imgPerro = 'assets/images/img_perro.png';
+
+  static String imgPexelssamsonkatt5257603 =
+      'assets/images/img_pexelssamsonkatt5257603.png';
+
+  static String imgUsuario = 'assets/images/img_usuario.png';
+
+  static String imgMaskgroup = 'assets/images/img_maskgroup.png';
+
+  static String imgMaskgroup39x39 = 'assets/images/img_maskgroup_39x39.png';
+
+  static String imgFondoverde = 'assets/images/img_fondoverde.png';
+
+  static String imgCachorro1 = 'assets/images/img_cachorro1.png';
+
+  static String imgPaseador = 'assets/images/img_paseador.png';
+
+  static String imgduenio = 'assets/images/img_duenio.png';
 }

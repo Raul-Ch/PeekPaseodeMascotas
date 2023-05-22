@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
@@ -7,6 +8,126 @@ class MenuPaseadorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          toolbarHeight: 35,
+          elevation: 0,
+          flexibleSpace: Image(
+            image: AssetImage('assets/images/frame.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        drawer: Drawer(
+            child: Container(
+          color: Color.fromARGB(255, 30, 35, 44),
+          child: ListView(
+            controller: ScrollController(),
+            children: [
+              DrawerHeader(
+                  child: Center(
+                child: CustomImageView(
+                  imagePath: ImageConstant.imgPeek4,
+                ),
+              )),
+              SizedBox(
+                //Use of SizedBox
+                height: 10,
+              ),
+              //Home
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgCasa,
+                ),
+                title: Text(
+                  '  Menu Principal',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.menuPaseadorScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Perfil
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 48),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgUsuario,
+                ),
+                title: Text(
+                  '   Perfil',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.pefilpaseadorScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Paseos
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgPerro,
+                ),
+                title: Text(
+                  '  Paseos',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Comentarios
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 40),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgMaskgroup,
+                ),
+                title: Text(
+                  ' Comentarios',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.comentariosScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 130,
+              ),
+              //Mascota
+              ListTile(
+                contentPadding: EdgeInsets.only(left: 150),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgMaskgroup39x39,
+                ),
+                title: Text(
+                  'Cerrar Sesión',
+                  style: AppStyle.txtUrbanistRomanBold25,
+                ),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.popUntil(
+                      context, ModalRoute.withName(AppRoutes.welcomeScreen));
+                },
+              )
+            ],
+          ),
+        )),
         backgroundColor: ColorConstant.whiteA700,
         body: Container(
           height: getVerticalSize(
@@ -29,19 +150,6 @@ class MenuPaseadorScreen extends StatelessWidget {
                   bottom: 32,
                 ),
               ),
-              CustomImageView(
-                imagePath: ImageConstant.imgRectangle200,
-                height: getVerticalSize(
-                  604,
-                ),
-                width: getHorizontalSize(
-                  375,
-                ),
-                alignment: Alignment.bottomCenter,
-                margin: getMargin(
-                  bottom: 32,
-                ),
-              ),
               Align(
                 alignment: Alignment.center,
                 child: Column(
@@ -49,14 +157,14 @@ class MenuPaseadorScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CustomImageView(
-                      imagePath: ImageConstant.imgframe,
+/*                       imagePath: ImageConstant.imgframe,
                       height: getVerticalSize(
                         32,
                       ),
                       width: getHorizontalSize(
                         375,
-                      ),
-                    ),
+                      ), */
+                        ),
                     Container(
                       width: double.maxFinite,
                       padding: getPadding(
@@ -101,35 +209,6 @@ class MenuPaseadorScreen extends StatelessWidget {
                                     ),
                                     width: getHorizontalSize(
                                       34,
-                                    ),
-                                    child: Stack(
-                                      alignment: Alignment.bottomCenter,
-                                      children: [
-                                        CustomImageView(
-                                          imagePath: ImageConstant.imgHuellita,
-                                          height: getVerticalSize(
-                                            32,
-                                          ),
-                                          width: getHorizontalSize(
-                                            34,
-                                          ),
-                                          alignment: Alignment.center,
-                                        ),
-                                        CustomImageView(
-                                          svgPath:
-                                              ImageConstant.imgMenudesplegble,
-                                          height: getVerticalSize(
-                                            6,
-                                          ),
-                                          width: getHorizontalSize(
-                                            17,
-                                          ),
-                                          alignment: Alignment.bottomCenter,
-                                          margin: getMargin(
-                                            bottom: 2,
-                                          ),
-                                        ),
-                                      ],
                                     ),
                                   ),
                                 ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
@@ -16,7 +17,136 @@ class MenuDuenioScreen extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        drawer: Drawer(),
+        drawer: Drawer(
+            child: Container(
+          color: Color.fromARGB(255, 30, 35, 44),
+          child: ListView(
+            controller: ScrollController(),
+            children: [
+              DrawerHeader(
+                  child: Center(
+                child: CustomImageView(
+                  imagePath: ImageConstant.imgPeek4,
+                ),
+              )),
+              SizedBox(
+                //Use of SizedBox
+                height: 10,
+              ),
+              //Home
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgCasa,
+                ),
+                title: Text(
+                  '  Menu Principal',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.menuDuenioScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Perfil
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 48),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgUsuario,
+                ),
+                title: Text(
+                  '   Perfil',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Mascota
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgHuellita,
+                ),
+                title: Text(
+                  ' Mascota',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.pefilmascotaScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Paseos
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgPerro,
+                ),
+                title: Text(
+                  '  Paseos',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Comentarios
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 40),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgMaskgroup,
+                ),
+                title: Text(
+                  ' Comentarios',
+                  style: AppStyle.txtUrbanistRomanBold20Indigo50,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.comentariosScreen);
+                },
+              ),
+              SizedBox(
+                //Use of SizedBox
+                height: 25,
+              ),
+              //Mascota
+              ListTile(
+                contentPadding: EdgeInsets.only(left: 150),
+                leading: CustomImageView(
+                  imagePath: ImageConstant.imgMaskgroup39x39,
+                ),
+                title: Text(
+                  'Cerrar Sesión',
+                  style: AppStyle.txtUrbanistRomanBold25,
+                ),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.popUntil(
+                      context, ModalRoute.withName(AppRoutes.welcomeScreen));
+                },
+              )
+            ],
+          ),
+        )),
         backgroundColor: ColorConstant.whiteA700,
         body: Container(
           height: getVerticalSize(
@@ -704,7 +834,7 @@ class MenuDuenioScreen extends StatelessWidget {
                                   padding: getPadding(
                                     left: 15,
                                     right: 14,
-                                    top: 5,
+                                    top: 30,
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -724,7 +854,7 @@ class MenuDuenioScreen extends StatelessWidget {
                                       ),
                                       Padding(
                                         padding: getPadding(
-                                          top: 3,
+                                          top: 5,
                                         ),
                                         child: Text(
                                           "Franco!",

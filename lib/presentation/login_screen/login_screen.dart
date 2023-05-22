@@ -28,9 +28,8 @@ class _LoginScreen extends State<LoginScreen> {
   }
 
   Future logIn() async {
-    final user = FirebaseAuth.instance.currentUser!;
-    final uid = FirebaseAuth.instance.currentUser!.uid;
-    final uid2 = user.uid;
+    //final user = FirebaseAuth.instance.currentUser!;
+    //final uid = FirebaseAuth.instance.currentUser!.uid;
 
     //var collectionRef = FirebaseFirestore.instance.collection('duenios');
     //var doc = await collectionRef.doc(uid2).get();
@@ -42,6 +41,8 @@ class _LoginScreen extends State<LoginScreen> {
           email: emailController.text.trim(),
           password: passwordController.text.trim());
       //print(flag);
+      final user = FirebaseAuth.instance.currentUser!;
+      final uid2 = user.uid;
       final doc = await FirebaseFirestore.instance
           .collection('duenios')
           .doc(uid2)
