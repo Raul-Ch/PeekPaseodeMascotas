@@ -41,29 +41,30 @@ class AppRoutes {
 
   static const String comentariosScreen = '/comentarios_screen';
 
-  static const String pefilpaseadorScreen = '/pefilpaseador_screen';
+  static const String perfilpaseadorScreen = '/perfilpaseador_screen';
 
-  static const String pefilduenioScreen = '/pefilduenio_screen';
+  static const String perfilduenioScreen = '/perfilduenio_screen';
 
-  static const String pefilmascotaScreen = '/pefilmascota_screen';
+  static const String perfilmascotaScreen = '/perfilmascota_screen';
 
   static const String appNavigationScreen = '/app_navigation_screen';
 
   static Map<String, WidgetBuilder> routes = {
-    loginScreen: (context) => LoginScreen(),
-    welcomeScreen: (context) => WelcomeScreen(),
-    registroScreen: (context) => RegistroScreen(),
-    registroDuenioScreen: (context) => RegistroDuenioScreen(),
-    registroPaseadorScreen: (context) => RegistroPaseadorScreen(),
-    olvidarContraseniaScreen: (context) => OlvidarContraseniaScreen(),
-    registroPaseadorTarifaScreen: (context) => RegistroPaseadorTarifaScreen(),
-    registroPaseadorTwoScreen: (context) => RegistroPaseadorTwoScreen(),
-    menuDuenioScreen: (context) => MenuDuenioScreen(),
-    menuPaseadorScreen: (context) => MenuPaseadorScreen(),
+    loginScreen: (context) => const LoginScreen(),
+    welcomeScreen: (context) => const WelcomeScreen(),
+    registroScreen: (context) => const RegistroScreen(),
+    registroDuenioScreen: (context) => const RegistroDuenioScreen(),
+    registroPaseadorScreen: (context) => const RegistroPaseadorScreen(),
+    olvidarContraseniaScreen: (context) => const OlvidarContraseniaScreen(),
+    registroPaseadorTarifaScreen: (context) =>
+        const RegistroPaseadorTarifaScreen(),
+    registroPaseadorTwoScreen: (context) => const RegistroPaseadorTwoScreen(),
+    menuDuenioScreen: (context) => const MenuDuenioScreen(),
+    menuPaseadorScreen: (context) => const MenuPaseadorScreen(),
     comentariosScreen: (context) => ComentariosScreen(),
-    pefilpaseadorScreen: (context) => PefilpaseadorScreen(),
-    pefilduenioScreen: (context) => PefilduenioScreen(),
-    pefilmascotaScreen: (context) => PefilmascotaScreen(),
-    appNavigationScreen: (context) => AppNavigationScreen()
+    perfilpaseadorScreen: (context) => PerfilpaseadorScreen(),
+    perfilduenioScreen: (context) => PerfilduenioScreen(),
+    perfilmascotaScreen: (context) => PerfilmascotaScreen(),
+    appNavigationScreen: (context) => const AppNavigationScreen()
   };
 }

@@ -4,6 +4,8 @@ import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 
 class MenuDuenioScreen extends StatelessWidget {
+  const MenuDuenioScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -12,14 +14,14 @@ class MenuDuenioScreen extends StatelessWidget {
           backgroundColor: Colors.black,
           toolbarHeight: 35,
           elevation: 0,
-          flexibleSpace: Image(
+          flexibleSpace: const Image(
             image: AssetImage('assets/images/frame.png'),
             fit: BoxFit.fill,
           ),
         ),
         drawer: Drawer(
             child: Container(
-          color: Color.fromARGB(255, 30, 35, 44),
+          color: const Color.fromARGB(255, 30, 35, 44),
           child: ListView(
             controller: ScrollController(),
             children: [
@@ -29,13 +31,13 @@ class MenuDuenioScreen extends StatelessWidget {
                   imagePath: ImageConstant.imgPeek4,
                 ),
               )),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 10,
               ),
               //Home
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 45),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgCasa,
                 ),
@@ -48,13 +50,13 @@ class MenuDuenioScreen extends StatelessWidget {
                   Navigator.pushNamed(context, AppRoutes.menuDuenioScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 25,
               ),
               //Perfil
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 48),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 48),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgUsuario,
                 ),
@@ -64,16 +66,16 @@ class MenuDuenioScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                  Navigator.pushNamed(context, AppRoutes.perfilduenioScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 25,
               ),
               //Mascota
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 45),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgHuellita,
                 ),
@@ -83,16 +85,16 @@ class MenuDuenioScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, AppRoutes.pefilmascotaScreen);
+                  Navigator.pushNamed(context, AppRoutes.perfilmascotaScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 25,
               ),
               //Paseos
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 45),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgPerro,
                 ),
@@ -105,13 +107,13 @@ class MenuDuenioScreen extends StatelessWidget {
                   //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 25,
               ),
               //Comentarios
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 40),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 40),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgMaskgroup,
                 ),
@@ -124,19 +126,19 @@ class MenuDuenioScreen extends StatelessWidget {
                   Navigator.pushNamed(context, AppRoutes.comentariosScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
-                height: 25,
+                height: 100,
               ),
               //Mascota
               ListTile(
-                contentPadding: EdgeInsets.only(left: 150),
+                contentPadding: const EdgeInsets.only(left: 120),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgMaskgroup39x39,
                 ),
                 title: Text(
                   'Cerrar Sesión',
-                  style: AppStyle.txtUrbanistRomanBold25,
+                  style: AppStyle.txtUrbanistRomanBold25Lightgreen20001,
                 ),
                 onTap: () {
                   FirebaseAuth.instance.signOut();
@@ -148,7 +150,7 @@ class MenuDuenioScreen extends StatelessWidget {
           ),
         )),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
+        body: SizedBox(
           height: getVerticalSize(
             812,
           ),
@@ -256,7 +258,7 @@ class MenuDuenioScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Spacer(
+                    const Spacer(
                         //flex: 4,
                         ),
                     CustomButton(
@@ -264,6 +266,10 @@ class MenuDuenioScreen extends StatelessWidget {
                         67,
                       ),
                       text: "Mi perfil",
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.perfilduenioScreen);
+                      },
                       margin: getMargin(
                         left: 30,
                         right: 28,
@@ -306,7 +312,7 @@ class MenuDuenioScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.center,
-                child: Container(
+                child: SizedBox(
                   height: getVerticalSize(
                     407,
                   ),
@@ -636,7 +642,7 @@ class MenuDuenioScreen extends StatelessWidget {
                                         blurRadius: getHorizontalSize(
                                           2,
                                         ),
-                                        offset: Offset(
+                                        offset: const Offset(
                                           0,
                                           4,
                                         ),
@@ -778,7 +784,7 @@ class MenuDuenioScreen extends StatelessWidget {
                       ),
                       Align(
                         alignment: Alignment.topCenter,
-                        child: Container(
+                        child: SizedBox(
                           height: getVerticalSize(
                             126,
                           ),
@@ -819,7 +825,7 @@ class MenuDuenioScreen extends StatelessWidget {
                                         blurRadius: getHorizontalSize(
                                           2,
                                         ),
-                                        offset: Offset(
+                                        offset: const Offset(
                                           0,
                                           4,
                                         ),
@@ -840,7 +846,7 @@ class MenuDuenioScreen extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width: getHorizontalSize(
                                           86,
                                         ),
@@ -919,7 +925,7 @@ class MenuDuenioScreen extends StatelessWidget {
                                         blurRadius: getHorizontalSize(
                                           2,
                                         ),
-                                        offset: Offset(
+                                        offset: const Offset(
                                           0,
                                           4,
                                         ),

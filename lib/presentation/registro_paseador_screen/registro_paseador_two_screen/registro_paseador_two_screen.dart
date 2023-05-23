@@ -1,6 +1,4 @@
-import 'dart:ffi';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
@@ -43,7 +41,7 @@ class _RegistroPaseadorTwoScreen extends State<RegistroPaseadorTwoScreen> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
-            body: Container(
+            body: SizedBox(
                 width: double.maxFinite,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +88,7 @@ class _RegistroPaseadorTwoScreen extends State<RegistroPaseadorTwoScreen> {
                                 },
                                 margin: getMargin(left: 35))
                           ])),
-                      Spacer(),
+                      const Spacer(),
                       CustomButton(
                           height: getVerticalSize(56),
                           text: "Registrarme",
@@ -116,21 +114,21 @@ class _RegistroPaseadorTwoScreen extends State<RegistroPaseadorTwoScreen> {
   onTapTarifaEst(BuildContext context) {
     // set up the button
     Widget okButton = TextButton(
-      child: Text("OK"),
       onPressed: tarifanueva,
+      child: const Text("OK"),
     );
 
     // set up the button
     Widget NopeButton = TextButton(
-      child: Text("Cancelar"),
+      child: const Text("Cancelar"),
       onPressed: () {
         Navigator.pop(context);
       },
     );
 
     AlertDialog alert = AlertDialog(
-      title: Text("Tarifa"),
-      content: Text(
+      title: const Text("Tarifa"),
+      content: const Text(
           textAlign: TextAlign.left,
           "La tarifa se establecera en 150 pesos y tu experiencia quedara en blanco. \n\nNo te preocupes podras modificarlo mas adelante"),
       actions: [

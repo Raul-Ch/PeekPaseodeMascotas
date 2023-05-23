@@ -4,12 +4,14 @@ import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_icon_button.dart';
 
 class RegistroScreen extends StatelessWidget {
+  const RegistroScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
-            body: Container(
+            body: SizedBox(
                 width: double.maxFinite,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +61,7 @@ class RegistroScreen extends StatelessWidget {
                                               onTapPaseador(context);
                                             }))
                                   ]))),
-                      Spacer(),
+                      const Spacer(),
                       Align(
                           alignment: Alignment.center,
                           child: GestureDetector(

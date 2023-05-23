@@ -10,6 +10,32 @@ class AppStyle {
     fontFamily: 'Artographie Medium',
     fontWeight: FontWeight.w400,
   );
+  static TextStyle txtUrbanistRomanBold25 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      25,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle txtUrbanistRomanBold35 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      35,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle txtUrbanistRomanBold25Lightgreen20001 = TextStyle(
+    color: ColorConstant.lightGreen20001,
+    fontSize: getFontSize(
+      25,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
 
   static TextStyle txtPoppinsSemiBold15 = TextStyle(
     color: ColorConstant.gray900,
@@ -132,15 +158,6 @@ class AppStyle {
     color: ColorConstant.indigo50,
     fontSize: getFontSize(
       20,
-    ),
-    fontFamily: 'Urbanist',
-    fontWeight: FontWeight.w700,
-  );
-
-  static TextStyle txtUrbanistRomanBold25 = TextStyle(
-    color: ColorConstant.lightGreen20002,
-    fontSize: getFontSize(
-      25,
     ),
     fontFamily: 'Urbanist',
     fontWeight: FontWeight.w700,

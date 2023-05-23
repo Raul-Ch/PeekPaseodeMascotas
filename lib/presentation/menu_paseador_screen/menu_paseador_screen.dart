@@ -4,6 +4,8 @@ import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 
 class MenuPaseadorScreen extends StatelessWidget {
+  const MenuPaseadorScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -12,14 +14,14 @@ class MenuPaseadorScreen extends StatelessWidget {
           backgroundColor: Colors.black,
           toolbarHeight: 35,
           elevation: 0,
-          flexibleSpace: Image(
+          flexibleSpace: const Image(
             image: AssetImage('assets/images/frame.png'),
             fit: BoxFit.fill,
           ),
         ),
         drawer: Drawer(
             child: Container(
-          color: Color.fromARGB(255, 30, 35, 44),
+          color: const Color.fromARGB(255, 30, 35, 44),
           child: ListView(
             controller: ScrollController(),
             children: [
@@ -29,13 +31,13 @@ class MenuPaseadorScreen extends StatelessWidget {
                   imagePath: ImageConstant.imgPeek4,
                 ),
               )),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 10,
               ),
               //Home
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 45),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgCasa,
                 ),
@@ -48,13 +50,13 @@ class MenuPaseadorScreen extends StatelessWidget {
                   Navigator.pushNamed(context, AppRoutes.menuPaseadorScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 25,
               ),
               //Perfil
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 48),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 48),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgUsuario,
                 ),
@@ -64,16 +66,16 @@ class MenuPaseadorScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, AppRoutes.pefilpaseadorScreen);
+                  Navigator.pushNamed(context, AppRoutes.perfilpaseadorScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 25,
               ),
               //Paseos
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 45),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 45),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgPerro,
                 ),
@@ -86,13 +88,13 @@ class MenuPaseadorScreen extends StatelessWidget {
                   //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 25,
               ),
               //Comentarios
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 40),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 40),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgMaskgroup,
                 ),
@@ -105,13 +107,13 @@ class MenuPaseadorScreen extends StatelessWidget {
                   Navigator.pushNamed(context, AppRoutes.comentariosScreen);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 //Use of SizedBox
                 height: 130,
               ),
               //Mascota
               ListTile(
-                contentPadding: EdgeInsets.only(left: 150),
+                contentPadding: const EdgeInsets.only(left: 150),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgMaskgroup39x39,
                 ),
@@ -129,7 +131,7 @@ class MenuPaseadorScreen extends StatelessWidget {
           ),
         )),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
+        body: SizedBox(
           height: getVerticalSize(
             812,
           ),
@@ -156,15 +158,6 @@ class MenuPaseadorScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CustomImageView(
-/*                       imagePath: ImageConstant.imgframe,
-                      height: getVerticalSize(
-                        32,
-                      ),
-                      width: getHorizontalSize(
-                        375,
-                      ), */
-                        ),
                     Container(
                       width: double.maxFinite,
                       padding: getPadding(
@@ -203,7 +196,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                                 ),
                                 Align(
                                   alignment: Alignment.topLeft,
-                                  child: Container(
+                                  child: SizedBox(
                                     height: getVerticalSize(
                                       32,
                                     ),
@@ -235,12 +228,17 @@ class MenuPaseadorScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     CustomButton(
                       height: getVerticalSize(
                         67,
                       ),
                       text: "Mi perfil",
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(
+                            context, AppRoutes.perfilpaseadorScreen);
+                      },
                       margin: getMargin(
                         left: 30,
                         right: 28,
@@ -283,7 +281,7 @@ class MenuPaseadorScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.center,
-                child: Container(
+                child: SizedBox(
                   height: getVerticalSize(
                     407,
                   ),
@@ -512,7 +510,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: getHorizontalSize(
                                         127,
                                       ),
@@ -611,7 +609,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                                         blurRadius: getHorizontalSize(
                                           2,
                                         ),
-                                        offset: Offset(
+                                        offset: const Offset(
                                           0,
                                           4,
                                         ),
@@ -714,7 +712,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                       ),
                       Align(
                         alignment: Alignment.topCenter,
-                        child: Container(
+                        child: SizedBox(
                           height: getVerticalSize(
                             126,
                           ),
@@ -755,7 +753,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                                         blurRadius: getHorizontalSize(
                                           2,
                                         ),
-                                        offset: Offset(
+                                        offset: const Offset(
                                           0,
                                           4,
                                         ),
@@ -766,7 +764,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                               ),
                               Align(
                                 alignment: Alignment.center,
-                                child: Container(
+                                child: SizedBox(
                                   width: getHorizontalSize(
                                     86,
                                   ),
@@ -829,7 +827,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                                         blurRadius: getHorizontalSize(
                                           2,
                                         ),
-                                        offset: Offset(
+                                        offset: const Offset(
                                           0,
                                           4,
                                         ),

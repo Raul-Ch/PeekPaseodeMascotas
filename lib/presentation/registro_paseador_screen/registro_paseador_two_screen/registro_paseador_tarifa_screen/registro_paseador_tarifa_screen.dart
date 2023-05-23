@@ -50,7 +50,7 @@ class _RegistroPaseadorTarifaScreen
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -82,7 +82,7 @@ class _RegistroPaseadorTarifaScreen
                     children: [
                       Align(
                         alignment: Alignment.bottomCenter,
-                        child: Container(
+                        child: SizedBox(
                           width: getHorizontalSize(
                             278,
                           ),
@@ -167,7 +167,7 @@ class _RegistroPaseadorTarifaScreen
                 variant: TextFormFieldVariant.OutlineIndigo50_1,
                 textInputAction: TextInputAction.done,
               ),
-              Spacer(),
+              const Spacer(),
               CustomButton(
                 height: getVerticalSize(
                   56,

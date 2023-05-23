@@ -3,7 +3,8 @@ import 'package:peek_app/core/app_export.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton(
-      {this.shape,
+      {super.key,
+      this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -52,7 +53,7 @@ class CustomButton extends StatelessWidget {
 
   _buildButtonWidget() {
     return Padding(
-      padding: margin ?? EdgeInsets.zero,
+      padding: margin ?? EdgeInsets.all(0.0),
       child: TextButton(
         onPressed: onTap,
         style: _buildTextButtonStyle(),
@@ -66,13 +67,13 @@ class CustomButton extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          prefixWidget ?? SizedBox(),
+          prefixWidget ?? const SizedBox(),
           Text(
             text ?? "",
             textAlign: TextAlign.center,
             style: _setFontStyle(),
           ),
-          suffixWidget ?? SizedBox(),
+          suffixWidget ?? const SizedBox(),
         ],
       );
     } else {
@@ -127,10 +128,14 @@ class CustomButton extends StatelessWidget {
         return ColorConstant.whiteA700;
       case ButtonVariant.FillIndigo50:
         return ColorConstant.indigo50;
+      case ButtonVariant.OutlineIndigo50:
+        return ColorConstant.gray100;
       case ButtonVariant.OutlineBlack9003f:
         return ColorConstant.lightGreen20002;
       case ButtonVariant.OutlineBlack9003f_1:
         return ColorConstant.gray900;
+      case ButtonVariant.OutlineBlack9003f_2:
+        return ColorConstant.lightGreen20001;
       default:
         return ColorConstant.gray900;
     }
@@ -145,9 +150,17 @@ class CustomButton extends StatelessWidget {
             1.00,
           ),
         );
+      case ButtonVariant.OutlineIndigo50:
+        return BorderSide(
+          color: ColorConstant.indigo50,
+          width: getHorizontalSize(
+            1.00,
+          ),
+        );
       case ButtonVariant.FillGray900:
       case ButtonVariant.FillIndigo50:
       case ButtonVariant.OutlineBlack9003f:
+      case ButtonVariant.OutlineBlack9003f_2:
       case ButtonVariant.OutlineBlack9003f_1:
         return null;
       default:
@@ -157,6 +170,8 @@ class CustomButton extends StatelessWidget {
 
   _setTextButtonShadowColor() {
     switch (variant) {
+      case ButtonVariant.OutlineBlack9003f_2:
+        return ColorConstant.black9003f;
       case ButtonVariant.OutlineBlack9003f:
         return ColorConstant.black9003f;
       case ButtonVariant.OutlineBlack9003f_1:
@@ -164,6 +179,7 @@ class CustomButton extends StatelessWidget {
       case ButtonVariant.FillGray900:
       case ButtonVariant.White:
       case ButtonVariant.FillIndigo50:
+      case ButtonVariant.OutlineIndigo50:
         return null;
       default:
         return null;
@@ -283,6 +299,8 @@ enum ButtonVariant {
   White,
   FillIndigo50,
   OutlineBlack9003f,
+  OutlineIndigo50,
+  OutlineBlack9003f_2,
   OutlineBlack9003f_1,
 }
 
@@ -294,4 +312,5 @@ enum ButtonFontStyle {
   UrbanistRomanSemiBold25WhiteA700,
   UrbanistRomanSemiBold15Gray900,
   UrbanistRomanSemiBold15Indigo50,
+  UrbanistRomanMedium15Bluegray400,
 }

@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -80,12 +79,11 @@ class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
         );
         //Navigator.pop(context);
         onTapRegistrarme(context);
-        ;
       } else {
         showDialog(
             context: context,
             builder: (context) {
-              return AlertDialog(
+              return const AlertDialog(
                 content: Text("Las contraseñas no coinciden"),
               );
             });
@@ -108,7 +106,7 @@ class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
             resizeToAvoidBottomInset: false,
-            body: Container(
+            body: SizedBox(
                 width: double.maxFinite,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -332,6 +330,7 @@ class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
         return;
       }
       dateController.text = DateFormat.yMd().format(pickedDate);
+      return null;
     });
   }
 

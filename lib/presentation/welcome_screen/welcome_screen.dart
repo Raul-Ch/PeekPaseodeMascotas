@@ -3,18 +3,20 @@ import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
-            body: Container(
+            body: SizedBox(
                 height: getVerticalSize(799),
                 width: double.maxFinite,
                 child: Stack(alignment: Alignment.bottomCenter, children: [
                   Align(
                       alignment: Alignment.center,
-                      child: Container(
+                      child: SizedBox(
                           height: getVerticalSize(797),
                           width: double.maxFinite,
                           child:
@@ -107,7 +109,7 @@ class WelcomeScreen extends StatelessWidget {
                                                             top: 10,
                                                             bottom: 5))
                                                   ])),
-                                          Spacer(),
+                                          const Spacer(),
                                           CustomButton(
                                               height: getVerticalSize(55),
                                               text: "Iniciar Sesión",

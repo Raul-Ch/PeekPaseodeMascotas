@@ -1,13 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-import 'models/users.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -70,7 +68,7 @@ class _LoginScreen extends State<LoginScreen> {
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
             resizeToAvoidBottomInset: false,
-            body: Container(
+            body: SizedBox(
                 height: size.height,
                 width: double.maxFinite,
                 child: Stack(alignment: Alignment.center, children: [
@@ -150,7 +148,7 @@ class _LoginScreen extends State<LoginScreen> {
                                     padding: ButtonPadding.PaddingAll19,
                                     fontStyle:
                                         ButtonFontStyle.UrbanistRomanMedium15),
-                                Spacer(),
+                                const Spacer(),
                                 GestureDetector(
                                     onTap: () {
                                       onTapTxtAnnotienesuna(context);
@@ -197,7 +195,7 @@ class _LoginScreen extends State<LoginScreen> {
                                 imagePath: ImageConstant.imgframe,
                                 height: getVerticalSize(32),
                                 width: getHorizontalSize(375)),
-                            Spacer(),
+                            const Spacer(),
                             CustomImageView(
                                 imagePath: ImageConstant.imgframe,
                                 height: getVerticalSize(32),

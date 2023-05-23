@@ -3,7 +3,8 @@ import 'package:peek_app/core/app_export.dart';
 
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField(
-      {this.shape,
+      {super.key,
+      this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -178,12 +179,19 @@ class CustomTextFormField extends StatelessWidget {
 
   _setPadding() {
     switch (padding) {
+      case TextFormFieldPadding.PaddingT6:
+        return getPadding(
+          left: 5,
+          top: 6,
+          right: 5,
+          bottom: 6,
+        );
       case TextFormFieldPadding.PaddingT56:
         return getPadding(
           left: 18,
-          top: 56,
+          top: 15,
           right: 18,
-          bottom: 56,
+          bottom: 10,
         );
       case TextFormFieldPadding.PaddingT19_1:
         return getPadding(
@@ -207,9 +215,11 @@ enum TextFormFieldShape {
 }
 
 enum TextFormFieldPadding {
+  PaddingT6,
   PaddingT19,
   PaddingT56,
   PaddingT19_1,
+  PaddingT27,
 }
 
 enum TextFormFieldVariant {

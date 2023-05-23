@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class _OlvidarContraseniaScreen extends State<OlvidarContraseniaScreen> {
       showDialog(
           context: context,
           builder: (context) {
-            return AlertDialog(
+            return const AlertDialog(
               content: Text(
                 "Se ha enviado un link a su correo para reestablecer la contraseña",
                 textAlign: TextAlign.center,
@@ -55,7 +54,7 @@ class _OlvidarContraseniaScreen extends State<OlvidarContraseniaScreen> {
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +141,7 @@ class _OlvidarContraseniaScreen extends State<OlvidarContraseniaScreen> {
                 padding: ButtonPadding.PaddingAll19,
                 alignment: Alignment.center,
               ),
-              Spacer(),
+              const Spacer(),
               Align(
                 alignment: Alignment.center,
                 child: RichText(

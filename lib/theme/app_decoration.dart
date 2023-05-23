@@ -11,7 +11,19 @@ class AppDecoration {
   static BoxDecoration get white => BoxDecoration(
         color: ColorConstant.whiteA700,
       );
-  static BoxDecoration get txtOutlineBlack90066 => BoxDecoration();
+  static BoxDecoration get fillLightgreen20002 => BoxDecoration(
+        color: ColorConstant.lightGreen20002,
+      );
+  static BoxDecoration get txtOutlineBlack90066 => const BoxDecoration();
+  static BoxDecoration get txtOutlineIndigo50 => BoxDecoration(
+        color: ColorConstant.gray50,
+        border: Border.all(
+          color: ColorConstant.indigo50,
+          width: getHorizontalSize(
+            1,
+          ),
+        ),
+      );
   static BoxDecoration get fillLightgreen20001 => BoxDecoration(
         color: ColorConstant.lightGreen20001,
       );
@@ -26,7 +38,7 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),
@@ -39,6 +51,12 @@ class BorderRadiusStyle {
   static BorderRadius roundedBorder22 = BorderRadius.circular(
     getHorizontalSize(
       22,
+    ),
+  );
+
+  static BorderRadius txtRoundedBorder8 = BorderRadius.circular(
+    getHorizontalSize(
+      8,
     ),
   );
 
@@ -82,14 +100,14 @@ class BorderRadiusStyle {
             blurRadius: getHorizontalSize(
               2,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),
           ),
         ],
       );
-  static BoxDecoration get txtOutlineBlack90066 => BoxDecoration();
+  static BoxDecoration get txtOutlineBlack90066 => const BoxDecoration();
   static BoxDecoration get fillLightgreen20001 => BoxDecoration(
         color: ColorConstant.lightGreen20001,
       );

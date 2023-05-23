@@ -2,18 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
+import '../../widgets/custom_icon_button.dart';
+
 class ComentariosScreen extends StatelessWidget {
   TextEditingController group678Controller = TextEditingController();
 
   TextEditingController group677Controller = TextEditingController();
 
+  ComentariosScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 214, 223, 151),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          toolbarHeight: 35,
+          elevation: 0,
+          flexibleSpace: const Image(
+            image: AssetImage('assets/images/frame.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 214, 223, 151),
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           height: getVerticalSize(
             812,
           ),
@@ -118,15 +131,6 @@ class ComentariosScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CustomImageView(
-                      imagePath: ImageConstant.imgImage4,
-                      height: getVerticalSize(
-                        32,
-                      ),
-                      width: getHorizontalSize(
-                        375,
-                      ),
-                    ),
                     Container(
                       width: double.maxFinite,
                       padding: getPadding(
@@ -165,41 +169,12 @@ class ComentariosScreen extends StatelessWidget {
                                 ),
                                 Align(
                                   alignment: Alignment.topLeft,
-                                  child: Container(
+                                  child: SizedBox(
                                     height: getVerticalSize(
                                       32,
                                     ),
                                     width: getHorizontalSize(
                                       34,
-                                    ),
-                                    child: Stack(
-                                      alignment: Alignment.bottomCenter,
-                                      children: [
-                                        CustomImageView(
-                                          imagePath: ImageConstant.imgHuellita,
-                                          height: getVerticalSize(
-                                            32,
-                                          ),
-                                          width: getHorizontalSize(
-                                            34,
-                                          ),
-                                          alignment: Alignment.center,
-                                        ),
-                                        CustomImageView(
-                                          svgPath:
-                                              ImageConstant.imgMenudesplegble,
-                                          height: getVerticalSize(
-                                            6,
-                                          ),
-                                          width: getHorizontalSize(
-                                            17,
-                                          ),
-                                          alignment: Alignment.bottomCenter,
-                                          margin: getMargin(
-                                            bottom: 2,
-                                          ),
-                                        ),
-                                      ],
                                     ),
                                   ),
                                 ),
@@ -231,7 +206,7 @@ class ComentariosScreen extends StatelessWidget {
                       ),
                       margin: getMargin(
                         left: 31,
-                        top: 25,
+                        top: 0,
                         right: 30,
                       ),
                       child: Text(
@@ -298,11 +273,11 @@ class ComentariosScreen extends StatelessWidget {
                       textInputAction: TextInputAction.done,
                       maxLines: 7,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     CustomImageView(
-                      imagePath: ImageConstant.imgImgframe,
+                      imagePath: ImageConstant.imgframe,
                       height: getVerticalSize(
-                        32,
+                        20,
                       ),
                       width: getHorizontalSize(
                         375,

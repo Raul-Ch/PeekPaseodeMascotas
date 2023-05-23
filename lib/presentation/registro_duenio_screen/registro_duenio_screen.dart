@@ -1,6 +1,4 @@
-import 'dart:ffi';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:peek_app/core/app_export.dart';
@@ -87,7 +85,7 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
         showDialog(
             context: context,
             builder: (context) {
-              return AlertDialog(
+              return const AlertDialog(
                 content: Text("Las contraseñas no coinciden"),
               );
             });
@@ -125,7 +123,7 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
             resizeToAvoidBottomInset: false,
-            body: Container(
+            body: SizedBox(
                 width: double.maxFinite,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -341,6 +339,7 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
         return;
       }
       dateController.text = DateFormat.yMd().format(pickedDate);
+      return null;
     });
   }
 

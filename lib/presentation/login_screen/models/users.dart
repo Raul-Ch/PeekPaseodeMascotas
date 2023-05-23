@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 List<String> duenios = [];
 
@@ -26,6 +25,6 @@ Future<bool> checkIfDocExists(String duenio) async {
     return doc.exists;
     print(doc.exists);
   } catch (e) {
-    throw e;
+    rethrow;
   }
 }
