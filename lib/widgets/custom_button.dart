@@ -188,6 +188,12 @@ class CustomButton extends StatelessWidget {
 
   _setBorderRadius() {
     switch (shape) {
+      case ButtonShape.RoundedBorder19:
+        return BorderRadius.circular(
+          getHorizontalSize(
+            19.00,
+          ),
+        );
       case ButtonShape.RoundedBorder30:
         return BorderRadius.circular(
           getHorizontalSize(
@@ -221,6 +227,15 @@ class CustomButton extends StatelessWidget {
           ),
           fontFamily: 'Urbanist',
           fontWeight: FontWeight.w500,
+        );
+      case ButtonFontStyle.UrbanistRomanSemiBold20:
+        return TextStyle(
+          color: ColorConstant.gray900,
+          fontSize: getFontSize(
+            20,
+          ),
+          fontFamily: 'Urbanist',
+          fontWeight: FontWeight.w600,
         );
       case ButtonFontStyle.UrbanistRomanMedium15Gray900:
         return TextStyle(
@@ -285,6 +300,7 @@ enum ButtonShape {
   RoundedBorder8,
   RoundedBorder30,
   RoundedBorder15,
+  RoundedBorder19,
 }
 
 enum ButtonPadding {
@@ -313,4 +329,5 @@ enum ButtonFontStyle {
   UrbanistRomanSemiBold15Gray900,
   UrbanistRomanSemiBold15Indigo50,
   UrbanistRomanMedium15Bluegray400,
+  UrbanistRomanSemiBold20,
 }

@@ -42,7 +42,15 @@ class ImageConstant {
 
   static String imgEllipse1 = 'assets/images/img_ellipse1.png';
 
+  static String imgbuscpas = 'assets/images/img_buscpas.png';
+
   static String imgEllipse6 = 'assets/images/img_ellipse6.png';
+
+  static String imgvercomentarios = 'assets/images/img_vercomentarios.png';
+
+  static String imgVercitas = 'assets/images/img_vercitas.png';
+
+  static String imgVerpaseo = 'assets/images/img_verpaseo.png';
 
   static String imgStar218x16 = 'assets/images/img_star2_18x16.svg';
 
@@ -53,6 +61,8 @@ class ImageConstant {
   static String imgBackground = 'assets/images/background.png';
 
   static String imgStar118x16 = 'assets/images/img_star1_18x16.svg';
+
+  static String imgBackground2 = 'assets/images/background2.png';
 
   static String imgStar1 = 'assets/images/img_star1.svg';
 
@@ -65,6 +75,8 @@ class ImageConstant {
   static String imgPeek4 = 'assets/images/img_peek4.png';
 
   static String imgPerro = 'assets/images/img_perro.png';
+
+  static String imgPerrob = 'assets/images/img_perrob.png';
 
   static String imgPexelssamsonkatt5257603 =
       'assets/images/img_pexelssamsonkatt5257603.png';

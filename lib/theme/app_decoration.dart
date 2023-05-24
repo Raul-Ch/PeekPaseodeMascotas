@@ -2,8 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class AppDecoration {
+  static BoxDecoration get outlineIndigo50 => BoxDecoration(
+        color: ColorConstant.gray50,
+        border: Border.all(
+          color: ColorConstant.indigo50,
+          width: getHorizontalSize(
+            1,
+          ),
+        ),
+      );
   static BoxDecoration get fillLightgreen200 => BoxDecoration(
         color: ColorConstant.lightGreen200,
+      );
+  static BoxDecoration get fillWhiteA70016 => BoxDecoration(
+        color: ColorConstant.whiteA70016,
       );
   static BoxDecoration get fillOrangeA200 => BoxDecoration(
         color: ColorConstant.orangeA200,
@@ -15,6 +27,9 @@ class AppDecoration {
         color: ColorConstant.lightGreen20002,
       );
   static BoxDecoration get txtOutlineBlack90066 => const BoxDecoration();
+  static BoxDecoration get fillBlack9000c => BoxDecoration(
+        color: ColorConstant.black9000c,
+      );
   static BoxDecoration get txtOutlineIndigo50 => BoxDecoration(
         color: ColorConstant.gray50,
         border: Border.all(
@@ -28,7 +43,7 @@ class AppDecoration {
         color: ColorConstant.lightGreen20001,
       );
   static BoxDecoration get outlineBlack9003f => BoxDecoration(
-        color: ColorConstant.gray900,
+        color: ColorConstant.whiteA700,
         boxShadow: [
           BoxShadow(
             color: ColorConstant.black9003f,
@@ -55,6 +70,18 @@ class BorderRadiusStyle {
   );
 
   static BorderRadius txtRoundedBorder8 = BorderRadius.circular(
+    getHorizontalSize(
+      8,
+    ),
+  );
+
+  static BorderRadius roundedBorder46 = BorderRadius.circular(
+    getHorizontalSize(
+      46,
+    ),
+  );
+
+  static BorderRadius roundedBorder8 = BorderRadius.circular(
     getHorizontalSize(
       8,
     ),

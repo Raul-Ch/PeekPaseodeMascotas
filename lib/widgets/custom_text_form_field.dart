@@ -111,6 +111,15 @@ class CustomTextFormField extends StatelessWidget {
 
   _setFontStyle() {
     switch (fontStyle) {
+      case TextFormFieldFontStyle.MontserratAlternatesSemiBold15:
+        return TextStyle(
+          color: ColorConstant.gray900,
+          fontSize: getFontSize(
+            15,
+          ),
+          fontFamily: 'Montserrat Alternates',
+          fontWeight: FontWeight.w600,
+        );
       default:
         return TextStyle(
           color: ColorConstant.blueGray400,
@@ -136,6 +145,11 @@ class CustomTextFormField extends StatelessWidget {
 
   _setBorderStyle() {
     switch (variant) {
+      case TextFormFieldVariant.OutlineBlack9003f:
+        return OutlineInputBorder(
+          borderRadius: _setOutlineBorderRadius(),
+          borderSide: BorderSide.none,
+        );
       case TextFormFieldVariant.OutlineIndigo50_1:
         return OutlineInputBorder(
           borderRadius: _setOutlineBorderRadius(),
@@ -159,6 +173,8 @@ class CustomTextFormField extends StatelessWidget {
 
   _setFillColor() {
     switch (variant) {
+      case TextFormFieldVariant.OutlineBlack9003f:
+        return ColorConstant.whiteA700;
       case TextFormFieldVariant.OutlineIndigo50_1:
         return ColorConstant.gray100;
       default:
@@ -168,6 +184,8 @@ class CustomTextFormField extends StatelessWidget {
 
   _setFilled() {
     switch (variant) {
+      case TextFormFieldVariant.OutlineBlack9003f:
+        return true;
       case TextFormFieldVariant.OutlineIndigo50_1:
         return true;
       case TextFormFieldVariant.None:
@@ -179,6 +197,10 @@ class CustomTextFormField extends StatelessWidget {
 
   _setPadding() {
     switch (padding) {
+      case TextFormFieldPadding.PaddingAll12:
+        return getPadding(
+          all: 12,
+        );
       case TextFormFieldPadding.PaddingT6:
         return getPadding(
           left: 5,
@@ -220,14 +242,18 @@ enum TextFormFieldPadding {
   PaddingT56,
   PaddingT19_1,
   PaddingT27,
+  PaddingT40,
+  PaddingAll12,
 }
 
 enum TextFormFieldVariant {
   None,
   OutlineIndigo50,
   OutlineIndigo50_1,
+  OutlineBlack9003f,
 }
 
 enum TextFormFieldFontStyle {
   UrbanistRomanMedium15,
+  MontserratAlternatesSemiBold15,
 }

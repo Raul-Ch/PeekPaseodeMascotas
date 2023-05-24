@@ -117,7 +117,8 @@ class PerfilduenioScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                  Navigator.pushNamed(
+                      context, AppRoutes.paseosmenuduenioScreen);
                 },
               ),
               const SizedBox(

@@ -28,6 +28,42 @@ class AppStyle {
     fontWeight: FontWeight.w700,
   );
 
+  static TextStyle txtArtographieMedium30 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      30,
+    ),
+    fontFamily: 'Artographie Medium',
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle txtMontserratAlternatesSemiBold35 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      35,
+    ),
+    fontFamily: 'Montserrat Alternates',
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle txtMontserratAlternatesSemiBold30 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      30,
+    ),
+    fontFamily: 'Montserrat Alternates',
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle txtArtographieMedium40 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      40,
+    ),
+    fontFamily: 'Artographie Medium',
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle txtUrbanistRomanBold25Lightgreen20001 = TextStyle(
     color: ColorConstant.lightGreen20001,
     fontSize: getFontSize(
@@ -170,6 +206,51 @@ class AppStyle {
     ),
     fontFamily: 'Urbanist',
     fontWeight: FontWeight.w900,
+  );
+
+  static TextStyle txtUrbanistRomanMedium15Bluegray400 = TextStyle(
+    color: ColorConstant.blueGray400,
+    fontSize: getFontSize(
+      15,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtUrbanistRomanRegular18 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      18,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle txtUrbanistRomanMedium15Gray900 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      15,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtUrbanistRomanBold18 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      18,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle txtMontserratAlternatesSemiBold15 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      15,
+    ),
+    fontFamily: 'Montserrat Alternates',
+    fontWeight: FontWeight.w600,
   );
 
   static TextStyle txtUrbanistRomanMedium16Bluegray40001 = TextStyle(

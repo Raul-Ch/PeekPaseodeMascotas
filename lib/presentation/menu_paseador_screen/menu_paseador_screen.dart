@@ -85,7 +85,8 @@ class MenuPaseadorScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                  Navigator.pushNamed(
+                      context, AppRoutes.paseosmenupaseadorScreen);
                 },
               ),
               const SizedBox(
@@ -119,7 +120,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                 ),
                 title: Text(
                   'Cerrar Sesión',
-                  style: AppStyle.txtUrbanistRomanBold25,
+                  style: AppStyle.txtUrbanistRomanBold25Lightgreen20001,
                 ),
                 onTap: () {
                   FirebaseAuth.instance.signOut();

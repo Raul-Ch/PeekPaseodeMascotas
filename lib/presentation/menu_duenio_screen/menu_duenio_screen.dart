@@ -104,7 +104,8 @@ class MenuDuenioScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                  Navigator.pushNamed(
+                      context, AppRoutes.paseosmenuduenioScreen);
                 },
               ),
               const SizedBox(
@@ -267,6 +268,7 @@ class MenuDuenioScreen extends StatelessWidget {
                       ),
                       text: "Mi perfil",
                       onTap: () {
+                        Navigator.pop(context);
                         Navigator.pushNamed(
                             context, AppRoutes.perfilduenioScreen);
                       },
