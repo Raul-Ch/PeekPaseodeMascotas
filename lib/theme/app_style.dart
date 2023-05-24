@@ -316,6 +316,24 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle txtUrbanistRomanCom = TextStyle(
+    color: ColorConstant.black900,
+    fontSize: getFontSize(
+      15,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle txtUrbanistRomanBold15 = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      15,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle txtUrbanistRomanSemiBold15 = TextStyle(
     color: ColorConstant.indigo50,
     fontSize: getFontSize(

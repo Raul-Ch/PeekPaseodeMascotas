@@ -10,7 +10,8 @@ import 'package:peek_app/presentation/registro_paseador_screen/registro_paseador
 import 'package:peek_app/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:peek_app/presentation/menu_duenio_screen/menu_duenio_screen.dart';
 import 'package:peek_app/presentation/menu_paseador_screen/menu_paseador_screen.dart';
-
+import 'package:peek_app/presentation/agendarcita_screen/agendarcita_screen.dart';
+import 'package:peek_app/presentation/vercitas_screen/vercitas_screen.dart';
 import '../presentation/buscarpaseador_screen/buscarpaseador_screen.dart';
 import '../presentation/comentarios_screen/comentarios_screen.dart';
 import '../presentation/paseosmenupasedor_screen/paseosmenupaseador_screen.dart';
@@ -67,6 +68,11 @@ class AppRoutes {
 
   static const String appNavigationScreen = '/app_navigation_screen';
 
+//Citas
+  static const String agendarcitaScreen = '/agendarcita_screen';
+
+  static const String vercitasScreen = '/vercitas_screen';
+
   static Map<String, WidgetBuilder> routes = {
     loginScreen: (context) => const LoginScreen(),
     welcomeScreen: (context) => const WelcomeScreen(),
@@ -92,6 +98,10 @@ class AppRoutes {
     paseosmenupaseadorScreen: (context) => PaseosmenupaseadorScreen(),
     perfilpaseadorcitasScreen: (context) => PerfilpaseadorcitasScreen(),
     vercomentariosScreen: (context) => VercomentariosScreen(),
+
+    //Citas
+    agendarcitaScreen: (context) => AgendarcitaScreen(),
+    vercitasScreen: (context) => VercitasScreen(),
 
     appNavigationScreen: (context) => const AppNavigationScreen()
   };

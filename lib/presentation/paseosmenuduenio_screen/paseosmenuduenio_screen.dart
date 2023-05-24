@@ -209,10 +209,12 @@ class PaseosmenuduenioScreen extends StatelessWidget {
                                                             top: 10,
                                                             bottom: 2))
                                                   ]),
-                                              GestureDetector(
+                                              InkWell(
                                                   onTap: () {
-                                                    onTapButtonbuscarpas(
-                                                        context);
+                                                    Navigator.pushNamed(
+                                                        context,
+                                                        AppRoutes
+                                                            .buscarpaseadorScreen);
                                                   },
                                                   child: Container(
                                                       height:

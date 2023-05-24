@@ -99,8 +99,7 @@ class ComentariosScreen extends StatelessWidget {
                                           "Enviar",
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.left,
-                                          style: AppStyle
-                                              .txtUrbanistRomanSemiBold15,
+                                          style: AppStyle.txtUrbanistRomanCom,
                                         ),
                                       ),
                                     ],

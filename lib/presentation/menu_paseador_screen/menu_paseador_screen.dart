@@ -104,7 +104,7 @@ class MenuPaseadorScreen extends StatelessWidget {
                   style: AppStyle.txtUrbanistRomanBold20Indigo50,
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  //Navigator.pop(context);
                   Navigator.pushNamed(context, AppRoutes.comentariosScreen);
                 },
               ),

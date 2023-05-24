@@ -94,4 +94,8 @@ class ImageConstant {
   static String imgPaseador = 'assets/images/img_paseador.png';
 
   static String imgduenio = 'assets/images/img_duenio.png';
+
+  static String imgprogreso = 'assets/images/progreso.png';
+  static String imgbandera = 'assets/images/bandera.png';
+  static String imgagendado = 'assets/images/agendado.png';
 }

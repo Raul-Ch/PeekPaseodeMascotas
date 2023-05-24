@@ -282,6 +282,11 @@ class MenuDuenioScreen extends StatelessWidget {
                       fontStyle: ButtonFontStyle.UrbanistRomanSemiBold25,
                     ),
                     CustomButton(
+                      onTap: () {
+                        //Navigator.pop(context);
+                        Navigator.pushNamed(
+                            context, AppRoutes.buscarpaseadorScreen);
+                      },
                       height: getVerticalSize(
                         67,
                       ),

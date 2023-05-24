@@ -4,15 +4,11 @@ import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
 class PerfilpaseadorcitasScreen extends StatelessWidget {
-  TextEditingController rateController = TextEditingController();
+  TextEditingController rateamountController = TextEditingController();
 
-  TextEditingController lastnameController = TextEditingController();
+  TextEditingController phonenumberController = TextEditingController();
 
-  TextEditingController lastnameoneController = TextEditingController();
-
-  TextEditingController phoneController = TextEditingController();
-
-  TextEditingController cpinputoneController = TextEditingController();
+  TextEditingController postalcodeController = TextEditingController();
 
   TextEditingController streetController = TextEditingController();
 
@@ -26,12 +22,19 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          toolbarHeight: 35,
+          elevation: 0,
+          flexibleSpace: const Image(
+            image: AssetImage('assets/images/frame.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
         body: Container(
-          height: getVerticalSize(
-            768,
-          ),
+          height: size.height,
           width: double.maxFinite,
           child: Stack(
             alignment: Alignment.center,
@@ -41,7 +44,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                 child: Container(
                   padding: getPadding(
                     left: 22,
-                    top: 50,
+                    top: 0,
                     right: 22,
                     bottom: 50,
                   ),
@@ -58,8 +61,13 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CustomButton(
+                        onTap: () {
+                          //Navigator.pop(context);
+                          Navigator.pushNamed(
+                              context, AppRoutes.agendarcitaScreen);
+                        },
                         height: getVerticalSize(
-                          39,
+                          42,
                         ),
                         width: getHorizontalSize(
                           135,
@@ -94,7 +102,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                     style: AppStyle.txtUrbanistRomanBold20,
                                   ),
                                   CustomImageView(
-                                    imagePath: ImageConstant.imgduenio,
+                                    imagePath: ImageConstant.imgPaseador,
                                     height: getVerticalSize(
                                       128,
                                     ),
@@ -131,8 +139,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                               TextSpan(
                                                 text: "Calificación",
                                                 style: TextStyle(
-                                                  color: ColorConstant.fromHex(
-                                                      "#1e232c"),
+                                                  color: ColorConstant.gray900,
                                                   fontSize: getFontSize(
                                                     20,
                                                   ),
@@ -143,8 +150,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                               TextSpan(
                                                 text: ": ",
                                                 style: TextStyle(
-                                                  color: ColorConstant.fromHex(
-                                                      "#1e232c"),
+                                                  color: ColorConstant.gray900,
                                                   fontSize: getFontSize(
                                                     20,
                                                   ),
@@ -157,7 +163,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                           textAlign: TextAlign.left,
                                         ),
                                       ),
-                                      Align(
+                                      /*  Align(
                                         alignment: Alignment.bottomLeft,
                                         child: Padding(
                                           padding: getPadding(
@@ -167,7 +173,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                             children: [
                                               CustomImageView(
                                                 svgPath:
-                                                    ImageConstant.imgStar118x16,
+                                                    ImageConstant.imgStar12,
                                                 height: getVerticalSize(
                                                   18,
                                                 ),
@@ -182,7 +188,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                               ),
                                               CustomImageView(
                                                 svgPath:
-                                                    ImageConstant.imgStar218x16,
+                                                    ImageConstant.imgStar22,
                                                 height: getVerticalSize(
                                                   18,
                                                 ),
@@ -200,7 +206,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                               ),
                                               CustomImageView(
                                                 svgPath:
-                                                    ImageConstant.imgStar418x16,
+                                                    ImageConstant.imgStar42,
                                                 height: getVerticalSize(
                                                   18,
                                                 ),
@@ -244,7 +250,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                                     ),
                                                     CustomImageView(
                                                       svgPath: ImageConstant
-                                                          .imgStar318x16,
+                                                          .imgStar32,
                                                       height: getVerticalSize(
                                                         18,
                                                       ),
@@ -266,7 +272,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                             ],
                                           ),
                                         ),
-                                      ),
+                                      ), */
                                     ],
                                   ),
                                 ),
@@ -297,7 +303,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                             110,
                                           ),
                                           focusNode: FocusNode(),
-                                          controller: rateController,
+                                          controller: rateamountController,
                                           hintText: "Tarifa",
                                           margin: getMargin(
                                             left: 4,
@@ -311,7 +317,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: getPadding(
-                                    top: 8,
+                                    top: 5,
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -319,7 +325,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                       Padding(
                                         padding: getPadding(
                                           top: 39,
-                                          bottom: 31,
+                                          bottom: 5,
                                         ),
                                         child: Text(
                                           "Exp:",
@@ -340,7 +346,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                           left: 5,
                                           top: 8,
                                           right: 5,
-                                          bottom: 8,
+                                          bottom: 50,
                                         ),
                                         decoration: AppDecoration
                                             .txtOutlineIndigo50
@@ -352,8 +358,8 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                           "Experiencia",
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.left,
-                                          style:
-                                              AppStyle.txtUrbanistRomanMedium15,
+                                          style: AppStyle
+                                              .txtUrbanistRomanMedium15Bluegray400,
                                         ),
                                       ),
                                     ],
@@ -367,7 +373,6 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                       Padding(
                         padding: getPadding(
                           left: 9,
-                          top: 12,
                           right: 7,
                         ),
                         child: Row(
@@ -404,76 +409,9 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                 "Nombre",
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanMedium15,
+                                style: AppStyle
+                                    .txtUrbanistRomanMedium15Bluegray400,
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 9,
-                          top: 7,
-                          right: 7,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 4,
-                              ),
-                              child: Text(
-                                "Apellido Paterno:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                152,
-                              ),
-                              focusNode: FocusNode(),
-                              controller: lastnameController,
-                              hintText: "Apellido Paterno",
-                              padding: TextFormFieldPadding.PaddingT6,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 9,
-                          top: 8,
-                          right: 7,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 5,
-                              ),
-                              child: Text(
-                                "Apellido Materno:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                152,
-                              ),
-                              focusNode: FocusNode(),
-                              controller: lastnameoneController,
-                              hintText: "Apellido Materno",
-                              margin: getMargin(
-                                left: 1,
-                              ),
-                              variant: TextFormFieldVariant.OutlineIndigo50_1,
-                              padding: TextFormFieldPadding.PaddingT6,
                             ),
                           ],
                         ),
@@ -483,7 +421,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                         child: Padding(
                           padding: getPadding(
                             left: 11,
-                            top: 5,
+                            top: 3,
                           ),
                           child: Row(
                             children: [
@@ -532,7 +470,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                             Expanded(
                               child: CustomTextFormField(
                                 focusNode: FocusNode(),
-                                controller: phoneController,
+                                controller: phonenumberController,
                                 hintText: "Teléfono",
                                 margin: getMargin(
                                   left: 7,
@@ -569,7 +507,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                 148,
                               ),
                               focusNode: FocusNode(),
-                              controller: cpinputoneController,
+                              controller: postalcodeController,
                               hintText: "Código Postal",
                               margin: getMargin(
                                 left: 6,
@@ -717,9 +655,8 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: getPadding(
-                            top: 26,
                             right: 10,
-                            bottom: 18,
+                            bottom: 50,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -763,18 +700,9 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CustomImageView(
-                      imagePath: ImageConstant.imgframe,
-                      height: getVerticalSize(
-                        32,
-                      ),
-                      width: getHorizontalSize(
-                        374,
-                      ),
-                    ),
                     Spacer(),
                     CustomImageView(
-                      imagePath: ImageConstant.imgImage4,
+                      imagePath: ImageConstant.imgframe,
                       height: getVerticalSize(
                         32,
                       ),

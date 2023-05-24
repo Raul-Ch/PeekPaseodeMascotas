@@ -100,7 +100,8 @@ class PerfilpaseadorScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  //Navigator.pushNamed(context, AppRoutes.pefilduenioScreen);
+                  Navigator.pushNamed(
+                      context, AppRoutes.paseosmenupaseadorScreen);
                 },
               ),
               const SizedBox(
@@ -132,10 +133,8 @@ class PerfilpaseadorScreen extends StatelessWidget {
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgMaskgroup39x39,
                 ),
-                title: Text(
-                  'Cerrar Sesión',
-                  style: AppStyle.txtUrbanistRomanBold25,
-                ),
+                title: Text('Cerrar Sesión',
+                    style: AppStyle.txtUrbanistRomanBold25Lightgreen20001),
                 onTap: () {
                   FirebaseAuth.instance.signOut();
                   Navigator.popUntil(
