@@ -468,8 +468,8 @@ class AgendarcitaScreen extends StatelessWidget {
                                   ),
                                   text: "Confirmar",
                                   onTap: () {
-                                    Navigator.pushNamed(
-                                        context, AppRoutes.vercitasScreen);
+                                    Navigator.pushNamed(context,
+                                        AppRoutes.vercitasduenioScreen);
                                   },
                                   margin: getMargin(
                                     left: 24,

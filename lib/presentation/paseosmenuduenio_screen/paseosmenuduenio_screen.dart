@@ -268,46 +268,57 @@ class PaseosmenuduenioScreen extends StatelessWidget {
                                                                 alignment: Alignment
                                                                     .centerLeft)
                                                           ]))),
-                                              Container(
-                                                  margin: getMargin(
-                                                      top: 25, right: 1),
-                                                  padding: getPadding(
-                                                      left: 11,
-                                                      top: 6,
-                                                      right: 11,
-                                                      bottom: 6),
-                                                  decoration: AppDecoration
-                                                      .outlineBlack9003f
-                                                      .copyWith(
-                                                          borderRadius:
-                                                              BorderRadiusStyle
-                                                                  .roundedBorder22),
-                                                  child: Row(children: [
-                                                    CustomImageView(
-                                                        imagePath: ImageConstant
-                                                            .imgVercitas,
-                                                        height: getVerticalSize(
-                                                            104),
-                                                        width:
-                                                            getHorizontalSize(
-                                                                120),
-                                                        margin:
-                                                            getMargin(top: 5)),
-                                                    Padding(
-                                                        padding: getPadding(
-                                                            top: 34,
-                                                            left: 35,
-                                                            bottom: 31),
-                                                        child: Text(
-                                                            "Ver  Citas",
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            textAlign:
-                                                                TextAlign.left,
-                                                            style: AppStyle
-                                                                .txtMontserratAlternatesSemiBold35))
-                                                  ])),
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.pushNamed(
+                                                      context,
+                                                      AppRoutes
+                                                          .vercitaspaseadorScreen);
+                                                },
+                                                child: Container(
+                                                    margin: getMargin(
+                                                        top: 25, right: 1),
+                                                    padding: getPadding(
+                                                        left: 11,
+                                                        top: 6,
+                                                        right: 11,
+                                                        bottom: 6),
+                                                    decoration: AppDecoration
+                                                        .outlineBlack9003f
+                                                        .copyWith(
+                                                            borderRadius:
+                                                                BorderRadiusStyle
+                                                                    .roundedBorder22),
+                                                    child: Row(children: [
+                                                      CustomImageView(
+                                                          imagePath:
+                                                              ImageConstant
+                                                                  .imgVercitas,
+                                                          height:
+                                                              getVerticalSize(
+                                                                  104),
+                                                          width:
+                                                              getHorizontalSize(
+                                                                  120),
+                                                          margin: getMargin(
+                                                              top: 5)),
+                                                      Padding(
+                                                          padding: getPadding(
+                                                              top: 34,
+                                                              left: 35,
+                                                              bottom: 31),
+                                                          child: Text(
+                                                              "Ver  Citas",
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .left,
+                                                              style: AppStyle
+                                                                  .txtMontserratAlternatesSemiBold35))
+                                                    ])),
+                                              ),
                                               Container(
                                                   margin: getMargin(
                                                       top: 34, right: 1),

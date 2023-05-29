@@ -173,14 +173,14 @@ class MenuPaseadorScreen extends StatelessWidget {
                         children: [
                           Container(
                             height: getVerticalSize(
-                              118,
+                              100,
                             ),
                             width: getHorizontalSize(
                               113,
                             ),
                             margin: getMargin(
                               top: 6,
-                              bottom: 14,
+                              bottom: 5,
                             ),
                             child: Stack(
                               alignment: Alignment.topLeft,
@@ -250,6 +250,10 @@ class MenuPaseadorScreen extends StatelessWidget {
                       fontStyle: ButtonFontStyle.UrbanistRomanSemiBold25,
                     ),
                     CustomButton(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, AppRoutes.vercitaspaseadorScreen);
+                      },
                       height: getVerticalSize(
                         67,
                       ),
@@ -284,20 +288,20 @@ class MenuPaseadorScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: SizedBox(
                   height: getVerticalSize(
-                    407,
+                    480,
                   ),
                   width: double.maxFinite,
                   child: Stack(
                     alignment: Alignment.topRight,
                     children: [
                       Align(
-                        alignment: Alignment.bottomCenter,
+                        alignment: Alignment.center,
                         child: Container(
                           padding: getPadding(
-                            left: 69,
-                            top: 57,
-                            right: 69,
-                            bottom: 57,
+                            left: 65,
+                            top: 80,
+                            right: 65,
+                            bottom: 63,
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusStyle.roundedBorder74,

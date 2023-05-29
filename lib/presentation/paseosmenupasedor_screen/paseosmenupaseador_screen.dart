@@ -277,36 +277,42 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
                                         borderRadius:
                                             BorderRadiusStyle.roundedBorder22,
                                       ),
-                                      child: Row(
-                                        children: [
-                                          CustomImageView(
-                                            imagePath:
-                                                ImageConstant.imgVercitas,
-                                            height: getVerticalSize(
-                                              104,
+                                      child: InkWell(
+                                        onTap: () {
+                                          /*       Navigator.pushNamed(context,
+                                              AppRoutes.vercitasScreen); */
+                                        },
+                                        child: Row(
+                                          children: [
+                                            CustomImageView(
+                                              imagePath:
+                                                  ImageConstant.imgVercitas,
+                                              height: getVerticalSize(
+                                                104,
+                                              ),
+                                              width: getHorizontalSize(
+                                                120,
+                                              ),
+                                              margin: getMargin(
+                                                top: 5,
+                                              ),
                                             ),
-                                            width: getHorizontalSize(
-                                              120,
+                                            Padding(
+                                              padding: getPadding(
+                                                top: 34,
+                                                bottom: 31,
+                                                left: 30,
+                                              ),
+                                              child: Text(
+                                                "Ver  Citas",
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.left,
+                                                style: AppStyle
+                                                    .txtMontserratAlternatesSemiBold35,
+                                              ),
                                             ),
-                                            margin: getMargin(
-                                              top: 5,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: getPadding(
-                                              top: 34,
-                                              bottom: 31,
-                                              left: 30,
-                                            ),
-                                            child: Text(
-                                              "Ver  Citas",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle
-                                                  .txtMontserratAlternatesSemiBold35,
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Container(

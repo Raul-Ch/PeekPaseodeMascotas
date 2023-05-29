@@ -191,22 +191,13 @@ class MenuDuenioScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-/*                     CustomImageView(
-                      imagePath: ImageConstant.imgframe,
-                      height: getVerticalSize(
-                        32,
-                      ),
-                      width: getHorizontalSize(
-                        375,
-                      ),
-                    ), */
                     Container(
                       width: double.maxFinite,
                       padding: getPadding(
                         left: 7,
                         top: 0,
                         right: 7,
-                        bottom: 3,
+                        bottom: 1,
                       ),
                       decoration: AppDecoration.fillLightgreen20001,
                       child: Row(
@@ -214,14 +205,14 @@ class MenuDuenioScreen extends StatelessWidget {
                         children: [
                           Container(
                             height: getVerticalSize(
-                              118,
+                              100,
                             ),
                             width: getHorizontalSize(
                               113,
                             ),
                             margin: getMargin(
                               top: 6,
-                              bottom: 14,
+                              bottom: 5,
                             ),
                             child: Stack(
                               alignment: Alignment.topLeft,
@@ -321,14 +312,14 @@ class MenuDuenioScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: SizedBox(
                   height: getVerticalSize(
-                    407,
+                    500,
                   ),
                   width: double.maxFinite,
                   child: Stack(
                     alignment: Alignment.topRight,
                     children: [
                       Align(
-                        alignment: Alignment.bottomCenter,
+                        alignment: Alignment.center,
                         child: Container(
                           padding: getPadding(
                             left: 65,
@@ -613,7 +604,7 @@ class MenuDuenioScreen extends StatelessWidget {
                             131,
                           ),
                           margin: getMargin(
-                            top: 51,
+                            top: 40,
                           ),
                           child: Stack(
                             alignment: Alignment.bottomCenter,
@@ -789,99 +780,103 @@ class MenuDuenioScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: SizedBox(
-                          height: getVerticalSize(
-                            126,
-                          ),
-                          width: getHorizontalSize(
-                            116,
-                          ),
-                          child: Stack(
-                            alignment: Alignment.topCenter,
-                            children: [
-                              Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  height: getVerticalSize(
-                                    126,
-                                  ),
-                                  width: getHorizontalSize(
-                                    116,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: ColorConstant.whiteA700,
-                                    borderRadius: BorderRadius.circular(
-                                      getHorizontalSize(
-                                        63,
-                                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: SizedBox(
+                            height: getVerticalSize(
+                              126,
+                            ),
+                            width: getHorizontalSize(
+                              116,
+                            ),
+                            child: Stack(
+                              alignment: Alignment.topCenter,
+                              children: [
+                                Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Container(
+                                    height: getVerticalSize(
+                                      126,
                                     ),
-                                    border: Border.all(
-                                      color: ColorConstant.black9007f,
-                                      width: getHorizontalSize(
-                                        1,
-                                      ),
+                                    width: getHorizontalSize(
+                                      116,
                                     ),
-                                    boxShadow: [
-                                      BoxShadow(
+                                    decoration: BoxDecoration(
+                                      color: ColorConstant.whiteA700,
+                                      borderRadius: BorderRadius.circular(
+                                        getHorizontalSize(
+                                          63,
+                                        ),
+                                      ),
+                                      border: Border.all(
                                         color: ColorConstant.black9007f,
-                                        spreadRadius: getHorizontalSize(
-                                          2,
-                                        ),
-                                        blurRadius: getHorizontalSize(
-                                          2,
-                                        ),
-                                        offset: const Offset(
-                                          0,
-                                          4,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: Padding(
-                                  padding: getPadding(
-                                    left: 15,
-                                    right: 14,
-                                    top: 30,
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
                                         width: getHorizontalSize(
-                                          86,
-                                        ),
-                                        child: Text(
-                                          "¡Bienvenido de vuelta",
-                                          maxLines: null,
-                                          textAlign: TextAlign.center,
-                                          style:
-                                              AppStyle.txtUrbanistRomanBlack16,
+                                          1,
                                         ),
                                       ),
-                                      Padding(
-                                        padding: getPadding(
-                                          top: 5,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: ColorConstant.black9007f,
+                                          spreadRadius: getHorizontalSize(
+                                            2,
+                                          ),
+                                          blurRadius: getHorizontalSize(
+                                            2,
+                                          ),
+                                          offset: const Offset(
+                                            0,
+                                            4,
+                                          ),
                                         ),
-                                        child: Text(
-                                          "Franco!",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.left,
-                                          style:
-                                              AppStyle.txtUrbanistRomanBlack16,
-                                        ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Padding(
+                                    padding: getPadding(
+                                      left: 15,
+                                      right: 14,
+                                      top: 30,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: getHorizontalSize(
+                                            86,
+                                          ),
+                                          child: Text(
+                                            "¡Bienvenido de vuelta",
+                                            maxLines: null,
+                                            textAlign: TextAlign.center,
+                                            style: AppStyle
+                                                .txtUrbanistRomanBlack16,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: getPadding(
+                                            top: 5,
+                                          ),
+                                          child: Text(
+                                            "Franco!",
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.left,
+                                            style: AppStyle
+                                                .txtUrbanistRomanBlack16,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -895,8 +890,8 @@ class MenuDuenioScreen extends StatelessWidget {
                             131,
                           ),
                           margin: getMargin(
-                            left: 6,
-                            top: 51,
+                            left: 0,
+                            top: 40,
                           ),
                           child: Stack(
                             alignment: Alignment.center,

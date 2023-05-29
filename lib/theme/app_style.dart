@@ -18,7 +18,22 @@ class AppStyle {
     fontFamily: 'Urbanist',
     fontWeight: FontWeight.w700,
   );
-
+  static TextStyle txtUrbanistRomanBold35OrangeA200 = TextStyle(
+    color: ColorConstant.orangeA200,
+    fontSize: getFontSize(
+      35,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle txtUrbanistRomanBold35Teal900 = TextStyle(
+    color: ColorConstant.teal900,
+    fontSize: getFontSize(
+      35,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle txtUrbanistRomanBold35 = TextStyle(
     color: ColorConstant.gray900,
     fontSize: getFontSize(

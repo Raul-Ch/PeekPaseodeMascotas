@@ -1,8 +1,10 @@
-import '../vercitas_screen/widgets/vercitas_item_widget.dart';
+//import '../widgets/vercitas_item_finalizado_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
+import 'package:peek_app/presentation/paseoduenioprogreso_screen/widgets/vercitas_item_progreso_widget.dart';
 
-class VercitasScreen extends StatelessWidget {
+class VercitasItemFinalizadoWidget extends StatelessWidget {
+  VercitasItemFinalizadoWidget();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -52,6 +54,7 @@ class VercitasScreen extends StatelessWidget {
                           Padding(
                             padding: getPadding(
                               left: 16,
+                              top: 19,
                               right: 16,
                             ),
                             child: ListView.separated(
@@ -64,9 +67,9 @@ class VercitasScreen extends StatelessWidget {
                                   ),
                                 );
                               },
-                              itemCount: 3,
+                              itemCount: 2,
                               itemBuilder: (context, index) {
-                                return VercitasItemWidget();
+                                return VercitasItemProgresoWidget();
                               },
                             ),
                           ),
@@ -81,7 +84,7 @@ class VercitasScreen extends StatelessWidget {
                           375,
                         ),
                         margin: getMargin(
-                          top: 636,
+                          top: 761,
                         ),
                       ),
                     ],

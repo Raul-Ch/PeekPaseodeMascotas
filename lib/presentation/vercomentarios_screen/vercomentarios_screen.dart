@@ -4,7 +4,7 @@ import 'package:peek_app/widgets/custom_text_form_field.dart';
 
 class VercomentariosScreen extends StatelessWidget {
   TextEditingController nameinputController = TextEditingController();
-
+  TextEditingController expinputController = TextEditingController();
   TextEditingController apellido1inputController = TextEditingController();
 
   @override
@@ -144,53 +144,18 @@ class VercomentariosScreen extends StatelessWidget {
                                                               .txtUrbanistRomanBold20,
                                                         ),
                                                       ),
-                                                      Container(
-                                                        margin: getMargin(
-                                                          top: 1,
-                                                        ),
-                                                        padding: getPadding(
-                                                          left: 10,
-                                                          top: 8,
-                                                          right: 10,
-                                                          bottom: 8,
-                                                        ),
-                                                        decoration:
-                                                            AppDecoration
-                                                                .outlineIndigo50
-                                                                .copyWith(
-                                                          borderRadius:
-                                                              BorderRadiusStyle
-                                                                  .roundedBorder8,
-                                                        ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  getPadding(
-                                                                bottom: 59,
-                                                              ),
-                                                              child: Text(
-                                                                "Experiencia",
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .left,
-                                                                style: AppStyle
-                                                                    .txtUrbanistRomanMedium15Bluegray400,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      CustomTextFormField(
+                                                        maxLines: 5,
+                                                        width:
+                                                            getHorizontalSize(
+                                                                280),
+                                                        focusNode: FocusNode(),
+                                                        controller:
+                                                            expinputController,
+                                                        hintText: "Experiencia",
+                                                        padding:
+                                                            TextFormFieldPadding
+                                                                .PaddingT6,
                                                       ),
                                                     ],
                                                   ),
@@ -213,6 +178,7 @@ class VercomentariosScreen extends StatelessWidget {
                                                         padding: getPadding(
                                                           top: 1,
                                                           bottom: 3,
+                                                          right: 10,
                                                         ),
                                                         child: Text(
                                                           "Tarifa:",
@@ -224,33 +190,17 @@ class VercomentariosScreen extends StatelessWidget {
                                                               .txtUrbanistRomanBold20,
                                                         ),
                                                       ),
-                                                      Container(
+                                                      CustomTextFormField(
                                                         width:
                                                             getHorizontalSize(
-                                                          110,
-                                                        ),
-                                                        margin: getMargin(
-                                                          left: 4,
-                                                        ),
-                                                        padding: getPadding(
-                                                          all: 5,
-                                                        ),
-                                                        decoration: AppDecoration
-                                                            .txtOutlineIndigo50
-                                                            .copyWith(
-                                                          borderRadius:
-                                                              BorderRadiusStyle
-                                                                  .txtRoundedBorder8,
-                                                        ),
-                                                        child: Text(
-                                                          "Tarifa",
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          textAlign:
-                                                              TextAlign.left,
-                                                          style: AppStyle
-                                                              .txtUrbanistRomanMedium15Bluegray400,
-                                                        ),
+                                                                100),
+                                                        focusNode: FocusNode(),
+                                                        controller:
+                                                            expinputController,
+                                                        hintText: "Tarifa",
+                                                        padding:
+                                                            TextFormFieldPadding
+                                                                .PaddingT6,
                                                       ),
                                                     ],
                                                   ),
@@ -441,7 +391,7 @@ class VercomentariosScreen extends StatelessWidget {
                                               ),
                                               CustomTextFormField(
                                                 width: getHorizontalSize(
-                                                  158,
+                                                  230,
                                                 ),
                                                 focusNode: FocusNode(),
                                                 controller:

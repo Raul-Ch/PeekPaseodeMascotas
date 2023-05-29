@@ -11,7 +11,8 @@ import 'package:peek_app/presentation/app_navigation_screen/app_navigation_scree
 import 'package:peek_app/presentation/menu_duenio_screen/menu_duenio_screen.dart';
 import 'package:peek_app/presentation/menu_paseador_screen/menu_paseador_screen.dart';
 import 'package:peek_app/presentation/agendarcita_screen/agendarcita_screen.dart';
-import 'package:peek_app/presentation/vercitas_screen/vercitas_screen.dart';
+import 'package:peek_app/presentation/vercitasduenio_screen/vercitasduenio_screen.dart';
+import 'package:peek_app/presentation/vercitaspaseador_screen/vercitaspaseador_screen.dart';
 import '../presentation/buscarpaseador_screen/buscarpaseador_screen.dart';
 import '../presentation/comentarios_screen/comentarios_screen.dart';
 import '../presentation/paseosmenupasedor_screen/paseosmenupaseador_screen.dart';
@@ -21,6 +22,8 @@ import '../presentation/perfilpaseador_screen/perfilpaseador_screen.dart';
 import '../presentation/perfilduenio_screen/perfilduenio_screen.dart';
 import '../presentation/perfilpaseadorcitas_screen/perfilpaseadorcitas_screen.dart';
 import '../presentation/vercomentarios_screen/vercomentarios_screen.dart';
+import 'package:peek_app/presentation/paseoduenioprogreso_screen/paseoduenioprogreso_screen.dart';
+import 'package:peek_app/presentation/paseopaseadorprogreso_screen/paseopaseadorprogreso_screen.dart';
 
 class AppRoutes {
   //Inicio
@@ -71,7 +74,14 @@ class AppRoutes {
 //Citas
   static const String agendarcitaScreen = '/agendarcita_screen';
 
-  static const String vercitasScreen = '/vercitas_screen';
+  static const String vercitasduenioScreen = '/vercitasduenio_screen';
+
+  static const String vercitaspaseadorScreen = '/vercitaspaseador_screen';
+
+  static const String paseoduenioprogresoScreen = '/paseoduenioprogreso_screen';
+
+  static const String paseopaseadorprogresoScreen =
+      '/paseopaseadorprogreso_screen';
 
   static Map<String, WidgetBuilder> routes = {
     loginScreen: (context) => const LoginScreen(),
@@ -101,7 +111,10 @@ class AppRoutes {
 
     //Citas
     agendarcitaScreen: (context) => AgendarcitaScreen(),
-    vercitasScreen: (context) => VercitasScreen(),
+    vercitasduenioScreen: (context) => VercitasduenioScreen(),
+    vercitaspaseadorScreen: (context) => VercitaspaseadorScreen(),
+    paseoduenioprogresoScreen: (context) => PaseoduenioprogresoScreen(),
+    paseopaseadorprogresoScreen: (context) => PaseopaseadorprogresoScreen(),
 
     appNavigationScreen: (context) => const AppNavigationScreen()
   };
