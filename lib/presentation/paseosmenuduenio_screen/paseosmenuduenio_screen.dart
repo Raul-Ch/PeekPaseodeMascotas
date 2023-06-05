@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class PaseosmenuduenioScreen extends StatelessWidget {
+  const PaseosmenuduenioScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -150,7 +152,7 @@ class PaseosmenuduenioScreen extends StatelessWidget {
               ),
             )),
             backgroundColor: ColorConstant.whiteA700,
-            body: Container(
+            body: SizedBox(
                 height: getVerticalSize(758),
                 width: double.maxFinite,
                 child: Stack(alignment: Alignment.center, children: [
@@ -161,7 +163,7 @@ class PaseosmenuduenioScreen extends StatelessWidget {
                       alignment: Alignment.center),
                   Align(
                       alignment: Alignment.center,
-                      child: Container(
+                      child: SizedBox(
                           height: getVerticalSize(738),
                           width: double.maxFinite,
                           child: Stack(
@@ -273,7 +275,7 @@ class PaseosmenuduenioScreen extends StatelessWidget {
                                                   Navigator.pushNamed(
                                                       context,
                                                       AppRoutes
-                                                          .vercitaspaseadorScreen);
+                                                          .vercitasduenioScreen);
                                                 },
                                                 child: Container(
                                                     margin: getMargin(

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class VercitaspaseadorScreen extends StatelessWidget {
+  const VercitaspaseadorScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,16 +18,14 @@ class VercitaspaseadorScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
-          height: getVerticalSize(
-            750,
-          ),
+        body: SizedBox(
+          height: size.height,
           width: double.maxFinite,
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
               Align(
-                alignment: Alignment.topCenter,
+                alignment: Alignment.center,
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -39,16 +39,21 @@ class VercitaspaseadorScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "CITAS:",
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.left,
-                        style: AppStyle.txtArtographieMedium30,
+                      Padding(
+                        padding: getPadding(
+                          top: 25,
+                        ),
+                        child: Text(
+                          "CITAS:",
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.left,
+                          style: AppStyle.txtArtographieMedium30,
+                        ),
                       ),
                       Container(
                         margin: getMargin(
                           left: 7,
-                          top: 40,
+                          top: 27,
                           right: 7,
                         ),
                         padding: getPadding(
@@ -88,7 +93,7 @@ class VercitaspaseadorScreen extends StatelessWidget {
                       Container(
                         margin: getMargin(
                           left: 7,
-                          top: 21,
+                          top: 65,
                           right: 7,
                         ),
                         padding: getPadding(
@@ -128,9 +133,9 @@ class VercitaspaseadorScreen extends StatelessWidget {
                       Container(
                         margin: getMargin(
                           left: 6,
-                          top: 21,
+                          top: 65,
                           right: 6,
-                          bottom: 20,
+                          bottom: 208,
                         ),
                         padding: getPadding(
                           left: 15,

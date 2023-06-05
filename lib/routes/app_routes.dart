@@ -22,7 +22,7 @@ import '../presentation/perfilpaseador_screen/perfilpaseador_screen.dart';
 import '../presentation/perfilduenio_screen/perfilduenio_screen.dart';
 import '../presentation/perfilpaseadorcitas_screen/perfilpaseadorcitas_screen.dart';
 import '../presentation/vercomentarios_screen/vercomentarios_screen.dart';
-import 'package:peek_app/presentation/paseoduenioprogreso_screen/paseoduenioprogreso_screen.dart';
+import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioprogreso_screen.dart';
 import 'package:peek_app/presentation/paseopaseadorprogreso_screen/paseopaseadorprogreso_screen.dart';
 
 class AppRoutes {
@@ -78,6 +78,7 @@ class AppRoutes {
 
   static const String vercitaspaseadorScreen = '/vercitaspaseador_screen';
 
+  //Citas Progeso
   static const String paseoduenioprogresoScreen = '/paseoduenioprogreso_screen';
 
   static const String paseopaseadorprogresoScreen =
@@ -103,18 +104,19 @@ class AppRoutes {
     perfilmascotaScreen: (context) => PerfilmascotaScreen(),
 
     //Paseos
-    paseosmenuduenioScreen: (context) => PaseosmenuduenioScreen(),
-    buscarpaseadorScreen: (context) => BuscarpaseadorScreen(),
-    paseosmenupaseadorScreen: (context) => PaseosmenupaseadorScreen(),
+    paseosmenuduenioScreen: (context) => const PaseosmenuduenioScreen(),
+    buscarpaseadorScreen: (context) => const BuscarpaseadorScreen(),
+    paseosmenupaseadorScreen: (context) => const PaseosmenupaseadorScreen(),
     perfilpaseadorcitasScreen: (context) => PerfilpaseadorcitasScreen(),
     vercomentariosScreen: (context) => VercomentariosScreen(),
 
     //Citas
-    agendarcitaScreen: (context) => AgendarcitaScreen(),
-    vercitasduenioScreen: (context) => VercitasduenioScreen(),
-    vercitaspaseadorScreen: (context) => VercitaspaseadorScreen(),
+    agendarcitaScreen: (context) => const AgendarcitaScreen(),
+    vercitasduenioScreen: (context) => const VercitasduenioScreen(),
+    vercitaspaseadorScreen: (context) => const VercitaspaseadorScreen(),
     paseoduenioprogresoScreen: (context) => PaseoduenioprogresoScreen(),
-    paseopaseadorprogresoScreen: (context) => PaseopaseadorprogresoScreen(),
+    paseopaseadorprogresoScreen: (context) =>
+        const PaseopaseadorprogresoScreen(),
 
     appNavigationScreen: (context) => const AppNavigationScreen()
   };

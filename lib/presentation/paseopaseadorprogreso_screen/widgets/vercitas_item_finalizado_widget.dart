@@ -3,7 +3,7 @@ import 'package:peek_app/core/app_export.dart';
 
 // ignore: must_be_immutable
 class ListcostoItemWidget extends StatelessWidget {
-  ListcostoItemWidget();
+  const ListcostoItemWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class ListcostoItemWidget extends StatelessWidget {
               style: AppStyle.txtUrbanistRomanMedium16,
             ),
           ),
-          Spacer(
+          const Spacer(
             flex: 48,
           ),
           Padding(
@@ -37,7 +37,7 @@ class ListcostoItemWidget extends StatelessWidget {
               style: AppStyle.txtUrbanistRomanMedium15,
             ),
           ),
-          Spacer(
+          const Spacer(
             flex: 51,
           ),
           Text(

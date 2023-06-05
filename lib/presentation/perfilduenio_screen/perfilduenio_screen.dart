@@ -1,23 +1,149 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-class PerfilduenioScreen extends StatelessWidget {
-  TextEditingController lastnameController = TextEditingController();
+class PerfilduenioScreen extends StatefulWidget {
+  const PerfilduenioScreen({Key? key}) : super(key: key);
 
-  TextEditingController lastnameoneController = TextEditingController();
+  @override
+  State<PerfilduenioScreen> createState() => _PerfilduenioScreen();
+}
 
-  TextEditingController phonenumberController = TextEditingController();
+//Declaracion de variables relacionadas al uso de Firebase BD
+var user = FirebaseAuth.instance.currentUser!;
+var uid = FirebaseAuth.instance.currentUser!.uid;
 
-  TextEditingController cpinputController = TextEditingController();
+//Esta clase deshabilitara los TextFields utilizados
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
+}
 
-  TextEditingController streetController = TextEditingController();
+class _PerfilduenioScreen extends State<PerfilduenioScreen> {
+  late var nameController = TextEditingController();
+  late var lastnameController = TextEditingController();
+  late var lastnameoneController = TextEditingController();
+  late var dateController = TextEditingController();
+  //late var genderController = TextEditingController();
+  late var phonenumberController = TextEditingController();
+  late var cpinputController = TextEditingController();
+  late var numstreetController = TextEditingController();
+  late var streetController = TextEditingController();
+  late var municipalityController = TextEditingController();
+  late var cityController = TextEditingController();
+  //String _appBarTitle = '';
 
-  TextEditingController municipalityController = TextEditingController();
+// Variables del codigo
+  String name = ' ';
+  String lastname = '';
+  String lastnameone = '';
+  String date = '';
+  //String gender = '';
+  int phone = 0;
+  int cp = 0;
+  int numstreet = 0;
+  String street = '';
+  String mun = '';
+  String city = '';
+  String correo = '';
 
-  TextEditingController cityController = TextEditingController();
+  bool _Enable = false;
+  bool _Button = true;
+  bool _Button2 = false;
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    lastnameController.dispose();
+    lastnameoneController.dispose();
+    dateController.dispose();
+    //genderController.dispose();
+    phonenumberController.dispose();
+    cpinputController.dispose();
+    numstreetController.dispose();
+    streetController.dispose();
+    municipalityController.dispose();
+    cityController.dispose();
+    super.dispose();
+  }
+
+//Nuestro metodo futuro a utilizar encargado de actualizar la BD con los controladores de texto recogidos
+//REGISTRO
+  Future Actualizar() async {
+    user = FirebaseAuth.instance.currentUser!;
+    uid = FirebaseAuth.instance.currentUser!.uid;
+    //crear usuario
+    await FirebaseFirestore.instance.collection("duenios").doc(uid).update({
+      'Nombre': nameController.text.trim(),
+      'Apellido Paterno': lastnameController.text.trim(),
+      'Apellido Materno': lastnameoneController.text.trim(),
+      'Cumpleaños': dateController.text.trim(),
+      'Telefono': int.parse(phonenumberController.text.trim()),
+      'CP': int.parse(cpinputController.text.trim()),
+      'Num Calle': int.parse(numstreetController.text.trim()),
+      'Calle': streetController.text.trim(),
+      'Municipio': municipalityController.text.trim(),
+      'Ciudad': cityController.text.trim(),
+    });
+  }
+
+//Esta función no solo nos mostrara el nombre del usuario en la APPBAR tambien sera la encargada de cargar los datos de nuestra BD actual a variables utilizadas en los TextField
+  Future appBarTittle() async {
+    user = FirebaseAuth.instance.currentUser!;
+    uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance
+        .collection('duenios')
+        .doc(uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic>? data =
+            documentSnapshot.data() as Map<String, dynamic>?;
+        var Nombre = data?['Nombre'];
+        var ApellidoP = data?['Apellido Paterno'];
+        var ApellidoM = data?['Apellido Materno'];
+        var Edad = data?['Cumpleaños'];
+        var Telefono = data?['Telefono'];
+        var CP = data?['CP'];
+        var NumCalle = data?['Num Calle'];
+        var Calle = data?['Calle'];
+        var Municipio = data?['Municipio'];
+        var Ciudad = data?['Ciudad'];
+        //var GCorreo = data?['Email'];
+        print('Document data: ${documentSnapshot.data()}');
+        //Set the relevant data to variables as needed
+        //print(Nombre1);
+        setState(() {
+          name = Nombre;
+          lastname = ApellidoP;
+          lastnameone = ApellidoM;
+          date = Edad;
+          phone = Telefono;
+          cp = CP;
+          numstreet = NumCalle;
+          street = Calle;
+          mun = Municipio;
+          city = Ciudad;
+          //correo = GCorreo;
+          //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
+        });
+      } else {
+        print("Document does not exist on the database uid:  " + uid);
+      }
+    });
+  }
+
+//Para cargar los datos antes que cualquier cosa y evitar valores nulos especificamos que el metodo anterior se correra para cargar los
+//datos una vez al principio del mismo llamado de esta clase/pagina de usuarios
+  @override
+  void initState() {
+    // TODO: implement initState
+    appBarTittle();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +291,7 @@ class PerfilduenioScreen extends StatelessWidget {
         )),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           height: getVerticalSize(
             756,
           ),
@@ -175,7 +301,7 @@ class PerfilduenioScreen extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.center,
-                child: Container(
+                child: SizedBox(
                   height: size.height,
                   width: double.maxFinite,
                   child: Stack(
@@ -253,29 +379,16 @@ class PerfilduenioScreen extends StatelessWidget {
                                         style: AppStyle.txtUrbanistRomanBold20,
                                       ),
                                     ),
-                                    Container(
+                                    CustomTextFormField(
                                       width: getHorizontalSize(
-                                        225,
+                                        200,
                                       ),
-                                      padding: getPadding(
-                                        left: 10,
-                                        top: 5,
-                                        right: 10,
-                                        bottom: 5,
-                                      ),
-                                      decoration: AppDecoration
-                                          .txtOutlineIndigo50
-                                          .copyWith(
-                                        borderRadius:
-                                            BorderRadiusStyle.txtRoundedBorder8,
-                                      ),
-                                      child: Text(
-                                        "Nombre",
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.left,
-                                        style:
-                                            AppStyle.txtUrbanistRomanMedium15,
-                                      ),
+                                      enabled: _Enable,
+                                      //focusNode: FocusNode(),
+                                      controller: nameController =
+                                          TextEditingController(text: name),
+                                      //hintText: "Apellido Paterno",
+                                      padding: TextFormFieldPadding.PaddingT6,
                                     ),
                                   ],
                                 ),
@@ -304,9 +417,11 @@ class PerfilduenioScreen extends StatelessWidget {
                                       width: getHorizontalSize(
                                         152,
                                       ),
-                                      focusNode: FocusNode(),
-                                      controller: lastnameController,
-                                      hintText: "Apellido Paterno",
+                                      enabled: _Enable,
+                                      //focusNode: FocusNode(),
+                                      controller: lastnameController =
+                                          TextEditingController(text: lastname),
+                                      //hintText: "Apellido Paterno",
                                       padding: TextFormFieldPadding.PaddingT6,
                                     ),
                                   ],
@@ -332,11 +447,14 @@ class PerfilduenioScreen extends StatelessWidget {
                                     ),
                                     CustomTextFormField(
                                       width: getHorizontalSize(
-                                        152,
+                                        165,
                                       ),
-                                      focusNode: FocusNode(),
-                                      controller: lastnameoneController,
-                                      hintText: "Apellido Materno",
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: lastnameoneController =
+                                          TextEditingController(
+                                              text: lastnameone),
+                                      //hintText: "Apellido Materno",
                                       margin: getMargin(
                                         left: 1,
                                       ),
@@ -367,6 +485,21 @@ class PerfilduenioScreen extends StatelessWidget {
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtUrbanistRomanBold20,
                                       ),
+                                    ),
+                                    CustomTextFormField(
+                                      width: getHorizontalSize(
+                                        100,
+                                      ),
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: dateController =
+                                          TextEditingController(text: date),
+                                      margin: getMargin(
+                                        left: 1,
+                                      ),
+                                      variant: TextFormFieldVariant
+                                          .OutlineIndigo50_1,
+                                      padding: TextFormFieldPadding.PaddingT6,
                                     ),
                                     Padding(
                                       padding: getPadding(
@@ -407,8 +540,11 @@ class PerfilduenioScreen extends StatelessWidget {
                                       width: getHorizontalSize(
                                         224,
                                       ),
-                                      focusNode: FocusNode(),
-                                      controller: phonenumberController,
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: phonenumberController =
+                                          TextEditingController(
+                                              text: phone.toString()),
                                       hintText: "Teléfono",
                                       padding: TextFormFieldPadding.PaddingT6,
                                     ),
@@ -441,8 +577,11 @@ class PerfilduenioScreen extends StatelessWidget {
                                       width: getHorizontalSize(
                                         148,
                                       ),
-                                      focusNode: FocusNode(),
-                                      controller: cpinputController,
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: cpinputController =
+                                          TextEditingController(
+                                              text: cp.toString()),
                                       hintText: "Código Postal",
                                       margin: getMargin(
                                         bottom: 1,
@@ -461,21 +600,20 @@ class PerfilduenioScreen extends StatelessWidget {
                                         style: AppStyle.txtUrbanistRomanBold20,
                                       ),
                                     ),
-                                    CustomButton(
-                                      height: getVerticalSize(
-                                        30,
-                                      ),
+                                    CustomTextFormField(
                                       width: getHorizontalSize(
-                                        76,
+                                        100,
                                       ),
-                                      text: "Núm. C.",
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: numstreetController =
+                                          TextEditingController(
+                                              text: numstreet.toString()),
+                                      hintText: "Núm. Calle",
                                       margin: getMargin(
-                                        top: 1,
+                                        bottom: 1,
                                       ),
-                                      variant: ButtonVariant.OutlineIndigo50,
-                                      padding: ButtonPadding.PaddingAll6,
-                                      fontStyle: ButtonFontStyle
-                                          .UrbanistRomanMedium15Bluegray400,
+                                      padding: TextFormFieldPadding.PaddingT6,
                                     ),
                                   ],
                                 ),
@@ -505,8 +643,10 @@ class PerfilduenioScreen extends StatelessWidget {
                                       width: getHorizontalSize(
                                         257,
                                       ),
-                                      focusNode: FocusNode(),
-                                      controller: streetController,
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: streetController =
+                                          TextEditingController(text: street),
                                       hintText: "Calle",
                                       variant: TextFormFieldVariant
                                           .OutlineIndigo50_1,
@@ -538,8 +678,10 @@ class PerfilduenioScreen extends StatelessWidget {
                                       width: getHorizontalSize(
                                         221,
                                       ),
-                                      focusNode: FocusNode(),
-                                      controller: municipalityController,
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: municipalityController =
+                                          TextEditingController(text: mun),
                                       hintText: "Municipio",
                                       padding: TextFormFieldPadding.PaddingT6,
                                     ),
@@ -570,8 +712,10 @@ class PerfilduenioScreen extends StatelessWidget {
                                       width: getHorizontalSize(
                                         243,
                                       ),
-                                      focusNode: FocusNode(),
-                                      controller: cityController,
+                                      //focusNode: FocusNode(),
+                                      enabled: _Enable,
+                                      controller: cityController =
+                                          TextEditingController(text: city),
                                       hintText: "Ciudad",
                                       padding: TextFormFieldPadding.PaddingT6,
                                       textInputAction: TextInputAction.done,
@@ -589,35 +733,64 @@ class PerfilduenioScreen extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    CustomButton(
-                                      height: getVerticalSize(
-                                        31,
+                                    Visibility(
+                                      visible: _Button, // bool
+                                      child: CustomButton(
+                                        height: getVerticalSize(
+                                          31,
+                                        ),
+                                        width: getHorizontalSize(
+                                          113,
+                                        ),
+                                        text: "Editar",
+                                        onTap: () {
+                                          setState(() {
+                                            _Enable = true;
+                                            _Button = false;
+                                            _Button2 = true;
+                                          });
+                                        },
+                                        variant:
+                                            ButtonVariant.OutlineBlack9003f_2,
+                                        shape: ButtonShape.RoundedBorder15,
+                                        padding: ButtonPadding.PaddingAll6,
+                                        fontStyle: ButtonFontStyle
+                                            .UrbanistRomanSemiBold15Gray900,
                                       ),
-                                      width: getHorizontalSize(
-                                        113,
-                                      ),
-                                      text: "Editar",
-                                      variant:
-                                          ButtonVariant.OutlineBlack9003f_2,
-                                      shape: ButtonShape.RoundedBorder15,
-                                      padding: ButtonPadding.PaddingAll6,
-                                      fontStyle: ButtonFontStyle
-                                          .UrbanistRomanSemiBold15Gray900,
                                     ),
-                                    CustomButton(
-                                      height: getVerticalSize(
-                                        31,
+                                    Visibility(
+                                      visible: _Button2, // bool
+                                      child: CustomButton(
+                                        height: getVerticalSize(
+                                          31,
+                                        ),
+                                        width: getHorizontalSize(
+                                          113,
+                                        ),
+                                        onTap: _Button
+                                            ? null
+                                            : () {
+                                                Actualizar();
+                                                setState(() {
+                                                  // Regresamos los valores bool a como estaban antes de presionar el boton editar
+                                                  _Enable = false;
+                                                  _Button = true;
+                                                  //appBarTittle();
+                                                  Navigator.pop(context);
+                                                  Navigator.of(context).push(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              PerfilduenioScreen()));
+                                                });
+                                              },
+                                        text: "Actualizar",
+                                        variant:
+                                            ButtonVariant.OutlineBlack9003f_2,
+                                        shape: ButtonShape.RoundedBorder15,
+                                        padding: ButtonPadding.PaddingAll6,
+                                        fontStyle: ButtonFontStyle
+                                            .UrbanistRomanSemiBold15Gray900,
                                       ),
-                                      width: getHorizontalSize(
-                                        113,
-                                      ),
-                                      text: "Actualizar",
-                                      variant:
-                                          ButtonVariant.OutlineBlack9003f_2,
-                                      shape: ButtonShape.RoundedBorder15,
-                                      padding: ButtonPadding.PaddingAll6,
-                                      fontStyle: ButtonFontStyle
-                                          .UrbanistRomanSemiBold15Gray900,
                                     ),
                                   ],
                                 ),

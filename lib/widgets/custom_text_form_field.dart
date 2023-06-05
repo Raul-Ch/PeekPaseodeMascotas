@@ -2,27 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField(
-      {super.key,
-      this.shape,
-      this.padding,
-      this.variant,
-      this.fontStyle,
-      this.alignment,
-      this.width,
-      this.margin,
-      this.controller,
-      this.focusNode,
-      this.isObscureText = false,
-      this.textInputAction = TextInputAction.next,
-      this.textInputType = TextInputType.text,
-      this.maxLines,
-      this.hintText,
-      this.prefix,
-      this.prefixConstraints,
-      this.suffix,
-      this.suffixConstraints,
-      this.validator});
+  CustomTextFormField({
+    super.key,
+    this.shape,
+    this.padding,
+    this.variant,
+    this.fontStyle,
+    this.alignment,
+    this.width,
+    this.margin,
+    this.controller,
+    this.focusNode,
+    this.isObscureText = false,
+    this.textInputAction = TextInputAction.next,
+    this.textInputType = TextInputType.text,
+    this.maxLines,
+    this.hintText,
+    this.prefix,
+    this.prefixConstraints,
+    this.suffix,
+    this.suffixConstraints,
+    this.validator,
+    this.enabled,
+  });
 
   TextFormFieldShape? shape;
 
@@ -62,6 +64,8 @@ class CustomTextFormField extends StatelessWidget {
 
   FormFieldValidator<String>? validator;
 
+  bool? enabled;
+
   @override
   Widget build(BuildContext context) {
     return alignment != null
@@ -86,6 +90,7 @@ class CustomTextFormField extends StatelessWidget {
         maxLines: maxLines ?? 1,
         decoration: _buildDecoration(),
         validator: validator,
+        enabled: enabled,
       ),
     );
   }

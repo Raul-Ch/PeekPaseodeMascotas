@@ -3,7 +3,7 @@ import 'package:peek_app/core/app_export.dart';
 
 // ignore: must_be_immutable
 class VercitasItemProgresoWidget extends StatelessWidget {
-  VercitasItemProgresoWidget();
+  const VercitasItemProgresoWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -102,7 +102,7 @@ class VercitasItemProgresoWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           width: getHorizontalSize(
                             63,
                           ),

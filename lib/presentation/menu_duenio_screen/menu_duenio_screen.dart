@@ -8,6 +8,7 @@ class MenuDuenioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth.instance.authStateChanges();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

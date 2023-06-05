@@ -4,17 +4,19 @@ import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 
 class PaseopaseadorprogresoScreen extends StatelessWidget {
+  const PaseopaseadorprogresoScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: getVerticalSize(
                   736,
                 ),
@@ -355,7 +357,7 @@ class PaseopaseadorprogresoScreen extends StatelessWidget {
                                 right: 25,
                               ),
                               child: ListView.separated(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 separatorBuilder: (context, index) {
                                   return SizedBox(
@@ -366,7 +368,7 @@ class PaseopaseadorprogresoScreen extends StatelessWidget {
                                 },
                                 itemCount: 2,
                                 itemBuilder: (context, index) {
-                                  return ListcostoItemWidget();
+                                  return const ListcostoItemWidget();
                                 },
                               ),
                             ),

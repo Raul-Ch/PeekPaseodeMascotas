@@ -53,7 +53,7 @@ class CustomButton extends StatelessWidget {
 
   _buildButtonWidget() {
     return Padding(
-      padding: margin ?? EdgeInsets.all(0.0),
+      padding: margin ?? const EdgeInsets.all(0.0),
       child: TextButton(
         onPressed: onTap,
         style: _buildTextButtonStyle(),

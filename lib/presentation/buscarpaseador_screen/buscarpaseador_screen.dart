@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class BuscarpaseadorScreen extends StatelessWidget {
+  const BuscarpaseadorScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,7 +18,7 @@ class BuscarpaseadorScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -36,7 +38,7 @@ class BuscarpaseadorScreen extends StatelessWidget {
                       children: [
                         Align(
                           alignment: Alignment.bottomCenter,
-                          child: Container(
+                          child: SizedBox(
                             height: getVerticalSize(
                               604,
                             ),
@@ -441,7 +443,7 @@ class BuscarpaseadorScreen extends StatelessWidget {
                                               Align(
                                                 alignment:
                                                     Alignment.bottomCenter,
-                                                child: Container(
+                                                child: SizedBox(
                                                   height: getVerticalSize(
                                                     283,
                                                   ),
@@ -818,7 +820,7 @@ class BuscarpaseadorScreen extends StatelessWidget {
                                                         AppRoutes
                                                             .perfilpaseadorcitasScreen);
                                                   },
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     height: getVerticalSize(
                                                       283,
                                                     ),

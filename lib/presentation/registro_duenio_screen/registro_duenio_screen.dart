@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:peek_app/core/app_export.dart';
@@ -7,6 +6,7 @@ import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'model/crear_mascota_model.dart';
 import 'model/registro_duenio_model.dart';
 
 class RegistroDuenioScreen extends StatefulWidget {
@@ -79,6 +79,10 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
           municipalityController.text.trim(),
           cityController.text.trim(),
         );
+
+        createPet(
+            "Nombre", "Tamaño", "Raza", 0.0, 0, false, "F/M", "Personalidad");
+
         Navigator.pop(context);
         Navigator.pushNamed(context, AppRoutes.loginScreen);
       } else {

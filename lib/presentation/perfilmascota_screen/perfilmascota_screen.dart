@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
@@ -5,14 +8,139 @@ import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_icon_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-class PerfilmascotaScreen extends StatelessWidget {
-  TextEditingController tamaoController = TextEditingController();
+class PerfilmascotaScreen extends StatefulWidget {
+  const PerfilmascotaScreen({Key? key}) : super(key: key);
 
-  TextEditingController razaController = TextEditingController();
+  @override
+  State<PerfilmascotaScreen> createState() => _PerfilmascotaScreen();
+}
 
-  TextEditingController personalidadController = TextEditingController();
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
+}
 
-  TextEditingController notasController = TextEditingController();
+//Declaracion de variables relacionadas al uso de Firebase BD
+var user = FirebaseAuth.instance.currentUser!;
+var uid = FirebaseAuth.instance.currentUser!.uid;
+
+class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
+  late var nombreController = TextEditingController();
+  //late var tamanioController = TextEditingController();
+  late var razaController = TextEditingController();
+  late var pesoController = TextEditingController();
+  late var edadController = TextEditingController();
+  //late var enfermedadesController = TextEditingController();
+  late var sexoController = TextEditingController();
+  late var personalidadController = TextEditingController();
+  // late var notasController = TextEditingController();
+  List<String> tamanios = ['Pequeño', 'Mediano', 'Grande'];
+  String? selectedtamanio = 'Pequeño';
+
+  List<String> enf = ['Si', 'No'];
+  String? selectedenf = 'No';
+
+// Variables del codigo
+  String nombre = ' ';
+  String tamanio = '';
+  String raza = '';
+  double peso = 0.0;
+  int edad = 0;
+  bool enfermedades = false;
+  String sexo = '';
+  String personalidad = '';
+//  String notas = '';
+
+  bool _Enable = false;
+  bool _Button = true;
+  bool _Button2 = false;
+
+  @override
+  void dispose() {
+    nombreController.dispose();
+    //tamanioController.dispose();
+    razaController.dispose();
+    pesoController.dispose();
+    edadController.dispose();
+    // enfermedadesController.dispose();
+    sexoController.dispose();
+    personalidadController.dispose();
+    //notasController.dispose();
+    super.dispose();
+  }
+
+//Nuestro metodo futuro a utilizar encargado de actualizar la BD con los controladores de texto recogidos
+//REGISTRO
+  Future Actualizar() async {
+    user = FirebaseAuth.instance.currentUser!;
+    uid = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance
+        .collection("duenios")
+        .doc(uid)
+        .collection("mascotas")
+        .doc(uid)
+        .update({
+      'Nombre': nombreController.text.trim(),
+      'Tamaño': tamanio,
+      'Raza': razaController.text.trim(),
+      'Peso': double.parse(pesoController.text.trim()),
+      'Edad': int.parse(edadController.text.trim()),
+      'Enfermedades': enfermedades,
+      'Genero': sexoController.text.trim(),
+      'Personalidad': personalidadController.text.trim(),
+    });
+  }
+
+//Esta función no solo nos mostrara el nombre del usuario en la APPBAR tambien sera la encargada de cargar los datos de nuestra BD actual a variables utilizadas en los TextField
+  Future mascotas() async {
+    user = FirebaseAuth.instance.currentUser!;
+    uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance
+        .collection("duenios")
+        .doc(uid)
+        .collection("mascotas")
+        .doc(uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic>? data =
+            documentSnapshot.data() as Map<String, dynamic>?;
+        var Nombrepet = data?['Nombre'];
+        var Tamanio = data?['Tamaño'];
+        var Raza = data?['Raza'];
+        var Peso = data?['Peso'];
+        var Edad = data?['Edad'];
+        var Enfermedades = data?['Enfermedades'];
+        var Sexo = data?['Genero'];
+        var Personalidad = data?['Personalidad'];
+        //var GCorreo = data?['Email'];
+        print('Document data: ${documentSnapshot.data()}');
+        //Set the relevant data to variables as needed
+        //print(Nombre1);
+        setState(() {
+          nombre = Nombrepet;
+          tamanio = Tamanio;
+          raza = Raza;
+          peso = Peso;
+          edad = Edad;
+          enfermedades = Enfermedades;
+          sexo = Sexo;
+          personalidad = Personalidad;
+          //correo = GCorreo;
+          //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
+        });
+      } else {
+        print("Document does not exist on the database uid:  " + uid);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    mascotas();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,98 +288,14 @@ class PerfilmascotaScreen extends StatelessWidget {
         )),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           height: size.height,
           width: double.maxFinite,
           child: Stack(
             alignment: Alignment.center,
             children: [
               Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: getPadding(
-                    bottom: 280,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: getPadding(
-                          top: 2,
-                          bottom: 3,
-                        ),
-                        child: Text(
-                          "Peso:",
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: AppStyle.txtUrbanistRomanBold20,
-                        ),
-                      ),
-                      Container(
-                        width: getHorizontalSize(
-                          91,
-                        ),
-                        margin: getMargin(
-                          left: 17,
-                          top: 1,
-                        ),
-                        padding: getPadding(
-                          left: 4,
-                          top: 5,
-                          right: 4,
-                          bottom: 5,
-                        ),
-                        decoration: AppDecoration.txtOutlineIndigo50.copyWith(
-                          borderRadius: BorderRadiusStyle.txtRoundedBorder8,
-                        ),
-                        child: Text(
-                          "Peso",
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: AppStyle.txtUrbanistRomanMedium15,
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 18,
-                          top: 1,
-                          bottom: 4,
-                        ),
-                        child: Text(
-                          "Edad:",
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: AppStyle.txtUrbanistRomanBold20,
-                        ),
-                      ),
-                      Container(
-                        width: getHorizontalSize(
-                          87,
-                        ),
-                        margin: getMargin(
-                          left: 4,
-                          bottom: 1,
-                        ),
-                        padding: getPadding(
-                          left: 4,
-                          top: 5,
-                          right: 4,
-                          bottom: 5,
-                        ),
-                        decoration: AppDecoration.txtOutlineIndigo50.copyWith(
-                          borderRadius: BorderRadiusStyle.txtRoundedBorder8,
-                        ),
-                        child: Text(
-                          "Edad",
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: AppStyle.txtUrbanistRomanMedium15,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                alignment: Alignment.center,
               ),
               Align(
                 alignment: Alignment.center,
@@ -265,15 +309,17 @@ class PerfilmascotaScreen extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Spacer(),
+                      SizedBox(height: 130.0),
+                      //Spacer(),
                       Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.topCenter,
                         child: Padding(
                           padding: getPadding(
                             left: 13,
+                            top: 0,
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -342,11 +388,11 @@ class PerfilmascotaScreen extends StatelessWidget {
                       Padding(
                         padding: getPadding(
                           left: 34,
-                          top: 12,
+                          top: 30,
                           right: 26,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
                               padding: getPadding(
@@ -360,30 +406,17 @@ class PerfilmascotaScreen extends StatelessWidget {
                                 style: AppStyle.txtUrbanistRomanBold20,
                               ),
                             ),
-                            Container(
+                            CustomTextFormField(
                               width: getHorizontalSize(
-                                225,
+                                230,
                               ),
-                              margin: getMargin(
-                                left: 13,
-                              ),
-                              padding: getPadding(
-                                left: 10,
-                                top: 5,
-                                right: 10,
-                                bottom: 5,
-                              ),
-                              decoration:
-                                  AppDecoration.txtOutlineIndigo50.copyWith(
-                                borderRadius:
-                                    BorderRadiusStyle.txtRoundedBorder8,
-                              ),
-                              child: Text(
-                                "Nombre",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanMedium15,
-                              ),
+                              enabled: _Enable,
+                              hintText: "Nombre",
+                              //focusNode: FocusNode(),
+                              controller: nombreController =
+                                  TextEditingController(text: nombre),
+
+                              padding: TextFormFieldPadding.PaddingT6,
                             ),
                           ],
                         ),
@@ -391,7 +424,7 @@ class PerfilmascotaScreen extends StatelessWidget {
                       Padding(
                         padding: getPadding(
                           left: 34,
-                          top: 13,
+                          top: 15,
                           right: 26,
                         ),
                         child: Row(
@@ -403,22 +436,70 @@ class PerfilmascotaScreen extends StatelessWidget {
                                 bottom: 3,
                               ),
                               child: Text(
-                                "Tamaño:",
+                                "Tamaño:    ",
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtUrbanistRomanBold20,
                               ),
                             ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                focusNode: FocusNode(),
-                                controller: tamaoController,
-                                hintText: "Tamaño",
-                                margin: getMargin(
-                                  left: 10,
+                            SizedBox(
+                              width: 225,
+                              height: 40,
+                              child: CustomButton(
+                                height: getVerticalSize(
+                                  35,
                                 ),
-                                padding: TextFormFieldPadding.PaddingT6,
+                                width: getHorizontalSize(
+                                  200,
+                                ),
+                                onTap: _Enable
+                                    ? () {
+                                        Selecttamanio(context);
+                                      }
+                                    : null,
+                                text: tamanio.toString(),
+                                variant: ButtonVariant.OutlineBlack9003f_2,
+                                shape: ButtonShape.RoundedBorder15,
+                                padding: ButtonPadding.PaddingAll6,
+                                fontStyle: ButtonFontStyle
+                                    .UrbanistRomanSemiBold15Gray900,
                               ),
+
+/*                               child: DropdownButtonFormField<String>(
+                                hint: Text(tamanio),
+                                //disabledHint: Text(tamanio),
+                                dropdownColor:
+                                    Color.fromARGB(255, 214, 223, 151),
+                                decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                        borderSide: BorderSide(
+                                            width: 1, color: Colors.grey))),
+                                value: selectedtamanio,
+                                items: tamanios
+                                    .map((item) => DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Text(item),
+                                        ))
+                                    .toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedtamanio = value;
+                                  });
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    selectedtamanio = value;
+                                  });
+                                },
+                                /*                                 focusNode: FocusNode(),
+                                  controller: tamanioController,
+                                  hintText: "Tamaño",
+                                  margin: getMargin(
+                                    left: 10,
+                                  ), */
+                                //padding: TextFormFieldPadding.PaddingT6,
+                              ), */
                             ),
                           ],
                         ),
@@ -426,7 +507,7 @@ class PerfilmascotaScreen extends StatelessWidget {
                       Padding(
                         padding: getPadding(
                           left: 34,
-                          top: 13,
+                          top: 15,
                           right: 26,
                         ),
                         child: Row(
@@ -446,8 +527,10 @@ class PerfilmascotaScreen extends StatelessWidget {
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                focusNode: FocusNode(),
-                                controller: razaController,
+                                enabled: _Enable,
+                                //focusNode: FocusNode(),
+                                controller: razaController =
+                                    TextEditingController(text: raza),
                                 hintText: "Raza",
                                 margin: getMargin(
                                   left: 13,
@@ -460,12 +543,72 @@ class PerfilmascotaScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: getPadding(
-                          left: 35,
-                          top: 40,
+                          left: 34,
+                          top: 18,
                           right: 26,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: getPadding(
+                                  top: 2,
+                                  bottom: 3,
+                                ),
+                                child: Text(
+                                  "Peso:",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle.txtUrbanistRomanBold20,
+                                ),
+                              ),
+                              CustomTextFormField(
+                                width: getHorizontalSize(
+                                  100,
+                                ),
+                                enabled: _Enable,
+                                //focusNode: FocusNode(),
+                                controller: pesoController =
+                                    TextEditingController(
+                                        text: peso.toString()),
+                                hintText: "Peso",
+                                padding: TextFormFieldPadding.PaddingT6,
+                              ),
+                              Padding(
+                                padding: getPadding(
+                                  left: 18,
+                                  top: 1,
+                                  bottom: 4,
+                                ),
+                                child: Text(
+                                  "Edad:",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle.txtUrbanistRomanBold20,
+                                ),
+                              ),
+                              CustomTextFormField(
+                                width: getHorizontalSize(
+                                  100,
+                                ),
+                                enabled: _Enable,
+                                //focusNode: FocusNode(),
+                                controller: edadController =
+                                    TextEditingController(
+                                        text: edad.toString()),
+
+                                padding: TextFormFieldPadding.PaddingT6,
+                              ),
+                            ]),
+                      ),
+                      Padding(
+                        padding: getPadding(
+                          left: 35,
+                          top: 15,
+                          right: 26,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
@@ -480,30 +623,63 @@ class PerfilmascotaScreen extends StatelessWidget {
                                 style: AppStyle.txtUrbanistRomanBold20,
                               ),
                             ),
-                            Container(
-                              width: getHorizontalSize(
-                                62,
+                            SizedBox(
+                              width: 50,
+                              height: 38,
+                              child: CustomButton(
+                                height: getVerticalSize(
+                                  35,
+                                ),
+                                width: getHorizontalSize(
+                                  200,
+                                ),
+                                onTap: _Enable
+                                    ? () {
+                                        Selectenf(context);
+                                      }
+                                    : null,
+                                text: enfermedades.toString(),
+                                variant: ButtonVariant.OutlineBlack9003f_2,
+                                shape: ButtonShape.RoundedBorder15,
+                                padding: ButtonPadding.PaddingAll6,
+                                fontStyle: ButtonFontStyle
+                                    .UrbanistRomanSemiBold15Gray900,
                               ),
-                              margin: getMargin(
-                                top: 1,
-                              ),
-                              padding: getPadding(
-                                left: 2,
-                                top: 5,
-                                right: 2,
-                                bottom: 5,
-                              ),
-                              decoration:
-                                  AppDecoration.txtOutlineIndigo50.copyWith(
-                                borderRadius:
-                                    BorderRadiusStyle.txtRoundedBorder8,
-                              ),
-                              child: Text(
-                                "bool",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanMedium15,
-                              ),
+/*                               child: DropdownButtonFormField<String>(
+                                //disabledHint: Text(enfermedades.toString()),
+                                enableFeedback: _Enable,
+                                dropdownColor:
+                                    Color.fromARGB(255, 214, 223, 151),
+                                decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                        borderSide: BorderSide(
+                                            width: 1, color: Colors.grey))),
+                                value: selectedenf,
+                                items: enf
+                                    .map((item) => DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Text(item),
+                                        ))
+                                    .toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedenf = value;
+                                  });
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    selectedenf = value;
+                                  });
+                                },
+                                /*                                 focusNode: FocusNode(),
+                                  controller: tamanioController,
+                                  hintText: "Tamaño",
+                                  margin: getMargin(
+                                    left: 10,
+                                  ), */
+                                //padding: TextFormFieldPadding.PaddingT6,
+                              ), */
                             ),
                             Padding(
                               padding: getPadding(
@@ -518,31 +694,17 @@ class PerfilmascotaScreen extends StatelessWidget {
                                 style: AppStyle.txtUrbanistRomanBold20,
                               ),
                             ),
-                            Container(
+                            CustomTextFormField(
                               width: getHorizontalSize(
-                                45,
+                                50,
                               ),
-                              margin: getMargin(
-                                left: 5,
-                                bottom: 1,
-                              ),
-                              padding: getPadding(
-                                left: 2,
-                                top: 5,
-                                right: 2,
-                                bottom: 5,
-                              ),
-                              decoration:
-                                  AppDecoration.txtOutlineIndigo50.copyWith(
-                                borderRadius:
-                                    BorderRadiusStyle.txtRoundedBorder8,
-                              ),
-                              child: Text(
-                                "Sexo",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanMedium15,
-                              ),
+                              enabled: _Enable,
+                              hintText: "F/M",
+                              //focusNode: FocusNode(),
+                              controller: sexoController =
+                                  TextEditingController(text: sexo),
+
+                              padding: TextFormFieldPadding.PaddingT6,
                             ),
                           ],
                         ),
@@ -550,7 +712,7 @@ class PerfilmascotaScreen extends StatelessWidget {
                       Padding(
                         padding: getPadding(
                           left: 32,
-                          top: 12,
+                          top: 15,
                           right: 28,
                         ),
                         child: Row(
@@ -572,8 +734,10 @@ class PerfilmascotaScreen extends StatelessWidget {
                               width: getHorizontalSize(
                                 175,
                               ),
-                              focusNode: FocusNode(),
-                              controller: personalidadController,
+                              enabled: _Enable,
+                              //focusNode: FocusNode(),
+                              controller: personalidadController =
+                                  TextEditingController(text: personalidad),
                               hintText: "Personalidad",
                               margin: getMargin(
                                 left: 18,
@@ -583,83 +747,90 @@ class PerfilmascotaScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: getPadding(
-                          left: 32,
-                          top: 11,
-                          right: 27,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 19,
-                                bottom: 28,
-                              ),
-                              child: Text(
-                                "Notas:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                focusNode: FocusNode(),
-                                controller: notasController,
-                                hintText: "Notas",
-                                margin: getMargin(
-                                  left: 7,
-                                ),
-                                padding: TextFormFieldPadding.PaddingT27,
-                                textInputAction: TextInputAction.done,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: getPadding(
                             left: 32,
-                            top: 19,
+                            top: 5,
                             right: 50,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CustomButton(
-                                height: getVerticalSize(
-                                  31,
+                              Visibility(
+                                visible: _Button, // bool
+                                child: CustomButton(
+                                  height: getVerticalSize(
+                                    31,
+                                  ),
+                                  width: getHorizontalSize(
+                                    113,
+                                  ),
+                                  onTap: () {
+                                    setState(() {
+                                      _Enable = true;
+                                      _Button = false;
+                                      _Button2 = true;
+                                    });
+                                  },
+                                  text: "Editar",
+                                  variant: ButtonVariant.OutlineBlack9003f_2,
+                                  shape: ButtonShape.RoundedBorder15,
+                                  padding: ButtonPadding.PaddingAll6,
+                                  fontStyle: ButtonFontStyle
+                                      .UrbanistRomanSemiBold15Gray900,
                                 ),
-                                width: getHorizontalSize(
-                                  113,
-                                ),
-                                text: "Editar",
-                                variant: ButtonVariant.OutlineBlack9003f_2,
-                                shape: ButtonShape.RoundedBorder15,
-                                padding: ButtonPadding.PaddingAll6,
-                                fontStyle: ButtonFontStyle
-                                    .UrbanistRomanSemiBold15Gray900,
                               ),
-                              CustomButton(
-                                height: getVerticalSize(
-                                  31,
+                              Visibility(
+                                visible: _Button2,
+                                child: CustomButton(
+                                  height: getVerticalSize(
+                                    31,
+                                  ),
+                                  width: getHorizontalSize(
+                                    113,
+                                  ),
+                                  onTap: _Button
+                                      ? null
+                                      : () {
+                                          Actualizar();
+                                          setState(() {
+                                            // Regresamos los valores bool a como estaban antes de presionar el boton editar
+                                            _Enable = false;
+                                            _Button = true;
+                                            //appBarTittle();
+                                            Navigator.pop(context);
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        PerfilmascotaScreen()));
+                                          });
+                                        },
+                                  text: "Actualizar",
+                                  variant: ButtonVariant.OutlineBlack9003f_2,
+                                  shape: ButtonShape.RoundedBorder15,
+                                  padding: ButtonPadding.PaddingAll6,
+                                  fontStyle: ButtonFontStyle
+                                      .UrbanistRomanSemiBold15Gray900,
                                 ),
-                                width: getHorizontalSize(
-                                  113,
-                                ),
-                                text: "Actualizar",
-                                variant: ButtonVariant.OutlineBlack9003f_2,
-                                shape: ButtonShape.RoundedBorder15,
-                                padding: ButtonPadding.PaddingAll6,
-                                fontStyle: ButtonFontStyle
-                                    .UrbanistRomanSemiBold15Gray900,
                               ),
                             ],
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: SizedBox(
+                          height: getVerticalSize(52),
+                          width: getHorizontalSize(
+                            300,
+                          ),
+                          child: Text(
+                            "Nota: Tamaño y enfermedades se actualizaran una vez que se guarden los cambios",
+                            maxLines: null,
+                            textAlign: TextAlign.center,
+                            style: AppStyle.txtUrbanistRomanBold16,
                           ),
                         ),
                       ),
@@ -672,7 +843,7 @@ class PerfilmascotaScreen extends StatelessWidget {
                           375,
                         ),
                         margin: getMargin(
-                          top: 29,
+                          top: 5.5,
                         ),
                       ),
                     ],
@@ -756,5 +927,79 @@ class PerfilmascotaScreen extends StatelessWidget {
 
   onTapBtnArrowleft(BuildContext context) {
     Navigator.pop(context);
+  }
+
+  Selecttamanio(BuildContext context) {
+    // set up the button
+    Widget smallButton = TextButton(
+      onPressed: () {
+        tamanio = "Pequeña";
+        Navigator.pop(context);
+      },
+      child: const Text("Pequeña"),
+    );
+
+    // set up the button
+    Widget mediumButton = TextButton(
+      onPressed: () {
+        tamanio = "Mediana";
+        Navigator.pop(context);
+      },
+      child: const Text("Mediana"),
+    );
+
+    Widget bigButton = TextButton(
+      onPressed: () {
+        tamanio = "Grande";
+        Navigator.pop(context);
+      },
+      child: const Text("Grande"),
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("Tamaño"),
+      content: const Text(
+          textAlign: TextAlign.left, "Selecciona el tamaño de tu Perro"),
+      actions: [smallButton, mediumButton, bigButton],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  Selectenf(BuildContext context) {
+    // set up the button
+    Widget yesButton = TextButton(
+      onPressed: () {
+        enfermedades = true;
+        Navigator.pop(context);
+      },
+      child: const Text("Si"),
+    );
+
+    Widget noButton = TextButton(
+      onPressed: () {
+        enfermedades = false;
+        Navigator.pop(context);
+      },
+      child: const Text("No"),
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("Enfermedades"),
+      content: const Text(
+          textAlign: TextAlign.left,
+          "Selecciona si tu Perro tiene enfermedades o alergias"),
+      actions: [yesButton, noButton],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }

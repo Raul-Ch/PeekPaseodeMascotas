@@ -18,6 +18,8 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
 
   TextEditingController commentsController = TextEditingController();
 
+  PerfilpaseadorcitasScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +35,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
         ),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           height: size.height,
           width: double.maxFinite,
           child: Stack(
@@ -121,7 +123,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Container(
+                                SizedBox(
                                   height: getVerticalSize(
                                     43,
                                   ),
@@ -700,7 +702,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     CustomImageView(
                       imagePath: ImageConstant.imgframe,
                       height: getVerticalSize(

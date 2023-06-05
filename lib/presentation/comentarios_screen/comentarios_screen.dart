@@ -1,15 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-import '../../widgets/custom_icon_button.dart';
-
 class ComentariosScreen extends StatelessWidget {
-  TextEditingController group678Controller = TextEditingController();
-
-  TextEditingController group677Controller = TextEditingController();
+  TextEditingController asuntoController = TextEditingController();
+  TextEditingController comentarioController = TextEditingController();
 
   ComentariosScreen({super.key});
+
+  @override
+  void dispose() {
+    asuntoController.dispose();
+    comentarioController.dispose();
+  }
+
+  UploadComentario(context) {
+    FirebaseFirestore.instance.collection('comentarios').doc().set({
+      'Asunto': asuntoController.text.trim(),
+      'Comentario': comentarioController.text.trim(),
+    });
+    SentComentario(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +73,7 @@ class ComentariosScreen extends StatelessWidget {
                         alignment: Alignment.bottomLeft,
                         child: Container(
                           height: getVerticalSize(
-                            119,
+                            130,
                           ),
                           width: getHorizontalSize(
                             91,
@@ -71,45 +83,39 @@ class ComentariosScreen extends StatelessWidget {
                             bottom: 19,
                           ),
                           child: Stack(
-                            alignment: Alignment.topCenter,
+                            alignment: Alignment.bottomCenter,
                             children: [
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
                                   padding: getPadding(
-                                    left: 23,
-                                    top: 4,
-                                    right: 23,
-                                    bottom: 4,
+                                    left: 5,
+                                    top: 0,
+                                    right: 5,
+                                    bottom: 0,
                                   ),
                                   decoration:
                                       AppDecoration.outlineBlack9003f.copyWith(
                                     borderRadius:
                                         BorderRadiusStyle.roundedBorder14,
                                   ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: getPadding(
-                                          top: 2,
-                                        ),
-                                        child: Text(
-                                          "Enviar",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.left,
-                                          style: AppStyle.txtUrbanistRomanCom,
-                                        ),
-                                      ),
-                                    ],
+                                  child: TextButton(
+                                    onPressed: () {
+                                      UploadComentario(context);
+                                    },
+                                    child: Text(
+                                      "Enviar",
+                                      //overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                      style: AppStyle.txtUrbanistRomanCom,
+                                    ),
                                   ),
                                 ),
                               ),
                               CustomImageView(
                                 imagePath: ImageConstant.imgCachorro1,
                                 height: getVerticalSize(
-                                  97,
+                                  98,
                                 ),
                                 width: getHorizontalSize(
                                   85,
@@ -227,7 +233,7 @@ class ComentariosScreen extends StatelessWidget {
                           right: 56,
                         ),
                         child: Text(
-                          "Por favor, ingresa en el recuadro de abajo tu correo.",
+                          "Por favor, ingresa en el recuadro de abajo el asunto general de la sugerenica o comentario.",
                           maxLines: null,
                           textAlign: TextAlign.left,
                           style: AppStyle.txtUrbanistRomanMedium16Gray900,
@@ -236,8 +242,8 @@ class ComentariosScreen extends StatelessWidget {
                     ),
                     CustomTextFormField(
                       focusNode: FocusNode(),
-                      controller: group678Controller,
-                      hintText: "Ingresa tu correo",
+                      controller: asuntoController,
+                      hintText: "Ingresa tu sugerencia,queja o comentario",
                       margin: getMargin(
                         left: 21,
                         top: 7,
@@ -261,7 +267,7 @@ class ComentariosScreen extends StatelessWidget {
                     ),
                     CustomTextFormField(
                       focusNode: FocusNode(),
-                      controller: group677Controller,
+                      controller: comentarioController,
                       hintText: "Comentario",
                       margin: getMargin(
                         left: 21,
@@ -289,6 +295,30 @@ class ComentariosScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  SentComentario(BuildContext context) {
+    Widget okButton = TextButton(
+      onPressed: () {
+        Navigator.pop(context);
+        Navigator.pop(context);
+      },
+      child: const Text("Ok"),
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("Comentarios"),
+      content: const Text(
+          textAlign: TextAlign.left,
+          "¡Muchas gracias por tus comentarios, ten por seguro que los tendremos en cuenta!"),
+      actions: [okButton],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

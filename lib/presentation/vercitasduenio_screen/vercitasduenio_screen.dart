@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
 class VercitasduenioScreen extends StatelessWidget {
+  const VercitasduenioScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,10 +18,8 @@ class VercitasduenioScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
-          height: getVerticalSize(
-            812,
-          ),
+        body: SizedBox(
+          height: size.height,
           width: double.maxFinite,
           child: Stack(
             alignment: Alignment.bottomCenter,
@@ -39,16 +39,21 @@ class VercitasduenioScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "CITAS:",
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.left,
-                        style: AppStyle.txtArtographieMedium30,
+                      Padding(
+                        padding: getPadding(
+                          top: 25,
+                        ),
+                        child: Text(
+                          "CITAS:",
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.left,
+                          style: AppStyle.txtArtographieMedium30,
+                        ),
                       ),
                       Container(
                         margin: getMargin(
                           left: 7,
-                          top: 40,
+                          top: 27,
                           right: 7,
                         ),
                         padding: getPadding(
@@ -58,37 +63,43 @@ class VercitasduenioScreen extends StatelessWidget {
                         decoration: AppDecoration.outlineBlack9003f.copyWith(
                           borderRadius: BorderRadiusStyle.roundedBorder20,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CustomImageView(
-                              imagePath: ImageConstant.imgprogreso,
-                              height: getSize(
-                                71,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, AppRoutes.paseoduenioprogresoScreen);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CustomImageView(
+                                imagePath: ImageConstant.imgprogreso,
+                                height: getSize(
+                                  71,
+                                ),
+                                width: getSize(
+                                  71,
+                                ),
                               ),
-                              width: getSize(
-                                71,
+                              Padding(
+                                padding: getPadding(
+                                  top: 21,
+                                  bottom: 6,
+                                ),
+                                child: Text(
+                                  "En progreso",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle.txtUrbanistRomanBold35,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: getPadding(
-                                top: 21,
-                                bottom: 6,
-                              ),
-                              child: Text(
-                                "En progreso",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold35,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
                         margin: getMargin(
                           left: 7,
-                          top: 21,
+                          top: 65,
                           right: 7,
                         ),
                         padding: getPadding(
@@ -128,9 +139,9 @@ class VercitasduenioScreen extends StatelessWidget {
                       Container(
                         margin: getMargin(
                           left: 6,
-                          top: 21,
+                          top: 65,
                           right: 6,
-                          bottom: 200,
+                          bottom: 208,
                         ),
                         padding: getPadding(
                           left: 15,

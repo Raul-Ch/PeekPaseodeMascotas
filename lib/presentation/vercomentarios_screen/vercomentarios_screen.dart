@@ -1,11 +1,86 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-class VercomentariosScreen extends StatelessWidget {
-  TextEditingController nameinputController = TextEditingController();
-  TextEditingController expinputController = TextEditingController();
-  TextEditingController apellido1inputController = TextEditingController();
+class VercomentariosScreen extends StatefulWidget {
+  const VercomentariosScreen({Key? key}) : super(key: key);
+
+  @override
+  State<VercomentariosScreen> createState() => _VercomentariosScreen();
+}
+
+//Declaracion de variables relacionadas al uso de Firebase BD
+var user = FirebaseAuth.instance.currentUser!;
+var uid = FirebaseAuth.instance.currentUser!.uid;
+
+class _VercomentariosScreen extends State<VercomentariosScreen> {
+  TextEditingController tarifaController = TextEditingController();
+  TextEditingController expController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
+  TextEditingController lastnameoneController = TextEditingController();
+  TextEditingController apellidos = TextEditingController();
+
+  int tarifa = 0;
+  String exp = ' ';
+  String name = ' ';
+  String lastname = '';
+  String lastnameone = '';
+  bool _Enable = false;
+  String _apellidos = '';
+  @override
+  void dispose() {
+    tarifaController.dispose();
+    expController.dispose();
+    nameController.dispose();
+    lastnameController.dispose();
+    lastnameoneController.dispose();
+    apellidos.dispose();
+  }
+
+  Future appBarTittle() async {
+    user = FirebaseAuth.instance.currentUser!;
+    uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance
+        .collection('paseadores')
+        .doc(uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic>? data =
+            documentSnapshot.data() as Map<String, dynamic>?;
+        var Tarifa = data?['Tarifa'];
+        var Experiencia = data?['Experiencia'];
+        var Nombre = data?['Nombre'];
+        var ApellidoP = data?['Apellido Paterno'];
+        var ApellidoM = data?['Apellido Materno'];
+        //var GCorreo = data?['Email'];
+        print('Document data: ${documentSnapshot.data()}');
+        //Set the relevant data to variables as needed
+        //print(Nombre1);
+        setState(() {
+          tarifa = Tarifa;
+          exp = Experiencia;
+          name = Nombre;
+          lastname = ApellidoP;
+          lastnameone = ApellidoM;
+          //correo = GCorreo;
+          _apellidos = ApellidoP + " " + ApellidoM;
+        });
+      } else {
+        print("Document does not exist on the database uid:  " + uid);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    appBarTittle();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +97,14 @@ class VercomentariosScreen extends StatelessWidget {
         ),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  child: Container(
+                  child: SizedBox(
                     height: getVerticalSize(
                       1000,
                     ),
@@ -39,7 +114,7 @@ class VercomentariosScreen extends StatelessWidget {
                       children: [
                         Align(
                           alignment: Alignment.topCenter,
-                          child: Container(
+                          child: SizedBox(
                             height: size.height,
                             width: double.maxFinite,
                             child: Stack(
@@ -67,7 +142,7 @@ class VercomentariosScreen extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           height: getVerticalSize(
                                             192,
                                           ),
@@ -145,13 +220,15 @@ class VercomentariosScreen extends StatelessWidget {
                                                         ),
                                                       ),
                                                       CustomTextFormField(
+                                                        enabled: _Enable,
                                                         maxLines: 5,
                                                         width:
                                                             getHorizontalSize(
                                                                 280),
-                                                        focusNode: FocusNode(),
-                                                        controller:
-                                                            expinputController,
+                                                        //focusNode: FocusNode(),
+                                                        controller: expController =
+                                                            TextEditingController(
+                                                                text: exp),
                                                         hintText: "Experiencia",
                                                         padding:
                                                             TextFormFieldPadding
@@ -191,12 +268,15 @@ class VercomentariosScreen extends StatelessWidget {
                                                         ),
                                                       ),
                                                       CustomTextFormField(
+                                                        enabled: _Enable,
                                                         width:
                                                             getHorizontalSize(
                                                                 100),
-                                                        focusNode: FocusNode(),
-                                                        controller:
-                                                            expinputController,
+                                                        //focusNode: FocusNode(),
+                                                        controller: tarifaController =
+                                                            TextEditingController(
+                                                                text: tarifa
+                                                                    .toString()),
                                                         hintText: "Tarifa",
                                                         padding:
                                                             TextFormFieldPadding
@@ -358,8 +438,10 @@ class VercomentariosScreen extends StatelessWidget {
                                                 width: getHorizontalSize(
                                                   235,
                                                 ),
-                                                focusNode: FocusNode(),
-                                                controller: nameinputController,
+                                                enabled: _Enable,
+                                                controller: nameController =
+                                                    TextEditingController(
+                                                        text: name),
                                                 hintText: "Nombre",
                                                 padding: TextFormFieldPadding
                                                     .PaddingT6,
@@ -393,9 +475,10 @@ class VercomentariosScreen extends StatelessWidget {
                                                 width: getHorizontalSize(
                                                   230,
                                                 ),
-                                                focusNode: FocusNode(),
-                                                controller:
-                                                    apellido1inputController,
+                                                enabled: _Enable,
+                                                controller: apellidos =
+                                                    TextEditingController(
+                                                        text: _apellidos),
                                                 hintText: "Apellido Paterno",
                                                 padding: TextFormFieldPadding
                                                     .PaddingT6,

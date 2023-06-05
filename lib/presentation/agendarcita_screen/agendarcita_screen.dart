@@ -3,6 +3,8 @@ import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 
 class AgendarcitaScreen extends StatelessWidget {
+  const AgendarcitaScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,12 +19,12 @@ class AgendarcitaScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: getVerticalSize(
                   702.5,
                 ),

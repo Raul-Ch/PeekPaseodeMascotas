@@ -1,15 +1,15 @@
 //import '../widgets/vercitas_item_finalizado_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
-import 'package:peek_app/presentation/paseoduenioprogreso_screen/widgets/vercitas_item_progreso_widget.dart';
+import 'package:peek_app/presentation/vercitasduenio_screen/widgets/vercitas_item_progreso_widget.dart';
 
 class VercitasItemFinalizadoWidget extends StatelessWidget {
-  VercitasItemFinalizadoWidget();
+  const VercitasItemFinalizadoWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
+        body: SizedBox(
           height: getVerticalSize(
             1168,
           ),
@@ -58,7 +58,7 @@ class VercitasItemFinalizadoWidget extends StatelessWidget {
                               right: 16,
                             ),
                             child: ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               separatorBuilder: (context, index) {
                                 return SizedBox(
@@ -69,7 +69,7 @@ class VercitasItemFinalizadoWidget extends StatelessWidget {
                               },
                               itemCount: 2,
                               itemBuilder: (context, index) {
-                                return VercitasItemProgresoWidget();
+                                return const VercitasItemProgresoWidget();
                               },
                             ),
                           ),

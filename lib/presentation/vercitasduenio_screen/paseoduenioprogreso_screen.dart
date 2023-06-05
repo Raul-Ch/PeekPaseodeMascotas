@@ -8,6 +8,8 @@ class PaseoduenioprogresoScreen extends StatelessWidget {
 
   TextEditingController phoneinputController = TextEditingController();
 
+  PaseoduenioprogresoScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,12 +25,12 @@ class PaseoduenioprogresoScreen extends StatelessWidget {
         ),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: getVerticalSize(
                   732.5,
                 ),
@@ -38,7 +40,7 @@ class PaseoduenioprogresoScreen extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.center,
-                      child: Container(
+                      child: SizedBox(
                         height: getVerticalSize(
                           780,
                         ),
@@ -532,7 +534,7 @@ class PaseoduenioprogresoScreen extends StatelessWidget {
                                                         getHorizontalSize(
                                                       2,
                                                     ),
-                                                    offset: Offset(
+                                                    offset: const Offset(
                                                       0,
                                                       4,
                                                     ),
@@ -543,7 +545,7 @@ class PaseoduenioprogresoScreen extends StatelessWidget {
                                           ),
                                           Align(
                                             alignment: Alignment.bottomCenter,
-                                            child: Container(
+                                            child: SizedBox(
                                               width: getHorizontalSize(
                                                 252,
                                               ),
