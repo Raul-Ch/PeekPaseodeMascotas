@@ -447,7 +447,7 @@ class _PerfilduenioScreen extends State<PerfilduenioScreen> {
                                     ),
                                     CustomTextFormField(
                                       width: getHorizontalSize(
-                                        165,
+                                        155,
                                       ),
                                       //focusNode: FocusNode(),
                                       enabled: _Enable,
