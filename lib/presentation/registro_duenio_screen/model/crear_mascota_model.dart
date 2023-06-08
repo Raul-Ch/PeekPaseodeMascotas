@@ -26,5 +26,6 @@ createPet(
     'Enfermedades': sick,
     'Genero': gender,
     'Personalidad': mood,
+    'ID Mascota': duenio.uid,
   });
 }

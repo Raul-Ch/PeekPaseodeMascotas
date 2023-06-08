@@ -4,24 +4,21 @@ import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
 class PerfilpaseadorcitasScreen extends StatelessWidget {
+  final String paseadoresList;
+
+  PerfilpaseadorcitasScreen({required this.paseadoresList});
+
   TextEditingController rateamountController = TextEditingController();
-
   TextEditingController phonenumberController = TextEditingController();
-
   TextEditingController postalcodeController = TextEditingController();
-
   TextEditingController streetController = TextEditingController();
-
   TextEditingController municipalityController = TextEditingController();
-
   TextEditingController cityController = TextEditingController();
-
   TextEditingController commentsController = TextEditingController();
-
-  PerfilpaseadorcitasScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    print(paseadoresList);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

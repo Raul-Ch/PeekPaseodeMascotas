@@ -113,7 +113,7 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
               ),
               //Mascota
               ListTile(
-                contentPadding: const EdgeInsets.only(left: 150),
+                contentPadding: const EdgeInsets.only(left: 120),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgMaskgroup39x39,
                 ),
@@ -138,7 +138,7 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
             children: [
               SizedBox(
                 height: getVerticalSize(
-                  732.5,
+                  736,
                 ),
                 width: double.maxFinite,
                 child: Stack(
@@ -449,15 +449,10 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
                       ),
                     ),
                     CustomImageView(
-                      imagePath: ImageConstant.imgframe,
-                      height: getVerticalSize(
-                        32,
-                      ),
-                      width: getHorizontalSize(
-                        375,
-                      ),
-                      alignment: Alignment.bottomCenter,
-                    ),
+                        imagePath: ImageConstant.imgframe,
+                        height: getVerticalSize(32),
+                        width: getHorizontalSize(375),
+                        alignment: Alignment.bottomCenter)
                   ],
                 ),
               ),

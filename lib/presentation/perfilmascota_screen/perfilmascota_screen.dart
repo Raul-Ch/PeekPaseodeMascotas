@@ -843,7 +843,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                           375,
                         ),
                         margin: getMargin(
-                          top: 5.5,
+                          top: 34.7,
                         ),
                       ),
                     ],

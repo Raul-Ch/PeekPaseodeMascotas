@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
+import 'package:peek_app/presentation/perfilpaseadorcitas_screen/perfilpaseadorcitas_screen.dart';
 
 class BuscarpaseadorScreen extends StatefulWidget {
   const BuscarpaseadorScreen({Key? key}) : super(key: key);
@@ -74,34 +75,261 @@ class _BuscarpaseadorScreen extends State<BuscarpaseadorScreen> {
           ),
         ),
         backgroundColor: ColorConstant.whiteA700,
-        body: SizedBox(
-          //width: double.maxFinite,
-          child: FutureBuilder(
-            future: myFuture,
-            builder: (context, snapshot) {
-              return ListView.builder(
-                shrinkWrap: true,
-                controller: ScrollController(),
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        shape: RoundedRectangleBorder(
-                            side: const BorderSide(width: 2),
-                            borderRadius: BorderRadius.circular(20)),
-                        title: Row(children: [
-                          Text(items[index]["Nombre"]),
-                          SizedBox(width: 10),
-                          Text("Age 30"),
-                        ]),
-                      ));
-                },
-              );
-            },
+        body: Container(
+          height: getVerticalSize(1366),
+          width: double.maxFinite,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              CustomImageView(
+                  imagePath: ImageConstant.imgBackground,
+                  height: getVerticalSize(1210),
+                  width: getHorizontalSize(375),
+                  alignment: Alignment.topCenter,
+                  margin: getMargin(top: 32)),
+              Align(
+                alignment: Alignment.topCenter,
+                child: SingleChildScrollView(
+                  child: Padding(
+                      padding: getPadding(bottom: 463),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: getMargin(top: 20, right: 2),
+                            padding: getPadding(left: 7, right: 7),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text("Paseadores Cercanos",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtArtographieMedium30),
+                                Container(
+                                  height: getVerticalSize(498),
+                                  width: getHorizontalSize(359),
+                                  margin: getMargin(top: 14),
+                                  child: FutureBuilder(
+                                    future: myFuture,
+                                    builder: (context, snapshot) {
+                                      return ListView.builder(
+                                        shrinkWrap: true,
+                                        controller: ScrollController(),
+                                        itemCount: items.length,
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: ListTile(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              PerfilpaseadorcitasScreen(
+                                                                  paseadoresList:
+                                                                      items[index]
+                                                                          [
+                                                                          "ID"])));
+                                                },
+                                                shape: RoundedRectangleBorder(
+                                                    side: const BorderSide(
+                                                        color: Colors.grey,
+                                                        width: 1),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
+                                                title: Row(children: [
+                                                  CustomImageView(
+                                                      imagePath: ImageConstant
+                                                          .imgPaseador,
+                                                      height:
+                                                          getVerticalSize(74),
+                                                      width:
+                                                          getHorizontalSize(72),
+                                                      radius:
+                                                          BorderRadius.circular(
+                                                              getHorizontalSize(
+                                                                  38)),
+                                                      margin:
+                                                          getMargin(bottom: 3)),
+                                                  Padding(
+                                                    padding: getPadding(
+                                                      left: 5,
+                                                      top: 2,
+                                                    ),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                            width:
+                                                                getHorizontalSize(
+                                                                    81),
+                                                            margin: getMargin(
+                                                                left: 2),
+                                                            child: Text(
+                                                                items[index][
+                                                                        "Nombre"] +
+                                                                    " " +
+                                                                    items[index]
+                                                                        [
+                                                                        "Apellido Paterno"],
+                                                                maxLines: null,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .left,
+                                                                style: AppStyle
+                                                                    .txtUrbanistRomanBold18)),
+                                                        Row(children: [
+                                                          Padding(
+                                                            padding: getPadding(
+                                                                left: 2),
+                                                            child: Text(
+                                                                "Tarifa: \$" +
+                                                                    items[index]
+                                                                            [
+                                                                            "Tarifa"]
+                                                                        .toString(),
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .left,
+                                                                style: AppStyle
+                                                                    .txtUrbanistRomanBold18),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10,
+                                                          ),
+                                                          Text(
+                                                              "Tel.: " +
+                                                                  items[index][
+                                                                          "Telefono"]
+                                                                      .toString(),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .left,
+                                                              style: AppStyle
+                                                                  .txtUrbanistRomanMedium18),
+                                                        ]),
+                                                        Padding(
+                                                            padding: getPadding(
+                                                                left: 2,
+                                                                top: 5,
+                                                                right: 39),
+                                                            child: Row(
+                                                                children: [
+                                                                  Text(
+                                                                      "Experiencia:",
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .left,
+                                                                      style: AppStyle
+                                                                          .txtUrbanistRomanMedium18),
+                                                                  SizedBox(
+                                                                    width: 105,
+                                                                    child: Padding(
+                                                                        padding: getPadding(
+                                                                            left:
+                                                                                11,
+                                                                            top:
+                                                                                1,
+                                                                            bottom:
+                                                                                1),
+                                                                        child: Text(
+                                                                            items[index][
+                                                                                "Experiencia"],
+                                                                            overflow:
+                                                                                TextOverflow.ellipsis,
+                                                                            textAlign: TextAlign.left,
+                                                                            style: AppStyle.txtUrbanistRomanMedium15)),
+                                                                  )
+                                                                ]))
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ]),
+                                              ));
+                                        },
+                                      );
+                                    },
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )),
+                ),
+              )
+            ],
           ),
         ),
       ),
     );
   }
 }
+ /*
+ child: FutureBuilder(
+                future: myFuture,
+                builder: (context, snapshot) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    controller: ScrollController(),
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            shape: RoundedRectangleBorder(
+                                side: const BorderSide(width: 2),
+                                borderRadius: BorderRadius.circular(20)),
+                            title: Row(children: [
+                              SizedBox(width: 40),
+                              Text(items[index]["Nombre"]),
+                              SizedBox(width: 5),
+                              Text(items[index]["Apellido Paterno"]),
+                              SizedBox(width: 10),
+                              Text(items[index]["Apellido Materno"]),
+                              SizedBox(width: 50),
+                              Text("\$ "),
+                              Text(items[index]["Tarifa"].toString()),
+                              Text(" MXN"),
+                            ]),
+                          ));
+                    },
+                  );
+                },
+              ),
+ */
+
+/*
+ children: [
+                                                            Text(items[index]
+                                                                ["Nombre"]),
+                                                            SizedBox(width: 5),
+                                                            Text(items[index][
+                                                                "Apellido Paterno"]),
+                                                            SizedBox(width: 10),
+                                                            Text(items[index][
+                                                                "Apellido Materno"]),
+                                                            SizedBox(width: 50),
+                                                            Text("\$ "),
+                                                            Text(items[index]
+                                                                    ["Tarifa"]
+                                                                .toString()),
+                                                            Text(" MXN"),
+                                                          ],
+*/

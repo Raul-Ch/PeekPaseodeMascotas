@@ -307,7 +307,7 @@ class PaseosmenuduenioScreen extends StatelessWidget {
                                                       Padding(
                                                           padding: getPadding(
                                                               top: 34,
-                                                              left: 35,
+                                                              left: 25,
                                                               bottom: 31),
                                                           child: Text(
                                                               "Ver  Citas",

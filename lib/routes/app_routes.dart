@@ -107,7 +107,9 @@ class AppRoutes {
     paseosmenuduenioScreen: (context) => const PaseosmenuduenioScreen(),
     buscarpaseadorScreen: (context) => const BuscarpaseadorScreen(),
     paseosmenupaseadorScreen: (context) => const PaseosmenupaseadorScreen(),
-    perfilpaseadorcitasScreen: (context) => PerfilpaseadorcitasScreen(),
+    perfilpaseadorcitasScreen: (context) => PerfilpaseadorcitasScreen(
+          paseadoresList: '',
+        ),
     vercomentariosScreen: (context) => VercomentariosScreen(),
 
     //Citas

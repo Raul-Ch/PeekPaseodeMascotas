@@ -258,7 +258,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
               ),
               //Mascota
               ListTile(
-                contentPadding: const EdgeInsets.only(left: 150),
+                contentPadding: const EdgeInsets.only(left: 120),
                 leading: CustomImageView(
                   imagePath: ImageConstant.imgMaskgroup39x39,
                 ),
@@ -649,7 +649,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                             ),
                             CustomTextFormField(
                               width: getHorizontalSize(
-                                160,
+                                158,
                               ),
                               //focusNode: FocusNode(),
                               controller: lastnameController =
@@ -685,7 +685,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                             ),
                             CustomTextFormField(
                               width: getHorizontalSize(
-                                160,
+                                158,
                               ),
                               //focusNode: FocusNode(),
                               controller: lastnameoneController =

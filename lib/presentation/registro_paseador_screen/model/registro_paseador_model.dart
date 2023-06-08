@@ -24,5 +24,6 @@ addPaseadorDetails(
     'Calle': street,
     'Municipio': mun,
     'Ciudad': city,
+    'ID': paseador.uid,
   });
 }

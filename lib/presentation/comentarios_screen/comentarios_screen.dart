@@ -115,7 +115,7 @@ class ComentariosScreen extends StatelessWidget {
                               CustomImageView(
                                 imagePath: ImageConstant.imgCachorro1,
                                 height: getVerticalSize(
-                                  98,
+                                  99,
                                 ),
                                 width: getHorizontalSize(
                                   85,
@@ -255,7 +255,7 @@ class ComentariosScreen extends StatelessWidget {
                       child: Padding(
                         padding: getPadding(
                           left: 23,
-                          top: 44,
+                          top: 30,
                         ),
                         child: Text(
                           "Y en la parte de aquí tu comentario",
