@@ -1,24 +1,139 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
+import 'package:peek_app/presentation/agendarcita_screen/agendarcita_screen.dart';
+import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioagendadas_screen.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
-class PerfilpaseadorcitasScreen extends StatelessWidget {
-  final String paseadoresList;
+class PerfilpaseadorcitasScreen extends StatefulWidget {
+  String paseadorID;
+  PerfilpaseadorcitasScreen({Key? key, required this.paseadorID})
+      : super(key: key);
+  @override
+  State<PerfilpaseadorcitasScreen> createState() =>
+      _PerfilpaseadorcitasScreen();
+}
 
-  PerfilpaseadorcitasScreen({required this.paseadoresList});
+//desahabilitamos los textfield para que solo sean modificables cuando lo indicamos mediante valores bool
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
+}
 
-  TextEditingController rateamountController = TextEditingController();
+//var user = FirebaseAuth.instance.currentUser!;
+//var uid = FirebaseAuth.instance.currentUser!.uid;
+bool _Enable = false;
+
+class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
+  late String paseadorIDs = widget.paseadorID;
+  TextEditingController tarifaController = TextEditingController();
+  TextEditingController expController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
+  TextEditingController lastnameoneController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
   TextEditingController phonenumberController = TextEditingController();
   TextEditingController postalcodeController = TextEditingController();
+  TextEditingController numstreetController = TextEditingController();
   TextEditingController streetController = TextEditingController();
   TextEditingController municipalityController = TextEditingController();
   TextEditingController cityController = TextEditingController();
+  TextEditingController rateamountController = TextEditingController();
   TextEditingController commentsController = TextEditingController();
+
+  int tarifa = 0;
+  String exp = ' ';
+  String name = ' ';
+  String lastname = '';
+  String lastnameone = '';
+  String date = '';
+  //String gender = '';
+  int phone = 0;
+  int cp = 0;
+  int numstreet = 0;
+  String street = '';
+  String mun = '';
+  String city = '';
+  String correo = '';
+
+  @override
+  void dispose() {
+    tarifaController.dispose();
+    expController.dispose();
+    nameController.dispose();
+    lastnameController.dispose();
+    lastnameoneController.dispose();
+    dateController.dispose();
+    //genderController.dispose();
+    phonenumberController.dispose();
+    postalcodeController.dispose();
+    numstreetController.dispose();
+    streetController.dispose();
+    municipalityController.dispose();
+    cityController.dispose();
+    commentsController.dispose();
+    super.dispose();
+  }
+
+  Future appBarTittle() async {
+    FirebaseFirestore.instance
+        .collection('paseadores')
+        .doc(paseadorIDs)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic>? data =
+            documentSnapshot.data() as Map<String, dynamic>?;
+        var Tarifa = data?['Tarifa'];
+        var Experiencia = data?['Experiencia'];
+        var Nombre = data?['Nombre'];
+        var ApellidoP = data?['Apellido Paterno'];
+        var ApellidoM = data?['Apellido Materno'];
+        var Edad = data?['Cumpleaños'];
+        var Telefono = data?['Telefono'];
+        var CP = data?['CP'];
+        var NumCalle = data?['Num Calle'];
+        var Calle = data?['Calle'];
+        var Municipio = data?['Municipio'];
+        var Ciudad = data?['Ciudad'];
+        //var GCorreo = data?['Email'];
+        print('Document data: ${documentSnapshot.data()}');
+        //Set the relevant data to variables as needed
+        setState(() {
+          tarifa = Tarifa;
+          exp = Experiencia;
+          name = Nombre;
+          lastname = ApellidoP;
+          lastnameone = ApellidoM;
+          date = Edad;
+          phone = Telefono;
+          cp = CP;
+          numstreet = NumCalle;
+          street = Calle;
+          mun = Municipio;
+          city = Ciudad;
+          //correo = GCorreo;
+          //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
+        });
+      } else {
+        print("Document does not exist on the database uid:  " + paseadorIDs);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    appBarTittle();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(paseadoresList);
+    print(paseadorIDs);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -39,13 +154,13 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Align(
-                alignment: Alignment.center,
+                alignment: Alignment.topCenter,
                 child: Container(
                   padding: getPadding(
                     left: 22,
                     top: 0,
                     right: 22,
-                    bottom: 50,
+                    bottom: 100,
                   ),
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -56,17 +171,25 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      SizedBox(
+                        height: 20,
+                      ),
                       CustomButton(
                         onTap: () {
                           //Navigator.pop(context);
-                          Navigator.pushNamed(
-                              context, AppRoutes.agendarcitaScreen);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AgendarcitaScreen(
+                                        paseadorID: paseadorIDs,
+                                        paseador: name,
+                                      )));
                         },
                         height: getVerticalSize(
-                          42,
+                          70,
                         ),
                         width: getHorizontalSize(
                           135,
@@ -79,7 +202,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                       Padding(
                         padding: getPadding(
                           left: 8,
-                          top: 22,
+                          top: 30,
                           right: 5,
                         ),
                         child: Row(
@@ -301,8 +424,10 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                           width: getHorizontalSize(
                                             110,
                                           ),
-                                          focusNode: FocusNode(),
-                                          controller: rateamountController,
+                                          enabled: _Enable,
+                                          controller: tarifaController =
+                                              TextEditingController(
+                                                  text: tarifa.toString()),
                                           hintText: "Tarifa",
                                           margin: getMargin(
                                             left: 4,
@@ -334,32 +459,19 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                               AppStyle.txtUrbanistRomanBold20,
                                         ),
                                       ),
-                                      Container(
+                                      CustomTextFormField(
+                                        enabled: _Enable,
+                                        maxLines: 4,
                                         width: getHorizontalSize(
                                           135,
                                         ),
+                                        controller: expController =
+                                            TextEditingController(text: exp),
+                                        hintText: "Experiencia",
                                         margin: getMargin(
-                                          left: 10,
+                                          left: 4,
                                         ),
-                                        padding: getPadding(
-                                          left: 5,
-                                          top: 8,
-                                          right: 5,
-                                          bottom: 50,
-                                        ),
-                                        decoration: AppDecoration
-                                            .txtOutlineIndigo50
-                                            .copyWith(
-                                          borderRadius: BorderRadiusStyle
-                                              .txtRoundedBorder8,
-                                        ),
-                                        child: Text(
-                                          "Experiencia",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.left,
-                                          style: AppStyle
-                                              .txtUrbanistRomanMedium15Bluegray400,
-                                        ),
+                                        padding: TextFormFieldPadding.PaddingT6,
                                       ),
                                     ],
                                   ),
@@ -389,28 +501,18 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                 style: AppStyle.txtUrbanistRomanBold20,
                               ),
                             ),
-                            Container(
+                            CustomTextFormField(
                               width: getHorizontalSize(
-                                225,
+                                230,
                               ),
-                              padding: getPadding(
-                                left: 10,
-                                top: 5,
-                                right: 10,
-                                bottom: 5,
+                              enabled: _Enable,
+                              controller: nameController =
+                                  TextEditingController(text: name),
+                              hintText: "Nombre",
+                              margin: getMargin(
+                                left: 4,
                               ),
-                              decoration:
-                                  AppDecoration.txtOutlineIndigo50.copyWith(
-                                borderRadius:
-                                    BorderRadiusStyle.txtRoundedBorder8,
-                              ),
-                              child: Text(
-                                "Nombre",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle
-                                    .txtUrbanistRomanMedium15Bluegray400,
-                              ),
+                              padding: TextFormFieldPadding.PaddingT6,
                             ),
                           ],
                         ),
@@ -430,9 +532,22 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtUrbanistRomanBold20,
                               ),
+                              CustomTextFormField(
+                                width: getHorizontalSize(
+                                  100,
+                                ),
+                                enabled: _Enable,
+                                controller: dateController =
+                                    TextEditingController(text: date),
+                                margin: getMargin(
+                                  left: 1,
+                                ),
+                                variant: TextFormFieldVariant.OutlineIndigo50_1,
+                                padding: TextFormFieldPadding.PaddingT6,
+                              ),
                               Padding(
                                 padding: getPadding(
-                                  left: 109,
+                                  left: 30,
                                 ),
                                 child: Text(
                                   "Sexo:",
@@ -468,8 +583,10 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                focusNode: FocusNode(),
-                                controller: phonenumberController,
+                                enabled: _Enable,
+                                controller: phonenumberController =
+                                    TextEditingController(
+                                        text: phone.toString()),
                                 hintText: "Teléfono",
                                 margin: getMargin(
                                   left: 7,
@@ -567,8 +684,9 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                focusNode: FocusNode(),
-                                controller: streetController,
+                                enabled: _Enable,
+                                controller: streetController =
+                                    TextEditingController(text: street),
                                 hintText: "Calle",
                                 margin: getMargin(
                                   left: 6,
@@ -604,8 +722,9 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                               width: getHorizontalSize(
                                 221,
                               ),
-                              focusNode: FocusNode(),
-                              controller: municipalityController,
+                              enabled: _Enable,
+                              controller: municipalityController =
+                                  TextEditingController(text: mun),
                               hintText: "Municipio",
                               margin: getMargin(
                                 left: 5,
@@ -638,13 +757,15 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                focusNode: FocusNode(),
-                                controller: cityController,
+                                enabled: _Enable,
+                                controller: cityController =
+                                    TextEditingController(text: city),
                                 hintText: "Ciudad",
                                 margin: getMargin(
                                   left: 4,
                                 ),
                                 padding: TextFormFieldPadding.PaddingT6,
+                                textInputAction: TextInputAction.done,
                               ),
                             ),
                           ],
@@ -655,7 +776,7 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                         child: Padding(
                           padding: getPadding(
                             right: 10,
-                            bottom: 50,
+                            bottom: 30,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -672,18 +793,24 @@ class PerfilpaseadorcitasScreen extends StatelessWidget {
                                   style: AppStyle.txtUrbanistRomanBold20,
                                 ),
                               ),
-                              CustomTextFormField(
-                                width: getHorizontalSize(
-                                  184,
+                              SingleChildScrollView(
+                                child: Container(
+                                  child: CustomTextFormField(
+                                    enabled: _Enable,
+                                    width: getHorizontalSize(
+                                      184,
+                                    ),
+                                    //focusNode: FocusNode(),
+                                    controller: commentsController,
+                                    hintText: "Fue muy atento...",
+                                    variant:
+                                        TextFormFieldVariant.OutlineBlack9003f,
+                                    padding: TextFormFieldPadding.PaddingAll12,
+                                    fontStyle: TextFormFieldFontStyle
+                                        .MontserratAlternatesSemiBold15,
+                                    textInputAction: TextInputAction.done,
+                                  ),
                                 ),
-                                focusNode: FocusNode(),
-                                controller: commentsController,
-                                hintText: "Fue muy atento...",
-                                variant: TextFormFieldVariant.OutlineBlack9003f,
-                                padding: TextFormFieldPadding.PaddingAll12,
-                                fontStyle: TextFormFieldFontStyle
-                                    .MontserratAlternatesSemiBold15,
-                                textInputAction: TextInputAction.done,
                               ),
                             ],
                           ),

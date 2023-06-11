@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 addPaseadorDetails(
+    String email,
     String name,
     String lastname,
     String lastnameone,
@@ -14,6 +15,7 @@ addPaseadorDetails(
     String city) async {
   final paseador = FirebaseAuth.instance.currentUser!;
   FirebaseFirestore.instance.collection('paseadores').doc(paseador.uid).set({
+    'Correo': email,
     'Nombre': name,
     'Apellido Paterno': lastname,
     'Apellido Materno': lastnameone,

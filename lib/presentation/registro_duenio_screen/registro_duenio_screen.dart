@@ -68,6 +68,7 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
             password: passwordController.text.trim());
 
         addDuenioDetails(
+          emailController.text.trim(),
           firstnameController.text.trim(),
           lastnameController.text.trim(),
           lastnameoneController.text.trim(),

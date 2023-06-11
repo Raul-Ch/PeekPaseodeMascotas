@@ -74,16 +74,16 @@ class VercitasduenioScreen extends StatelessWidget {
                               CustomImageView(
                                 imagePath: ImageConstant.imgprogreso,
                                 height: getSize(
-                                  71,
+                                  76,
                                 ),
                                 width: getSize(
-                                  71,
+                                  76,
                                 ),
                               ),
                               Padding(
                                 padding: getPadding(
-                                  top: 21,
-                                  bottom: 6,
+                                  top: 20,
+                                  bottom: 12,
                                 ),
                                 child: Text(
                                   "En progreso",
@@ -109,31 +109,37 @@ class VercitasduenioScreen extends StatelessWidget {
                         decoration: AppDecoration.outlineBlack9003f.copyWith(
                           borderRadius: BorderRadiusStyle.roundedBorder20,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CustomImageView(
-                              imagePath: ImageConstant.imgagendado,
-                              height: getSize(
-                                76,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, AppRoutes.paseoduenioagendadasScreen);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CustomImageView(
+                                imagePath: ImageConstant.imgagendado,
+                                height: getSize(
+                                  76,
+                                ),
+                                width: getSize(
+                                  76,
+                                ),
                               ),
-                              width: getSize(
-                                76,
+                              Padding(
+                                padding: getPadding(
+                                  top: 20,
+                                  bottom: 12,
+                                ),
+                                child: Text(
+                                  "Agendadas",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle.txtUrbanistRomanBold35Teal900,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: getPadding(
-                                top: 20,
-                                bottom: 12,
-                              ),
-                              child: Text(
-                                "Agendadas",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold35Teal900,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
@@ -153,23 +159,21 @@ class VercitasduenioScreen extends StatelessWidget {
                           borderRadius: BorderRadiusStyle.roundedBorder20,
                         ),
                         child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             CustomImageView(
                               imagePath: ImageConstant.imgbandera,
                               height: getVerticalSize(
-                                80,
+                                76,
                               ),
                               width: getHorizontalSize(
-                                81,
+                                76,
                               ),
                             ),
                             Padding(
                               padding: getPadding(
-                                left: 20,
-                                top: 21,
-                                right: 39,
-                                bottom: 15,
+                                top: 20,
+                                bottom: 12,
                               ),
                               child: Text(
                                 "Terminadas",

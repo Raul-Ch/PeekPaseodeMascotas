@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 addDuenioDetails(
+  String email,
   String name,
   String lastname,
   String lastnameone,
@@ -15,6 +16,7 @@ addDuenioDetails(
 ) async {
   final duenio = FirebaseAuth.instance.currentUser!;
   FirebaseFirestore.instance.collection('duenios').doc(duenio.uid).set({
+    'Correo': email,
     'Nombre': name,
     'Apellido Paterno': lastname,
     'Apellido Materno': lastnameone,

@@ -37,7 +37,7 @@ class AppStyle {
   static TextStyle txtUrbanistRomanBold35 = TextStyle(
     color: ColorConstant.gray900,
     fontSize: getFontSize(
-      35,
+      30,
     ),
     fontFamily: 'Urbanist',
     fontWeight: FontWeight.w700,
@@ -226,10 +226,10 @@ class AppStyle {
   static TextStyle txtUrbanistRomanMedium15Bluegray400 = TextStyle(
     color: ColorConstant.blueGray400,
     fontSize: getFontSize(
-      15,
+      20,
     ),
     fontFamily: 'Urbanist',
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
   );
 
   static TextStyle txtUrbanistRomanRegular18 = TextStyle(
@@ -374,5 +374,14 @@ class AppStyle {
     ),
     fontFamily: 'Urbanist',
     fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle txtUrbanistRomanBold18Teal900 = TextStyle(
+    color: ColorConstant.teal900,
+    fontSize: getFontSize(
+      18,
+    ),
+    fontFamily: 'Urbanist',
+    fontWeight: FontWeight.w700,
   );
 }

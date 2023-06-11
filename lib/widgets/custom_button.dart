@@ -136,6 +136,8 @@ class CustomButton extends StatelessWidget {
         return ColorConstant.gray900;
       case ButtonVariant.OutlineBlack9003f_2:
         return ColorConstant.lightGreen20001;
+      case ButtonVariant.OutlineOrange:
+        return ColorConstant.orangeA200;
       default:
         return ColorConstant.gray900;
     }
@@ -162,6 +164,7 @@ class CustomButton extends StatelessWidget {
       case ButtonVariant.OutlineBlack9003f:
       case ButtonVariant.OutlineBlack9003f_2:
       case ButtonVariant.OutlineBlack9003f_1:
+      case ButtonVariant.OutlineOrange:
         return null;
       default:
         return null;
@@ -175,6 +178,8 @@ class CustomButton extends StatelessWidget {
       case ButtonVariant.OutlineBlack9003f:
         return ColorConstant.black9003f;
       case ButtonVariant.OutlineBlack9003f_1:
+        return ColorConstant.black9003f;
+      case ButtonVariant.OutlineOrange:
         return ColorConstant.black9003f;
       case ButtonVariant.FillGray900:
       case ButtonVariant.White:
@@ -325,6 +330,7 @@ enum ButtonVariant {
   OutlineIndigo50,
   OutlineBlack9003f_2,
   OutlineBlack9003f_1,
+  OutlineOrange,
 }
 
 enum ButtonFontStyle {

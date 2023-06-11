@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -66,6 +65,7 @@ class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
             password: passwordController.text.trim());
 
         addPaseadorDetails(
+          emailController.text.trim(),
           firstnameController.text.trim(),
           lastnameController.text.trim(),
           lastnameoneController.text.trim(),

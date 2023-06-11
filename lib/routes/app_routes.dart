@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peek_app/presentation/login_screen/login_screen.dart';
+import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
 import 'package:peek_app/presentation/welcome_screen/welcome_screen.dart';
 import 'package:peek_app/presentation/registro_screen/registro_screen.dart';
 import 'package:peek_app/presentation/registro_duenio_screen/registro_duenio_screen.dart';
@@ -23,6 +24,7 @@ import '../presentation/perfilduenio_screen/perfilduenio_screen.dart';
 import '../presentation/perfilpaseadorcitas_screen/perfilpaseadorcitas_screen.dart';
 import '../presentation/vercomentarios_screen/vercomentarios_screen.dart';
 import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioprogreso_screen.dart';
+import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioagendadas_screen.dart';
 import 'package:peek_app/presentation/paseopaseadorprogreso_screen/paseopaseadorprogreso_screen.dart';
 
 class AppRoutes {
@@ -84,6 +86,12 @@ class AppRoutes {
   static const String paseopaseadorprogresoScreen =
       '/paseopaseadorprogreso_screen';
 
+  //Citas Agendadas
+  static const String paseoduenioagendadasScreen =
+      '/paseoduenioagendadas_screen';
+
+  static const String paseoduenioagendadaScreen = '/paseoduenioagendada_screen';
+
   static Map<String, WidgetBuilder> routes = {
     loginScreen: (context) => const LoginScreen(),
     welcomeScreen: (context) => const WelcomeScreen(),
@@ -108,17 +116,28 @@ class AppRoutes {
     buscarpaseadorScreen: (context) => const BuscarpaseadorScreen(),
     paseosmenupaseadorScreen: (context) => const PaseosmenupaseadorScreen(),
     perfilpaseadorcitasScreen: (context) => PerfilpaseadorcitasScreen(
-          paseadoresList: '',
+          paseadorID: '',
         ),
     vercomentariosScreen: (context) => VercomentariosScreen(),
 
     //Citas
-    agendarcitaScreen: (context) => const AgendarcitaScreen(),
+    agendarcitaScreen: (context) => AgendarcitaScreen(
+          paseadorID: '',
+          paseador: '',
+        ),
     vercitasduenioScreen: (context) => const VercitasduenioScreen(),
     vercitaspaseadorScreen: (context) => const VercitaspaseadorScreen(),
+    //Progreso
     paseoduenioprogresoScreen: (context) => PaseoduenioprogresoScreen(),
     paseopaseadorprogresoScreen: (context) =>
         const PaseopaseadorprogresoScreen(),
+    //Agendadas
+    paseoduenioagendadasScreen: (context) => PaseoduenioagendadasScreen(),
+    paseoduenioagendadaScreen: (context) => PaseoduenioagendadaScreen(
+          citaID: '',
+          duenioID: '',
+          paseadorID: '',
+        ),
 
     appNavigationScreen: (context) => const AppNavigationScreen()
   };

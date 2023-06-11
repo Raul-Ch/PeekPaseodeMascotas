@@ -270,27 +270,27 @@ class PaseosmenuduenioScreen extends StatelessWidget {
                                                                 alignment: Alignment
                                                                     .centerLeft)
                                                           ]))),
-                                              InkWell(
-                                                onTap: () {
-                                                  Navigator.pushNamed(
-                                                      context,
-                                                      AppRoutes
-                                                          .vercitasduenioScreen);
-                                                },
-                                                child: Container(
-                                                    margin: getMargin(
-                                                        top: 25, right: 1),
-                                                    padding: getPadding(
-                                                        left: 11,
-                                                        top: 6,
-                                                        right: 11,
-                                                        bottom: 6),
-                                                    decoration: AppDecoration
-                                                        .outlineBlack9003f
-                                                        .copyWith(
-                                                            borderRadius:
-                                                                BorderRadiusStyle
-                                                                    .roundedBorder22),
+                                              Container(
+                                                margin: getMargin(
+                                                    top: 25, right: 1),
+                                                padding: getPadding(
+                                                    left: 11,
+                                                    top: 6,
+                                                    right: 11,
+                                                    bottom: 6),
+                                                decoration: AppDecoration
+                                                    .outlineBlack9003f
+                                                    .copyWith(
+                                                        borderRadius:
+                                                            BorderRadiusStyle
+                                                                .roundedBorder22),
+                                                child: InkWell(
+                                                    onTap: () {
+                                                      Navigator.pushNamed(
+                                                          context,
+                                                          AppRoutes
+                                                              .vercitasduenioScreen);
+                                                    },
                                                     child: Row(children: [
                                                       CustomImageView(
                                                           imagePath:

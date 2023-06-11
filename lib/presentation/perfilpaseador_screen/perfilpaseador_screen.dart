@@ -530,7 +530,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                                             width: getHorizontalSize(
                                               110,
                                             ),
-                                            //focusNode: FocusNode(),
+                                            enabled: _Enable,
                                             controller: tarifaController =
                                                 TextEditingController(
                                                     text: tarifa.toString()),
@@ -571,7 +571,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                                           width: getHorizontalSize(
                                             135,
                                           ),
-                                          //focusNode: FocusNode(),
+                                          enabled: _Enable,
                                           controller: expController =
                                               TextEditingController(text: exp),
                                           hintText: "Experiencia",
@@ -615,7 +615,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                               width: getHorizontalSize(
                                 230,
                               ),
-                              //focusNode: FocusNode(),
+                              enabled: _Enable,
                               controller: nameController =
                                   TextEditingController(text: name),
                               hintText: "Nombre",
@@ -651,7 +651,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                               width: getHorizontalSize(
                                 158,
                               ),
-                              //focusNode: FocusNode(),
+                              enabled: _Enable,
                               controller: lastnameController =
                                   TextEditingController(text: lastname),
                               hintText: "Apellido Paterno",
@@ -687,7 +687,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                               width: getHorizontalSize(
                                 158,
                               ),
-                              //focusNode: FocusNode(),
+                              enabled: _Enable,
                               controller: lastnameoneController =
                                   TextEditingController(text: lastnameone),
                               hintText: "Apellido Materno",
@@ -719,7 +719,6 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                                 width: getHorizontalSize(
                                   100,
                                 ),
-                                //focusNode: FocusNode(),
                                 enabled: _Enable,
                                 controller: dateController =
                                     TextEditingController(text: date),
@@ -767,7 +766,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                //focusNode: FocusNode(),
+                                enabled: _Enable,
                                 controller: phonenumberController =
                                     TextEditingController(
                                         text: phone.toString()),
@@ -788,7 +787,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                           right: 29,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Padding(
                               padding: getPadding(
@@ -804,9 +803,9 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                             ),
                             CustomTextFormField(
                               width: getHorizontalSize(
-                                148,
+                                145,
                               ),
-                              //focusNode: FocusNode(),
+                              enabled: _Enable,
                               controller: postalcodeController =
                                   TextEditingController(text: cp.toString()),
                               hintText: "Código Postal",
@@ -831,7 +830,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                               width: getHorizontalSize(
                                 78,
                               ),
-                              //focusNode: FocusNode(),
+                              enabled: _Enable,
                               controller: numstreetController =
                                   TextEditingController(
                                       text: numstreet.toString()),
@@ -867,7 +866,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                //focusNode: FocusNode(),
+                                enabled: _Enable,
                                 controller: streetController =
                                     TextEditingController(text: street),
                                 hintText: "Calle",
@@ -884,7 +883,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                       Padding(
                         padding: getPadding(
                           left: 28,
-                          top: 7,
+                          top: 10,
                           right: 29,
                         ),
                         child: Row(
@@ -892,7 +891,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                           children: [
                             Padding(
                               padding: getPadding(
-                                top: 5,
+                                top: 0,
                               ),
                               child: Text(
                                 "Municipio:",
@@ -905,7 +904,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                               width: getHorizontalSize(
                                 221,
                               ),
-                              //focusNode: FocusNode(),
+                              enabled: _Enable,
                               controller: municipalityController =
                                   TextEditingController(text: mun),
                               hintText: "Municipio",
@@ -940,7 +939,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                             ),
                             Expanded(
                               child: CustomTextFormField(
-                                //focusNode: FocusNode(),
+                                enabled: _Enable,
                                 controller: cityController =
                                     TextEditingController(text: city),
                                 hintText: "Ciudad",

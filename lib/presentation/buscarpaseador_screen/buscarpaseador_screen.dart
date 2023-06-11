@@ -127,10 +127,9 @@ class _BuscarpaseadorScreen extends State<BuscarpaseadorScreen> {
                                                       MaterialPageRoute(
                                                           builder: (context) =>
                                                               PerfilpaseadorcitasScreen(
-                                                                  paseadoresList:
-                                                                      items[index]
-                                                                          [
-                                                                          "ID"])));
+                                                                  paseadorID: items[
+                                                                          index]
+                                                                      ["ID"])));
                                                 },
                                                 shape: RoundedRectangleBorder(
                                                     side: const BorderSide(

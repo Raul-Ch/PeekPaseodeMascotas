@@ -24,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixConstraints,
     this.validator,
     this.enabled,
+    //this.read,
   });
 
   TextFormFieldShape? shape;
@@ -65,6 +66,7 @@ class CustomTextFormField extends StatelessWidget {
   FormFieldValidator<String>? validator;
 
   bool? enabled;
+//  bool? read;
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +93,7 @@ class CustomTextFormField extends StatelessWidget {
         decoration: _buildDecoration(),
         validator: validator,
         enabled: enabled,
+        //readOnly: false,
       ),
     );
   }
