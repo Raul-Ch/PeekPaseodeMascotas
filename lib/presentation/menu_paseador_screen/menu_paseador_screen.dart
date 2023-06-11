@@ -437,7 +437,7 @@ class _MenuPaseadorScreen extends State<MenuPaseadorScreen> {
                                               padding: getPadding(
                                                 top: 3,
                                               ),
-                                              child: Row(
+                                              /*  child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
@@ -529,7 +529,7 @@ class _MenuPaseadorScreen extends State<MenuPaseadorScreen> {
                                                     ),
                                                   ),
                                                 ],
-                                              ),
+                                              ), */
                                             ),
                                           ],
                                         ),

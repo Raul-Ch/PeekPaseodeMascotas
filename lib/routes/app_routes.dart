@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:peek_app/presentation/login_screen/login_screen.dart';
 import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
+import 'package:peek_app/presentation/paseopaseadoragendada_screen/paseopaseadoragendada_screen.dart';
+import 'package:peek_app/presentation/vercitaspaseador_screen/paseopaseadoragendadas_screen.dart';
 import 'package:peek_app/presentation/welcome_screen/welcome_screen.dart';
 import 'package:peek_app/presentation/registro_screen/registro_screen.dart';
 import 'package:peek_app/presentation/registro_duenio_screen/registro_duenio_screen.dart';
@@ -89,8 +91,13 @@ class AppRoutes {
   //Citas Agendadas
   static const String paseoduenioagendadasScreen =
       '/paseoduenioagendadas_screen';
-
   static const String paseoduenioagendadaScreen = '/paseoduenioagendada_screen';
+
+  //Citas Agendadas
+  static const String paseopaseadorgendadasScreen =
+      '/paseopaseadorgendadas_screen';
+  static const String paseopaseadoragendadaScreen =
+      '/paseopaseadorgendada_screen';
 
   static Map<String, WidgetBuilder> routes = {
     loginScreen: (context) => const LoginScreen(),
@@ -134,6 +141,13 @@ class AppRoutes {
     //Agendadas
     paseoduenioagendadasScreen: (context) => PaseoduenioagendadasScreen(),
     paseoduenioagendadaScreen: (context) => PaseoduenioagendadaScreen(
+          citaID: '',
+          duenioID: '',
+          paseadorID: '',
+        ),
+
+    paseopaseadorgendadasScreen: (context) => PaseopaseadoragendadasScreen(),
+    paseopaseadoragendadaScreen: (context) => PaseopaseadoragendadaScreen(
           citaID: '',
           duenioID: '',
           paseadorID: '',

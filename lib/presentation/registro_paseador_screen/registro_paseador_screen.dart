@@ -76,6 +76,7 @@ class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
           streetController.text.trim(),
           municipalityController.text.trim(),
           cityController.text.trim(),
+          false,
         );
         //Navigator.pop(context);
         onTapRegistrarme(context);
@@ -105,7 +106,7 @@ class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
-            resizeToAvoidBottomInset: false,
+            resizeToAvoidBottomInset: true,
             body: SizedBox(
                 width: double.maxFinite,
                 child: Column(

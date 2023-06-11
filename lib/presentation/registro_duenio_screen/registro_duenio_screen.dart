@@ -81,8 +81,8 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
           cityController.text.trim(),
         );
 
-        createPet(
-            "Nombre", "Tamaño", "Raza", 0.0, 0, false, "F/M", "Personalidad");
+        createPet("Nombre", "Tamaño", "Raza", 0.0, 0, false, "F/M",
+            "Personalidad", "Notas");
 
         Navigator.pop(context);
         Navigator.pushNamed(context, AppRoutes.loginScreen);
@@ -127,8 +127,9 @@ class _RegistroDuenioScreen extends State<RegistroDuenioScreen> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,
-            resizeToAvoidBottomInset: false,
+            resizeToAvoidBottomInset: true,
             body: SizedBox(
+                height: (MediaQuery.of(context).size.height),
                 width: double.maxFinite,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,

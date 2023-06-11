@@ -463,7 +463,7 @@ class _MenuDuenioScreen extends State<MenuDuenioScreen> {
                                             padding: getPadding(
                                               top: 3,
                                             ),
-                                            child: Row(
+                                            /*  child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
@@ -551,7 +551,7 @@ class _MenuDuenioScreen extends State<MenuDuenioScreen> {
                                                   ),
                                                 ),
                                               ],
-                                            ),
+                                            ), */
                                           ),
                                         ],
                                       ),

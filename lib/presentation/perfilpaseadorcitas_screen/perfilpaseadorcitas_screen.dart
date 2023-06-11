@@ -218,7 +218,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "¡Tú!",
+                                    "¡Paseador!",
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
                                     style: AppStyle.txtUrbanistRomanBold20,
@@ -483,7 +483,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                       ),
                       Padding(
                         padding: getPadding(
-                          left: 9,
+                          left: 10,
                           right: 7,
                         ),
                         child: Row(
@@ -521,7 +521,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: getPadding(
-                            left: 11,
+                            left: 10,
                             top: 3,
                           ),
                           child: Row(
@@ -599,7 +599,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                       ),
                       Padding(
                         padding: getPadding(
-                          left: 12,
+                          left: 8,
                           top: 7,
                           right: 7,
                         ),
@@ -642,28 +642,26 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                                 style: AppStyle.txtUrbanistRomanBold20,
                               ),
                             ),
-                            CustomButton(
-                              height: getVerticalSize(
-                                30,
-                              ),
+                            CustomTextFormField(
                               width: getHorizontalSize(
-                                76,
+                                78,
                               ),
-                              text: "Núm. C.",
+                              enabled: _Enable,
+                              controller: numstreetController =
+                                  TextEditingController(
+                                      text: numstreet.toString()),
+                              hintText: "Num",
                               margin: getMargin(
                                 left: 5,
                               ),
-                              variant: ButtonVariant.OutlineIndigo50,
-                              padding: ButtonPadding.PaddingAll6,
-                              fontStyle: ButtonFontStyle
-                                  .UrbanistRomanMedium15Bluegray400,
+                              padding: TextFormFieldPadding.PaddingT6,
                             ),
                           ],
                         ),
                       ),
                       Padding(
                         padding: getPadding(
-                          left: 10,
+                          left: 8,
                           top: 8,
                           right: 7,
                         ),
@@ -700,7 +698,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                       ),
                       Padding(
                         padding: getPadding(
-                          left: 6,
+                          left: 5,
                           top: 7,
                           right: 7,
                         ),
@@ -736,7 +734,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                       ),
                       Padding(
                         padding: getPadding(
-                          left: 6,
+                          left: 8,
                           top: 9,
                           right: 7,
                         ),

@@ -10,6 +10,7 @@ createPet(
   bool sick,
   String gender,
   String mood,
+  String note,
 ) async {
   final duenio = FirebaseAuth.instance.currentUser!;
   FirebaseFirestore.instance
@@ -26,6 +27,7 @@ createPet(
     'Enfermedades': sick,
     'Genero': gender,
     'Personalidad': mood,
+    'Notas': note,
     'ID Mascota': duenio.uid,
   });
 }

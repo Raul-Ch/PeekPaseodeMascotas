@@ -33,6 +33,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
   //late var enfermedadesController = TextEditingController();
   late var sexoController = TextEditingController();
   late var personalidadController = TextEditingController();
+  late var notaController = TextEditingController();
   // late var notasController = TextEditingController();
   List<String> tamanios = ['Pequeño', 'Mediano', 'Grande'];
   String? selectedtamanio = 'Pequeño';
@@ -49,6 +50,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
   bool enfermedades = false;
   String sexo = '';
   String personalidad = '';
+  String nota = '';
 //  String notas = '';
 
   bool _Enable = false;
@@ -65,6 +67,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
     // enfermedadesController.dispose();
     sexoController.dispose();
     personalidadController.dispose();
+    notaController.dispose();
     //notasController.dispose();
     super.dispose();
   }
@@ -88,6 +91,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
       'Enfermedades': enfermedades,
       'Genero': sexoController.text.trim(),
       'Personalidad': personalidadController.text.trim(),
+      'Notas': notaController.text.trim(),
     });
   }
 
@@ -113,6 +117,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
         var Enfermedades = data?['Enfermedades'];
         var Sexo = data?['Genero'];
         var Personalidad = data?['Personalidad'];
+        var Nota = data?['Notas'];
         //var GCorreo = data?['Email'];
         print('Document data: ${documentSnapshot.data()}');
         //Set the relevant data to variables as needed
@@ -126,6 +131,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
           enfermedades = Enfermedades;
           sexo = Sexo;
           personalidad = Personalidad;
+          nota = Nota;
           //correo = GCorreo;
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
@@ -292,7 +298,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
         body: Container(
           height: (MediaQuery.of(context).size.height),
           width: double.maxFinite,
-          child: ListView(children: [
+          child: ListView(shrinkWrap: true, children: [
             Stack(
               alignment: Alignment.center,
               children: [
@@ -395,8 +401,8 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                         ),
                         Padding(
                           padding: getPadding(
-                            left: 34,
-                            top: 30,
+                            left: 30,
+                            top: 10,
                             right: 26,
                           ),
                           child: Row(
@@ -431,12 +437,12 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                         ),
                         Padding(
                           padding: getPadding(
-                            left: 34,
+                            left: 30,
                             top: 15,
                             right: 26,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: getPadding(
@@ -514,12 +520,12 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                         ),
                         Padding(
                           padding: getPadding(
-                            left: 34,
+                            left: 30,
                             top: 15,
                             right: 26,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: getPadding(
@@ -551,8 +557,8 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                         ),
                         Padding(
                           padding: getPadding(
-                            left: 34,
-                            top: 18,
+                            left: 30,
+                            top: 15,
                             right: 26,
                           ),
                           child: Row(
@@ -611,12 +617,12 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                         ),
                         Padding(
                           padding: getPadding(
-                            left: 35,
+                            left: 30,
                             top: 15,
                             right: 26,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
@@ -719,12 +725,12 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                         ),
                         Padding(
                           padding: getPadding(
-                            left: 32,
+                            left: 30,
                             top: 15,
-                            right: 28,
+                            right: 26,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: getPadding(
@@ -755,12 +761,51 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                             ],
                           ),
                         ),
+                        Padding(
+                          padding: getPadding(
+                            left: 32,
+                            top: 15,
+                            right: 28,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: getPadding(
+                                  top: 1,
+                                  bottom: 3,
+                                ),
+                                child: Text(
+                                  "Notas:",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle.txtUrbanistRomanBold20,
+                                ),
+                              ),
+                              CustomTextFormField(
+                                width: getHorizontalSize(
+                                  242,
+                                ),
+                                maxLines: 4,
+                                enabled: _Enable,
+                                //focusNode: FocusNode(),
+                                controller: notaController =
+                                    TextEditingController(text: nota),
+                                hintText: "Notas",
+                                margin: getMargin(
+                                  left: 18,
+                                ),
+                                padding: TextFormFieldPadding.PaddingT6,
+                              ),
+                            ],
+                          ),
+                        ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: getPadding(
                               left: 32,
-                              top: 5,
+                              top: 15,
                               right: 50,
                             ),
                             child: Row(
@@ -827,31 +872,35 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                             ),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: SizedBox(
-                            height: getVerticalSize(52),
-                            width: getHorizontalSize(
-                              300,
-                            ),
-                            child: Text(
-                              "Nota: Tamaño y enfermedades se actualizaran una vez que se guarden los cambios",
-                              maxLines: null,
-                              textAlign: TextAlign.center,
-                              style: AppStyle.txtUrbanistRomanBold16,
+
+                        Padding(
+                          padding: getPadding(top: 20),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: SizedBox(
+                              height: getVerticalSize(52),
+                              width: getHorizontalSize(
+                                300,
+                              ),
+                              child: Text(
+                                "Nota: Tamaño y enfermedades se actualizaran una vez que se guarden los cambios",
+                                maxLines: null,
+                                textAlign: TextAlign.center,
+                                style: AppStyle.txtUrbanistRomanBold16,
+                              ),
                             ),
                           ),
                         ),
                         CustomImageView(
                           imagePath: ImageConstant.imgframe,
                           height: getVerticalSize(
-                            32.2,
+                            33,
                           ),
                           width: getHorizontalSize(
                             375,
                           ),
                           margin: getMargin(
-                            top: 34.7,
+                            top: 55,
                           ),
                         ),
                       ],
@@ -864,7 +913,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                     margin: getMargin(
                       left: 0,
                       top: 0,
-                      bottom: 624,
+                      bottom: 750,
                     ),
                     padding: getPadding(
                       left: 18,
@@ -884,7 +933,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                             98,
                           ),
                           margin: getMargin(
-                            top: 12,
+                            top: 10,
                           ),
                         ),
                         Padding(

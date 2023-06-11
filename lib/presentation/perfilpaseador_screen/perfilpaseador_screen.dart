@@ -274,803 +274,818 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
           ),
         )),
         backgroundColor: ColorConstant.whiteA700,
-        resizeToAvoidBottomInset: false,
-        body: SizedBox(
-          height: size.height,
+        resizeToAvoidBottomInset: true,
+        body: Container(
+          height: (MediaQuery.of(context).size.height),
           width: double.maxFinite,
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        ImageConstant.imgBackground,
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: getPadding(
-                          left: 30,
-                          top: 58,
-                          right: 27,
+          child: ListView(shrinkWrap: true, children: [
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    height: (MediaQuery.of(context).size.height),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          ImageConstant.imgBackground,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 3,
-                                bottom: 30,
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "¡Tú!",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Container(
+                      height: (MediaQuery.of(context).size.height),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: getPadding(
+                              left: 30,
+                              top: 58,
+                              right: 27,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 0,
+                                    bottom: 30,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "¡Tú!",
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.left,
+                                        style: AppStyle.txtArtographieMedium40,
+                                      ),
+                                      CustomImageView(
+                                        imagePath: ImageConstant.imgPaseador,
+                                        height: getVerticalSize(
+                                          128,
+                                        ),
+                                        width: getHorizontalSize(
+                                          122,
+                                        ),
+                                        radius: BorderRadius.circular(
+                                          getHorizontalSize(
+                                            64,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: getPadding(
+                                    left: 12,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: getVerticalSize(
+                                          42,
+                                        ),
+                                        width: getHorizontalSize(
+                                          109,
+                                        ),
+                                        child: Stack(
+                                          alignment: Alignment.bottomLeft,
+                                          children: [
+                                            Align(
+                                              alignment: Alignment.topCenter,
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  children: [
+                                                    TextSpan(
+                                                      text: "Calificación",
+                                                      style: TextStyle(
+                                                        color: ColorConstant
+                                                            .gray900,
+                                                        fontSize: getFontSize(
+                                                          20,
+                                                        ),
+                                                        fontFamily: 'Urbanist',
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                      ),
+                                                    ),
+                                                    TextSpan(
+                                                      text: ": ",
+                                                      style: TextStyle(
+                                                        color: ColorConstant
+                                                            .gray900,
+                                                        fontSize: getFontSize(
+                                                          20,
+                                                        ),
+                                                        fontFamily: 'Urbanist',
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                textAlign: TextAlign.left,
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: Alignment.bottomLeft,
+                                              child: Padding(
+                                                padding: getPadding(
+                                                  left: 8,
+                                                ),
+                                                /*         child: Row(
+                                                  children: [
+                                                    CustomImageView(
+                                                      svgPath:
+                                                          ImageConstant.imgStar1,
+                                                      height: getVerticalSize(
+                                                        18,
+                                                      ),
+                                                      width: getHorizontalSize(
+                                                        16,
+                                                      ),
+                                                      radius: BorderRadius.circular(
+                                                        getHorizontalSize(
+                                                          1,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    CustomImageView(
+                                                      svgPath:
+                                                          ImageConstant.imgStar2,
+                                                      height: getVerticalSize(
+                                                        18,
+                                                      ),
+                                                      width: getHorizontalSize(
+                                                        16,
+                                                      ),
+                                                      radius: BorderRadius.circular(
+                                                        getHorizontalSize(
+                                                          1,
+                                                        ),
+                                                      ),
+                                                      margin: getMargin(
+                                                        left: 3,
+                                                      ),
+                                                    ),
+                                                    CustomImageView(
+                                                      svgPath:
+                                                          ImageConstant.imgStar4,
+                                                      height: getVerticalSize(
+                                                        18,
+                                                      ),
+                                                      width: getHorizontalSize(
+                                                        16,
+                                                      ),
+                                                      radius: BorderRadius.circular(
+                                                        getHorizontalSize(
+                                                          1,
+                                                        ),
+                                                      ),
+                                                      margin: getMargin(
+                                                        left: 3,
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      height: getVerticalSize(
+                                                        18,
+                                                      ),
+                                                      width: getHorizontalSize(
+                                                        27,
+                                                      ),
+                                                      margin: getMargin(
+                                                        left: 3,
+                                                      ),
+                                                      child: Stack(
+                                                        alignment:
+                                                            Alignment.centerLeft,
+                                                        children: [
+                                                          CustomImageView(
+                                                            svgPath: ImageConstant
+                                                                .imgPlay,
+                                                            height: getVerticalSize(
+                                                              16,
+                                                            ),
+                                                            width:
+                                                                getHorizontalSize(
+                                                              15,
+                                                            ),
+                                                            alignment:
+                                                                Alignment.topRight,
+                                                          ),
+                                                          CustomImageView(
+                                                            svgPath: ImageConstant
+                                                                .imgStar3,
+                                                            height: getVerticalSize(
+                                                              18,
+                                                            ),
+                                                            width:
+                                                                getHorizontalSize(
+                                                              16,
+                                                            ),
+                                                            radius: BorderRadius
+                                                                .circular(
+                                                              getHorizontalSize(
+                                                                1,
+                                                              ),
+                                                            ),
+                                                            alignment: Alignment
+                                                                .centerLeft,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ), */
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Padding(
+                                          padding: getPadding(
+                                            top: 11,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding: getPadding(
+                                                  top: 1,
+                                                  bottom: 3,
+                                                ),
+                                                child: Text(
+                                                  "Tarifa:",
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.left,
+                                                  style: AppStyle
+                                                      .txtUrbanistRomanBold20,
+                                                ),
+                                              ),
+                                              CustomTextFormField(
+                                                width: getHorizontalSize(
+                                                  110,
+                                                ),
+                                                enabled: _Enable,
+                                                controller: tarifaController =
+                                                    TextEditingController(
+                                                        text:
+                                                            tarifa.toString()),
+                                                hintText: "Tarifa",
+                                                margin: getMargin(
+                                                  left: 4,
+                                                ),
+                                                padding: TextFormFieldPadding
+                                                    .PaddingT6,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: getPadding(
+                                          top: 8,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: getPadding(
+                                                top: 39,
+                                                bottom: 31,
+                                              ),
+                                              child: Text(
+                                                "Exp:",
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.left,
+                                                style: AppStyle
+                                                    .txtUrbanistRomanBold20,
+                                              ),
+                                            ),
+                                            CustomTextFormField(
+                                              maxLines: 4,
+                                              width: getHorizontalSize(
+                                                135,
+                                              ),
+                                              enabled: _Enable,
+                                              controller: expController =
+                                                  TextEditingController(
+                                                      text: exp),
+                                              hintText: "Experiencia",
+                                              margin: getMargin(
+                                                left: 4,
+                                              ),
+                                              padding: TextFormFieldPadding
+                                                  .PaddingT6,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 31,
+                              top: 5,
+                              right: 29,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 1,
+                                    bottom: 3,
+                                  ),
+                                  child: Text(
+                                    "Nombre:",
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
                                     style: AppStyle.txtUrbanistRomanBold20,
                                   ),
-                                  CustomImageView(
-                                    imagePath: ImageConstant.imgPaseador,
-                                    height: getVerticalSize(
-                                      128,
-                                    ),
-                                    width: getHorizontalSize(
-                                      122,
-                                    ),
-                                    radius: BorderRadius.circular(
-                                      getHorizontalSize(
-                                        64,
-                                      ),
-                                    ),
+                                ),
+                                CustomTextFormField(
+                                  width: getHorizontalSize(
+                                    230,
                                   ),
-                                ],
-                              ),
+                                  enabled: _Enable,
+                                  controller: nameController =
+                                      TextEditingController(text: name),
+                                  hintText: "Nombre",
+                                  margin: getMargin(
+                                    left: 4,
+                                  ),
+                                  padding: TextFormFieldPadding.PaddingT6,
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: getPadding(
-                                left: 12,
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: getVerticalSize(
-                                      42,
-                                    ),
-                                    width: getHorizontalSize(
-                                      109,
-                                    ),
-                                    child: Stack(
-                                      alignment: Alignment.bottomLeft,
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.topCenter,
-                                          child: RichText(
-                                            text: TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: "Calificación",
-                                                  style: TextStyle(
-                                                    color:
-                                                        ColorConstant.gray900,
-                                                    fontSize: getFontSize(
-                                                      20,
-                                                    ),
-                                                    fontFamily: 'Urbanist',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: ": ",
-                                                  style: TextStyle(
-                                                    color:
-                                                        ColorConstant.gray900,
-                                                    fontSize: getFontSize(
-                                                      20,
-                                                    ),
-                                                    fontFamily: 'Urbanist',
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            textAlign: TextAlign.left,
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.bottomLeft,
-                                          child: Padding(
-                                            padding: getPadding(
-                                              left: 8,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                CustomImageView(
-                                                  svgPath:
-                                                      ImageConstant.imgStar1,
-                                                  height: getVerticalSize(
-                                                    18,
-                                                  ),
-                                                  width: getHorizontalSize(
-                                                    16,
-                                                  ),
-                                                  radius: BorderRadius.circular(
-                                                    getHorizontalSize(
-                                                      1,
-                                                    ),
-                                                  ),
-                                                ),
-                                                CustomImageView(
-                                                  svgPath:
-                                                      ImageConstant.imgStar2,
-                                                  height: getVerticalSize(
-                                                    18,
-                                                  ),
-                                                  width: getHorizontalSize(
-                                                    16,
-                                                  ),
-                                                  radius: BorderRadius.circular(
-                                                    getHorizontalSize(
-                                                      1,
-                                                    ),
-                                                  ),
-                                                  margin: getMargin(
-                                                    left: 3,
-                                                  ),
-                                                ),
-                                                CustomImageView(
-                                                  svgPath:
-                                                      ImageConstant.imgStar4,
-                                                  height: getVerticalSize(
-                                                    18,
-                                                  ),
-                                                  width: getHorizontalSize(
-                                                    16,
-                                                  ),
-                                                  radius: BorderRadius.circular(
-                                                    getHorizontalSize(
-                                                      1,
-                                                    ),
-                                                  ),
-                                                  margin: getMargin(
-                                                    left: 3,
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: getVerticalSize(
-                                                    18,
-                                                  ),
-                                                  width: getHorizontalSize(
-                                                    27,
-                                                  ),
-                                                  margin: getMargin(
-                                                    left: 3,
-                                                  ),
-                                                  child: Stack(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    children: [
-                                                      CustomImageView(
-                                                        svgPath: ImageConstant
-                                                            .imgPlay,
-                                                        height: getVerticalSize(
-                                                          16,
-                                                        ),
-                                                        width:
-                                                            getHorizontalSize(
-                                                          15,
-                                                        ),
-                                                        alignment:
-                                                            Alignment.topRight,
-                                                      ),
-                                                      CustomImageView(
-                                                        svgPath: ImageConstant
-                                                            .imgStar3,
-                                                        height: getVerticalSize(
-                                                          18,
-                                                        ),
-                                                        width:
-                                                            getHorizontalSize(
-                                                          16,
-                                                        ),
-                                                        radius: BorderRadius
-                                                            .circular(
-                                                          getHorizontalSize(
-                                                            1,
-                                                          ),
-                                                        ),
-                                                        alignment: Alignment
-                                                            .centerLeft,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 31,
+                              top: 15,
+                              right: 29,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 4,
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Padding(
-                                      padding: getPadding(
-                                        top: 11,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Padding(
-                                            padding: getPadding(
-                                              top: 1,
-                                              bottom: 3,
-                                            ),
-                                            child: Text(
-                                              "Tarifa:",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle
-                                                  .txtUrbanistRomanBold20,
-                                            ),
-                                          ),
-                                          CustomTextFormField(
-                                            width: getHorizontalSize(
-                                              110,
-                                            ),
-                                            enabled: _Enable,
-                                            controller: tarifaController =
-                                                TextEditingController(
-                                                    text: tarifa.toString()),
-                                            hintText: "Tarifa",
-                                            margin: getMargin(
-                                              left: 4,
-                                            ),
-                                            padding:
-                                                TextFormFieldPadding.PaddingT6,
-                                          ),
-                                        ],
-                                      ),
+                                  child: Text(
+                                    "Apellido Paterno:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
+                                ),
+                                CustomTextFormField(
+                                  width: getHorizontalSize(
+                                    158,
+                                  ),
+                                  enabled: _Enable,
+                                  controller: lastnameController =
+                                      TextEditingController(text: lastname),
+                                  hintText: "Apellido Paterno",
+                                  margin: getMargin(
+                                    left: 9,
+                                  ),
+                                  padding: TextFormFieldPadding.PaddingT6,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 31,
+                              top: 15,
+                              right: 29,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 5,
+                                  ),
+                                  child: Text(
+                                    "Apellido Materno:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
+                                ),
+                                CustomTextFormField(
+                                  width: getHorizontalSize(
+                                    158,
+                                  ),
+                                  enabled: _Enable,
+                                  controller: lastnameoneController =
+                                      TextEditingController(text: lastnameone),
+                                  hintText: "Apellido Materno",
+                                  margin: getMargin(
+                                    left: 1,
+                                  ),
+                                  variant:
+                                      TextFormFieldVariant.OutlineIndigo50_1,
+                                  padding: TextFormFieldPadding.PaddingT6,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: getPadding(
+                                left: 36,
+                                top: 15,
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Edad:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
+                                  CustomTextFormField(
+                                    width: getHorizontalSize(
+                                      100,
                                     ),
+                                    enabled: _Enable,
+                                    controller: dateController =
+                                        TextEditingController(text: date),
+                                    margin: getMargin(
+                                      left: 1,
+                                    ),
+                                    variant:
+                                        TextFormFieldVariant.OutlineIndigo50_1,
+                                    padding: TextFormFieldPadding.PaddingT6,
                                   ),
                                   Padding(
                                     padding: getPadding(
-                                      top: 8,
+                                      left: 30,
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding: getPadding(
-                                            top: 39,
-                                            bottom: 31,
-                                          ),
-                                          child: Text(
-                                            "Exp:",
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style:
-                                                AppStyle.txtUrbanistRomanBold20,
-                                          ),
-                                        ),
-                                        CustomTextFormField(
-                                          maxLines: 4,
-                                          width: getHorizontalSize(
-                                            135,
-                                          ),
-                                          enabled: _Enable,
-                                          controller: expController =
-                                              TextEditingController(text: exp),
-                                          hintText: "Experiencia",
-                                          margin: getMargin(
-                                            left: 4,
-                                          ),
-                                          padding:
-                                              TextFormFieldPadding.PaddingT6,
-                                        ),
-                                      ],
+                                    child: Text(
+                                      "Sexo:",
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.left,
+                                      style: AppStyle.txtUrbanistRomanBold20,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 31,
-                          top: 0,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 1,
-                                bottom: 3,
-                              ),
-                              child: Text(
-                                "Nombre:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                230,
-                              ),
-                              enabled: _Enable,
-                              controller: nameController =
-                                  TextEditingController(text: name),
-                              hintText: "Nombre",
-                              margin: getMargin(
-                                left: 4,
-                              ),
-                              padding: TextFormFieldPadding.PaddingT6,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 31,
-                          top: 7,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 4,
-                              ),
-                              child: Text(
-                                "Apellido Paterno:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                158,
-                              ),
-                              enabled: _Enable,
-                              controller: lastnameController =
-                                  TextEditingController(text: lastname),
-                              hintText: "Apellido Paterno",
-                              margin: getMargin(
-                                left: 9,
-                              ),
-                              padding: TextFormFieldPadding.PaddingT6,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 31,
-                          top: 8,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 5,
-                              ),
-                              child: Text(
-                                "Apellido Materno:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                158,
-                              ),
-                              enabled: _Enable,
-                              controller: lastnameoneController =
-                                  TextEditingController(text: lastnameone),
-                              hintText: "Apellido Materno",
-                              margin: getMargin(
-                                left: 1,
-                              ),
-                              variant: TextFormFieldVariant.OutlineIndigo50_1,
-                              padding: TextFormFieldPadding.PaddingT6,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: getPadding(
-                            left: 36,
-                            top: 5,
                           ),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Edad:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                              CustomTextFormField(
-                                width: getHorizontalSize(
-                                  100,
+                          Padding(
+                            padding: getPadding(
+                              left: 35,
+                              top: 15,
+                              right: 29,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 2,
+                                    bottom: 2,
+                                  ),
+                                  child: Text(
+                                    "Teléfono:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
                                 ),
-                                enabled: _Enable,
-                                controller: dateController =
-                                    TextEditingController(text: date),
-                                margin: getMargin(
-                                  left: 1,
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    enabled: _Enable,
+                                    controller: phonenumberController =
+                                        TextEditingController(
+                                            text: phone.toString()),
+                                    hintText: "Teléfono",
+                                    margin: getMargin(
+                                      left: 7,
+                                    ),
+                                    padding: TextFormFieldPadding.PaddingT6,
+                                  ),
                                 ),
-                                variant: TextFormFieldVariant.OutlineIndigo50_1,
-                                padding: TextFormFieldPadding.PaddingT6,
-                              ),
-                              Padding(
-                                padding: getPadding(
-                                  left: 30,
-                                ),
-                                child: Text(
-                                  "Sexo:",
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.left,
-                                  style: AppStyle.txtUrbanistRomanBold20,
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 35,
-                          top: 4,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 2,
-                                bottom: 2,
-                              ),
-                              child: Text(
-                                "Teléfono:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
+                          Padding(
+                            padding: getPadding(
+                              left: 34,
+                              top: 15,
+                              right: 29,
                             ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                enabled: _Enable,
-                                controller: phonenumberController =
-                                    TextEditingController(
-                                        text: phone.toString()),
-                                hintText: "Teléfono",
-                                margin: getMargin(
-                                  left: 7,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 1,
+                                    bottom: 3,
+                                  ),
+                                  child: Text(
+                                    "C.P.:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
                                 ),
-                                padding: TextFormFieldPadding.PaddingT6,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 34,
-                          top: 7,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 1,
-                                bottom: 3,
-                              ),
-                              child: Text(
-                                "C.P.:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                145,
-                              ),
-                              enabled: _Enable,
-                              controller: postalcodeController =
-                                  TextEditingController(text: cp.toString()),
-                              hintText: "Código Postal",
-                              margin: getMargin(
-                                left: 6,
-                              ),
-                              padding: TextFormFieldPadding.PaddingT6,
-                            ),
-                            Padding(
-                              padding: getPadding(
-                                left: 11,
-                                bottom: 4,
-                              ),
-                              child: Text(
-                                "N°:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                78,
-                              ),
-                              enabled: _Enable,
-                              controller: numstreetController =
-                                  TextEditingController(
-                                      text: numstreet.toString()),
-                              hintText: "N°:",
-                              margin: getMargin(
-                                left: 6,
-                              ),
-                              padding: TextFormFieldPadding.PaddingT6,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 32,
-                          top: 8,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 2,
-                                bottom: 2,
-                              ),
-                              child: Text(
-                                "Calle:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                enabled: _Enable,
-                                controller: streetController =
-                                    TextEditingController(text: street),
-                                hintText: "Calle",
-                                margin: getMargin(
-                                  left: 6,
+                                CustomTextFormField(
+                                  width: getHorizontalSize(
+                                    145,
+                                  ),
+                                  enabled: _Enable,
+                                  controller: postalcodeController =
+                                      TextEditingController(
+                                          text: cp.toString()),
+                                  hintText: "Código Postal",
+                                  margin: getMargin(
+                                    left: 6,
+                                  ),
+                                  padding: TextFormFieldPadding.PaddingT6,
                                 ),
-                                variant: TextFormFieldVariant.OutlineIndigo50_1,
-                                padding: TextFormFieldPadding.PaddingT6,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 28,
-                          top: 10,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 0,
-                              ),
-                              child: Text(
-                                "Municipio:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            CustomTextFormField(
-                              width: getHorizontalSize(
-                                221,
-                              ),
-                              enabled: _Enable,
-                              controller: municipalityController =
-                                  TextEditingController(text: mun),
-                              hintText: "Municipio",
-                              margin: getMargin(
-                                left: 5,
-                              ),
-                              padding: TextFormFieldPadding.PaddingT6,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 28,
-                          top: 9,
-                          right: 29,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: getPadding(
-                                top: 1,
-                                bottom: 1,
-                              ),
-                              child: Text(
-                                "Ciudad:",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold20,
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                enabled: _Enable,
-                                controller: cityController =
-                                    TextEditingController(text: city),
-                                hintText: "Ciudad",
-                                margin: getMargin(
-                                  left: 4,
+                                Padding(
+                                  padding: getPadding(
+                                    left: 11,
+                                    bottom: 4,
+                                  ),
+                                  child: Text(
+                                    "N°:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
                                 ),
-                                padding: TextFormFieldPadding.PaddingT6,
-                                textInputAction: TextInputAction.done,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 50,
-                          top: 10,
-                          right: 50,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Visibility(
-                              visible: _Button,
-                              child: CustomButton(
-                                height: getVerticalSize(
-                                  31,
+                                CustomTextFormField(
+                                  width: getHorizontalSize(
+                                    78,
+                                  ),
+                                  enabled: _Enable,
+                                  controller: numstreetController =
+                                      TextEditingController(
+                                          text: numstreet.toString()),
+                                  hintText: "N°:",
+                                  margin: getMargin(
+                                    left: 6,
+                                  ),
+                                  padding: TextFormFieldPadding.PaddingT6,
                                 ),
-                                width: getHorizontalSize(
-                                  113,
-                                ),
-                                text: "Editar",
-                                onTap: () {
-                                  setState(() {
-                                    _Enable = true;
-                                    _Button = false;
-                                    _Button2 = true;
-                                  });
-                                },
-                                variant: ButtonVariant.OutlineBlack9003f_2,
-                                shape: ButtonShape.RoundedBorder15,
-                                padding: ButtonPadding.PaddingAll6,
-                                fontStyle: ButtonFontStyle
-                                    .UrbanistRomanSemiBold15Gray900,
-                              ),
+                              ],
                             ),
-                            Visibility(
-                              visible: _Button2,
-                              child: CustomButton(
-                                height: getVerticalSize(
-                                  31,
-                                ),
-                                width: getHorizontalSize(
-                                  113,
-                                ),
-                                text: "Actualizar",
-                                onTap: _Button
-                                    ? null
-                                    : () {
-                                        Actualizar();
-                                        setState(() {
-                                          // Regresamos los valores bool a como estaban antes de presionar el boton editar
-                                          _Enable = false;
-                                          _Button = true;
-                                          //appBarTittle();
-                                          Navigator.pop(context);
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      PerfilpaseadorScreen()));
-                                        });
-                                      },
-                                variant: ButtonVariant.OutlineBlack9003f_2,
-                                shape: ButtonShape.RoundedBorder15,
-                                padding: ButtonPadding.PaddingAll6,
-                                fontStyle: ButtonFontStyle
-                                    .UrbanistRomanSemiBold15Gray900,
-                              ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 32,
+                              top: 15,
+                              right: 29,
                             ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: getPadding(
-                          left: 130,
-                          top: 10,
-                          //right: 100,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomButton(
-                              height: getVerticalSize(
-                                31,
-                              ),
-                              width: getHorizontalSize(
-                                113,
-                              ),
-                              text: "Cerrar Sesión",
-                              onTap: () {
-                                FirebaseAuth.instance.signOut();
-                                Navigator.popUntil(
-                                    context,
-                                    ModalRoute.withName(
-                                        AppRoutes.welcomeScreen));
-                              },
-                              variant: ButtonVariant.OutlineBlack9003f_2,
-                              shape: ButtonShape.RoundedBorder15,
-                              padding: ButtonPadding.PaddingAll6,
-                              fontStyle: ButtonFontStyle
-                                  .UrbanistRomanSemiBold15Gray900,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 2,
+                                    bottom: 2,
+                                  ),
+                                  child: Text(
+                                    "Calle:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    enabled: _Enable,
+                                    controller: streetController =
+                                        TextEditingController(text: street),
+                                    hintText: "Calle",
+                                    margin: getMargin(
+                                      left: 6,
+                                    ),
+                                    variant:
+                                        TextFormFieldVariant.OutlineIndigo50_1,
+                                    padding: TextFormFieldPadding.PaddingT6,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 28,
+                              top: 15,
+                              right: 29,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 0,
+                                  ),
+                                  child: Text(
+                                    "Municipio:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
+                                ),
+                                CustomTextFormField(
+                                  width: getHorizontalSize(
+                                    221,
+                                  ),
+                                  enabled: _Enable,
+                                  controller: municipalityController =
+                                      TextEditingController(text: mun),
+                                  hintText: "Municipio",
+                                  margin: getMargin(
+                                    left: 5,
+                                  ),
+                                  padding: TextFormFieldPadding.PaddingT6,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 28,
+                              top: 15,
+                              right: 29,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: getPadding(
+                                    top: 1,
+                                    bottom: 1,
+                                  ),
+                                  child: Text(
+                                    "Ciudad:",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: AppStyle.txtUrbanistRomanBold20,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    enabled: _Enable,
+                                    controller: cityController =
+                                        TextEditingController(text: city),
+                                    hintText: "Ciudad",
+                                    margin: getMargin(
+                                      left: 4,
+                                    ),
+                                    padding: TextFormFieldPadding.PaddingT6,
+                                    textInputAction: TextInputAction.done,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 50,
+                              top: 10,
+                              right: 50,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Visibility(
+                                  visible: _Button,
+                                  child: CustomButton(
+                                    height: getVerticalSize(
+                                      31,
+                                    ),
+                                    width: getHorizontalSize(
+                                      113,
+                                    ),
+                                    text: "Editar",
+                                    onTap: () {
+                                      setState(() {
+                                        _Enable = true;
+                                        _Button = false;
+                                        _Button2 = true;
+                                      });
+                                    },
+                                    variant: ButtonVariant.OutlineBlack9003f_2,
+                                    shape: ButtonShape.RoundedBorder15,
+                                    padding: ButtonPadding.PaddingAll6,
+                                    fontStyle: ButtonFontStyle
+                                        .UrbanistRomanSemiBold15Gray900,
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: _Button2,
+                                  child: CustomButton(
+                                    height: getVerticalSize(
+                                      31,
+                                    ),
+                                    width: getHorizontalSize(
+                                      113,
+                                    ),
+                                    text: "Actualizar",
+                                    onTap: _Button
+                                        ? null
+                                        : () {
+                                            Actualizar();
+                                            setState(() {
+                                              // Regresamos los valores bool a como estaban antes de presionar el boton editar
+                                              _Enable = false;
+                                              _Button = true;
+                                              //appBarTittle();
+                                              Navigator.pop(context);
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PerfilpaseadorScreen()));
+                                            });
+                                          },
+                                    variant: ButtonVariant.OutlineBlack9003f_2,
+                                    shape: ButtonShape.RoundedBorder15,
+                                    padding: ButtonPadding.PaddingAll6,
+                                    fontStyle: ButtonFontStyle
+                                        .UrbanistRomanSemiBold15Gray900,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: getPadding(
+                              left: 130,
+                              top: 10,
+                              //right: 100,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CustomButton(
+                                  height: getVerticalSize(
+                                    31,
+                                  ),
+                                  width: getHorizontalSize(
+                                    113,
+                                  ),
+                                  text: "Cerrar Sesión",
+                                  onTap: () {
+                                    FirebaseAuth.instance.signOut();
+                                    Navigator.popUntil(
+                                        context,
+                                        ModalRoute.withName(
+                                            AppRoutes.welcomeScreen));
+                                  },
+                                  variant: ButtonVariant.OutlineBlack9003f_2,
+                                  shape: ButtonShape.RoundedBorder15,
+                                  padding: ButtonPadding.PaddingAll6,
+                                  fontStyle: ButtonFontStyle
+                                      .UrbanistRomanSemiBold15Gray900,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Spacer(),
+                          CustomImageView(
+                            imagePath: ImageConstant.imgframe,
+                            height: getVerticalSize(
+                              32,
+                            ),
+                            width: getHorizontalSize(
+                              375,
+                            ),
+                          ),
+                        ],
                       ),
-                      const Spacer(),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgframe,
-                        height: getVerticalSize(
-                          32,
-                        ),
-                        width: getHorizontalSize(
-                          375,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ]),
         ),
       ),
     );

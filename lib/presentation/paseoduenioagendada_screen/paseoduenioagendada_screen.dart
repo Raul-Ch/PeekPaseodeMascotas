@@ -174,6 +174,26 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
     });
   }
 
+  Future<void> deleteCita() async {
+    FirebaseFirestore.instance
+        .collection('duenios')
+        .doc(duenioIDs)
+        .collection("citas")
+        .doc("status")
+        .collection("agendadas")
+        .doc(citaIDs)
+        .delete();
+
+    FirebaseFirestore.instance
+        .collection('paseadores')
+        .doc(paseadorIDs)
+        .collection("citas")
+        .doc("status")
+        .collection("agendadas")
+        .doc(citaIDs)
+        .delete();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -234,7 +254,7 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
                                   children: [
                                     Padding(
                                       padding: getPadding(
-                                        left: 22,
+                                        left: 20,
                                         right: 22,
                                       ),
                                       child: Row(
@@ -548,7 +568,7 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
                                           Padding(
                                             padding: getPadding(),
                                             child: CustomTextFormField(
-                                              width: 250,
+                                              width: 240,
                                               enabled: _Enable,
                                               controller:
                                                   phonenumberController =
@@ -942,9 +962,12 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
                                                 34,
                                               ),
                                               width: getHorizontalSize(
-                                                103,
+                                                120,
                                               ),
-                                              text: "Cancelar",
+                                              text: "Cancelar Cita",
+                                              onTap: () {
+                                                seguro(context);
+                                              },
                                               variant:
                                                   ButtonVariant.OutlineOrange,
                                               shape: ButtonShape.CircleBorder17,
@@ -1013,5 +1036,43 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
       time = timeController.text.trim();
       return null;
     });
+  }
+
+  seguro(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      onPressed: () {
+        deleteCita();
+        Navigator.popUntil(
+            context, ModalRoute.withName(AppRoutes.vercitasduenioScreen));
+        Navigator.pushNamed(context, AppRoutes.paseoduenioagendadasScreen);
+      },
+      child: const Text("OK"),
+    );
+
+    // set up the button
+    Widget NopeButton = TextButton(
+      child: const Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("Eliminar esta cita"),
+      content: const Text(
+          textAlign: TextAlign.left,
+          "Estas por cancelar y eliminar esta cita, ¿Estas seguro?"),
+      actions: [
+        okButton,
+        NopeButton,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }

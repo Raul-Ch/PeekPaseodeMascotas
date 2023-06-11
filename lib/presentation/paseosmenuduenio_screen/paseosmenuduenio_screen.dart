@@ -171,126 +171,139 @@ class PaseosmenuduenioScreen extends StatelessWidget {
                               children: [
                                 CustomImageView(
                                     imagePath: ImageConstant.imgBackground,
-                                    height: getVerticalSize(738),
-                                    width: getHorizontalSize(375),
+                                    height: getVerticalSize(
+                                      706,
+                                    ),
+                                    width: getHorizontalSize(
+                                      375,
+                                    ),
                                     alignment: Alignment.center),
                                 Align(
-                                    alignment: Alignment.topCenter,
+                                    alignment: Alignment.center,
                                     child: Padding(
                                         padding: getPadding(
-                                            top: 120,
-                                            left: 25,
+                                            top: 130,
+                                            left: 26,
                                             right: 26,
-                                            bottom: 78),
+                                            bottom: 83),
                                         child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
                                               Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text("MeNú",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                        style: AppStyle
-                                                            .txtArtographieMedium40),
-                                                    CustomImageView(
-                                                        imagePath: ImageConstant
-                                                            .imgPerro,
-                                                        height:
-                                                            getVerticalSize(34),
-                                                        width:
-                                                            getHorizontalSize(
-                                                                38),
-                                                        margin: getMargin(
-                                                            left: 19,
-                                                            top: 10,
-                                                            bottom: 2))
-                                                  ]),
-                                              InkWell(
-                                                  onTap: () {
-                                                    Navigator.pushNamed(
-                                                        context,
-                                                        AppRoutes
-                                                            .buscarpaseadorScreen);
-                                                  },
-                                                  child: Container(
-                                                      height:
-                                                          getVerticalSize(121),
-                                                      width: getHorizontalSize(
-                                                          323),
-                                                      padding: getPadding(
-                                                          left: 5,
-                                                          top: 15,
-                                                          right: 5,
-                                                          bottom: 15),
-                                                      decoration: AppDecoration
-                                                          .outlineBlack9003f
-                                                          .copyWith(
-                                                              borderRadius:
-                                                                  BorderRadiusStyle
-                                                                      .roundedBorder22),
-                                                      child: Stack(
-                                                          alignment: Alignment
-                                                              .centerLeft,
-                                                          children: [
-                                                            Align(
-                                                                alignment: Alignment
-                                                                    .bottomRight,
-                                                                child: Container(
-                                                                    width:
-                                                                        getHorizontalSize(
-                                                                            175),
-                                                                    margin: getMargin(
-                                                                        right:
-                                                                            14),
-                                                                    child: Text(
-                                                                        "Buscar\nPaseador",
-                                                                        maxLines:
-                                                                            null,
-                                                                        textAlign:
-                                                                            TextAlign
-                                                                                .right,
-                                                                        style: AppStyle
-                                                                            .txtMontserratAlternatesSemiBold35))),
-                                                            CustomImageView(
-                                                                imagePath:
-                                                                    ImageConstant
-                                                                        .imgbuscpas,
-                                                                height:
-                                                                    getVerticalSize(
-                                                                        86),
-                                                                width:
-                                                                    getHorizontalSize(
-                                                                        129),
-                                                                alignment: Alignment
-                                                                    .centerLeft)
-                                                          ]))),
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    "mENÚ",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    textAlign: TextAlign.left,
+                                                    style: AppStyle
+                                                        .txtArtographieMedium40,
+                                                  ),
+                                                  CustomImageView(
+                                                    imagePath:
+                                                        ImageConstant.imgPerrob,
+                                                    height: getVerticalSize(
+                                                      34,
+                                                    ),
+                                                    width: getHorizontalSize(
+                                                      38,
+                                                    ),
+                                                    margin: getMargin(
+                                                      left: 19,
+                                                      top: 10,
+                                                      bottom: 2,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                               Container(
-                                                margin: getMargin(
-                                                    top: 25, right: 1),
-                                                padding: getPadding(
-                                                    left: 11,
-                                                    top: 6,
-                                                    right: 11,
-                                                    bottom: 6),
-                                                decoration: AppDecoration
-                                                    .outlineBlack9003f
-                                                    .copyWith(
-                                                        borderRadius:
-                                                            BorderRadiusStyle
-                                                                .roundedBorder22),
-                                                child: InkWell(
+                                                  margin: getMargin(
+                                                    top: 22,
+                                                  ),
+                                                  padding: getPadding(
+                                                    left: 13,
+                                                    top: 15,
+                                                    right: 13,
+                                                    bottom: 15,
+                                                  ),
+                                                  decoration: AppDecoration
+                                                      .outlineBlack9003f
+                                                      .copyWith(
+                                                    borderRadius:
+                                                        BorderRadiusStyle
+                                                            .roundedBorder22,
+                                                  ),
+                                                  child: InkWell(
                                                     onTap: () {
                                                       Navigator.pushNamed(
                                                           context,
                                                           AppRoutes
-                                                              .vercitasduenioScreen);
+                                                              .buscarpaseadorScreen);
                                                     },
+                                                    child: Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          CustomImageView(
+                                                            imagePath:
+                                                                ImageConstant
+                                                                    .imgbuscpas,
+                                                            height:
+                                                                getVerticalSize(
+                                                                    86),
+                                                            width:
+                                                                getHorizontalSize(
+                                                                    135),
+                                                            margin: getMargin(
+                                                              bottom: 5,
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                              width:
+                                                                  getHorizontalSize(
+                                                                      148),
+                                                              margin: getMargin(
+                                                                  top: 7,
+                                                                  left: 10,
+                                                                  bottom: 6,
+                                                                  right: 0),
+                                                              child: Text(
+                                                                  "Buscar \nPaseador",
+                                                                  maxLines:
+                                                                      null,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .right,
+                                                                  style: AppStyle
+                                                                      .txtMontserratAlternatesSemiBold35))
+                                                        ]),
+                                                  )),
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.pushNamed(
+                                                      context,
+                                                      AppRoutes
+                                                          .vercitasduenioScreen);
+                                                },
+                                                child: Container(
+                                                    margin: getMargin(
+                                                        top: 25, right: 1),
+                                                    padding: getPadding(
+                                                        left: 11,
+                                                        top: 6,
+                                                        right: 11,
+                                                        bottom: 6),
+                                                    decoration: AppDecoration
+                                                        .outlineBlack9003f
+                                                        .copyWith(
+                                                            borderRadius:
+                                                                BorderRadiusStyle
+                                                                    .roundedBorder22),
                                                     child: Row(children: [
                                                       CustomImageView(
                                                           imagePath:

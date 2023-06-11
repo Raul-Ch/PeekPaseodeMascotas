@@ -103,31 +103,37 @@ class VercitaspaseadorScreen extends StatelessWidget {
                         decoration: AppDecoration.outlineBlack9003f.copyWith(
                           borderRadius: BorderRadiusStyle.roundedBorder20,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CustomImageView(
-                              imagePath: ImageConstant.imgagendado,
-                              height: getSize(
-                                76,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, AppRoutes.paseopaseadorgendadasScreen);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CustomImageView(
+                                imagePath: ImageConstant.imgagendado,
+                                height: getSize(
+                                  76,
+                                ),
+                                width: getSize(
+                                  76,
+                                ),
                               ),
-                              width: getSize(
-                                76,
+                              Padding(
+                                padding: getPadding(
+                                  top: 20,
+                                  bottom: 12,
+                                ),
+                                child: Text(
+                                  "Agendadas",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle.txtUrbanistRomanBold35Teal900,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: getPadding(
-                                top: 20,
-                                bottom: 12,
-                              ),
-                              child: Text(
-                                "Agendadas",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtUrbanistRomanBold35Teal900,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(

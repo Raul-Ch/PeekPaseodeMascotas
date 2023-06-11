@@ -30,6 +30,7 @@ class _VercomentariosScreen extends State<VercomentariosScreen> {
   String lastnameone = '';
   bool _Enable = false;
   String _apellidos = '';
+
   @override
   void dispose() {
     tarifaController.dispose();
@@ -38,6 +39,7 @@ class _VercomentariosScreen extends State<VercomentariosScreen> {
     lastnameController.dispose();
     lastnameoneController.dispose();
     apellidos.dispose();
+    super.dispose();
   }
 
   Future appBarTittle() async {
