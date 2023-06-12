@@ -43,6 +43,16 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
   late var municipalityController = TextEditingController();
   late var cityController = TextEditingController();
 
+  String nombremascota = ' ';
+  String tamanio = '';
+  String raza = '';
+  double peso = 0.0;
+  int edad = 0;
+  bool enfermedades = false;
+  String sexo = '';
+  String personalidad = '';
+  String nota = '';
+
   String dnombre = '';
   int cp = 0;
   int numstreet = 0;
@@ -96,6 +106,49 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
     });
   }
 
+  Future mascotas() async {
+    FirebaseFirestore.instance
+        .collection("duenios")
+        .doc(uid)
+        .collection("mascotas")
+        .doc(uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic>? data =
+            documentSnapshot.data() as Map<String, dynamic>?;
+        var Nombrepet = data?['Nombre'];
+        var Tamanio = data?['Tamaño'];
+        var Raza = data?['Raza'];
+        var Peso = data?['Peso'];
+        var Edad = data?['Edad'];
+        var Enfermedades = data?['Enfermedades'];
+        var Sexo = data?['Genero'];
+        var Personalidad = data?['Personalidad'];
+        var Nota = data?['Notas'];
+        //var GCorreo = data?['Email'];
+        print('Document data: ${documentSnapshot.data()}');
+        //Set the relevant data to variables as needed
+        //print(Nombre1);
+        setState(() {
+          nombremascota = Nombrepet;
+          tamanio = Tamanio;
+          raza = Raza;
+          peso = Peso;
+          edad = Edad;
+          enfermedades = Enfermedades;
+          sexo = Sexo;
+          personalidad = Personalidad;
+          nota = Nota;
+          //correo = GCorreo;
+          //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
+        });
+      } else {
+        print("Document does not exist on the database uid:  " + uid);
+      }
+    });
+  }
+
   Future Agendarcita() async {
     user = FirebaseAuth.instance.currentUser!;
     uid = FirebaseAuth.instance.currentUser!.uid;
@@ -112,7 +165,7 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
       'ID': docId,
       'DueñoID': uid,
       'Dueño': dnombre,
-      'Mascota': nombre,
+      'Mascota': nombremascota,
       'PaseadorID': paseadorIDs,
       'Paseador': paseadores,
       'Fecha': date,
@@ -134,7 +187,7 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
       'ID': docId,
       'DueñoID': uid,
       'Dueño': dnombre,
-      'Mascota': nombre,
+      'Mascota': nombremascota,
       'PaseadorID': paseadorIDs,
       'Paseador': paseadores,
       'Fecha': date,
@@ -222,6 +275,7 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
   void initState() {
     // TODO: implement initState
     carga();
+    mascotas();
     super.initState();
   }
 

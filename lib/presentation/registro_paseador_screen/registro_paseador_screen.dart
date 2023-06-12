@@ -77,6 +77,8 @@ class _RegistroPaseadorScreen extends State<RegistroPaseadorScreen> {
           municipalityController.text.trim(),
           cityController.text.trim(),
           false,
+          150,
+          "Sin experiencia",
         );
         //Navigator.pop(context);
         onTapRegistrarme(context);

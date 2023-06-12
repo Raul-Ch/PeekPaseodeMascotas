@@ -33,6 +33,10 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
   bool _Button = true;
   bool _Button2 = false;
 
+  bool activo = true;
+
+  String pname = '';
+
   String pet = '';
   String date = '';
   String time = '';
@@ -51,6 +55,28 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
   String sexo = '';
   String personalidad = '';
   String nota = '';
+
+  bool paseando = false;
+
+  Future ispaseando() async {
+    FirebaseFirestore.instance
+        .collection("paseadores")
+        .doc(paseadorIDs)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        Map<String, dynamic>? data =
+            documentSnapshot.data() as Map<String, dynamic>?;
+        var Paseando = data?['Activo'];
+        setState(() {
+          paseando = Paseando;
+          print(paseando);
+        });
+      } else {
+        print("Document does not exist on the database uid:  " + duenioIDs);
+      }
+    });
+  }
 
   Future getduenios() async {
     FirebaseFirestore.instance
@@ -147,6 +173,12 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
         var NumCalle = data?['Num Calle'];
         var Municipio = data?['Municipio'];
         var Ciudad = data?['Ciudad'];
+        var Paseador = data?['Paseador'];
+        //var PaseadorID = data?['PaseadorID'];
+        //var Duenio = data?['Dueño'];
+        //var DuenioID = data?['DueñoID'];
+        //    var ID = data?['ID'];
+
         print('Document data: ${documentSnapshot.data()}');
         //Set the relevant data to variables as needed
         setState(() {
@@ -157,6 +189,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
           numstreet = NumCalle;
           mun = Municipio;
           city = Ciudad;
+          pname = Paseador;
         });
       } else {
         print("Document does not exist on the database uid:  " + citaIDs);
@@ -168,6 +201,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
     getCitas();
     mascotas();
     getduenios();
+    ispaseando();
     super.initState();
   }
 
@@ -191,8 +225,69 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
         .delete();
   }
 
+  Future<void> copycita(TimeOfDay now) async {
+    user = FirebaseAuth.instance.currentUser!;
+    uid = FirebaseAuth.instance.currentUser!.uid;
+    String timenow;
+    timenow =
+        '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';
+    CollectionReference ref = await FirebaseFirestore.instance
+        .collection('paseadores')
+        .doc(uid)
+        .collection("citas")
+        .doc("status")
+        .collection("progreso");
+
+    String docId = ref.doc().id;
+
+    await ref.doc(docId).set({
+      'ID': docId,
+      'DueñoID': duenioIDs,
+      'Dueño': duenio,
+      'Mascota': pet,
+      'PaseadorID': paseadorIDs,
+      'Paseador': pname,
+      'Fecha': date,
+      'Hora': time,
+      'Num Calle': numstreet,
+      'Calle': street,
+      'Municipio': mun,
+      'Ciudad': city,
+      'Inicio': timenow,
+      'Termino': " ",
+      'Observaciones': " ",
+    });
+
+    FirebaseFirestore.instance
+        .collection('duenios')
+        .doc(duenioIDs)
+        .collection("citas")
+        .doc("status")
+        .collection("progreso")
+        .doc(docId)
+        .set({
+      'ID': docId,
+      'DueñoID': duenioIDs,
+      'Dueño': duenio,
+      'Mascota': pet,
+      'PaseadorID': paseadorIDs,
+      'Paseador': pname,
+      'Fecha': date,
+      'Hora': time,
+      'Num Calle': numstreet,
+      'Calle': street,
+      'Municipio': mun,
+      'Ciudad': city,
+      'Inicio': timenow,
+      'Termino': " ",
+      'Observaciones': " ",
+    });
+    deleteCita();
+  }
+
   @override
   Widget build(BuildContext context) {
+    TimeOfDay now = TimeOfDay.now();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -853,6 +948,13 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                               width: getHorizontalSize(
                                                 113,
                                               ),
+                                              onTap: () {
+                                                if (paseando == false) {
+                                                  iniciar(context, now);
+                                                } else {
+                                                  noiniciar(context);
+                                                }
+                                              },
                                               text: "Iniciar",
                                               variant: ButtonVariant
                                                   .OutlineBlack9003f_3,
@@ -904,6 +1006,84 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  noiniciar(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      onPressed: () {
+        //Funcion
+        Navigator.pop(context);
+        ispaseando();
+        //Navigator.pushNamed(context, AppRoutes.paseoduenioagendadasScreen);
+      },
+      child: const Text("Ok"),
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("Ya tienes un paseo activo"),
+      content: const Text(
+          textAlign: TextAlign.center,
+          "Tenemos registrado que tienes un paseo activo, termina este para poder inciar con uno nuevo"),
+      actions: [
+        okButton,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  iniciar(BuildContext context, TimeOfDay now) {
+    // set up the button
+    Widget okButton = TextButton(
+      onPressed: () {
+        //Funcion
+        print(now);
+        FirebaseFirestore.instance
+            .collection('paseadores')
+            .doc(paseadorIDs)
+            .update({
+          'Activo': true,
+        });
+        copycita(now);
+        Navigator.pop(context);
+        ispaseando();
+//        Navigator.popUntil(
+        //          context, ModalRoute.withName(AppRoutes.vercitaspaseadorScreen));
+        //Navigator.pushNamed(context, AppRoutes.paseoduenioagendadasScreen);
+      },
+      child: const Text("Iniciar"),
+    );
+
+    // set up the button
+    Widget NopeButton = TextButton(
+      child: const Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context);
+        ispaseando();
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("Iniciar paseo"),
+      content: const Text(
+          textAlign: TextAlign.left,
+          "Estas por iniciar con tu paseo ¿Esta todo listo?"),
+      actions: [
+        okButton,
+        NopeButton,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 

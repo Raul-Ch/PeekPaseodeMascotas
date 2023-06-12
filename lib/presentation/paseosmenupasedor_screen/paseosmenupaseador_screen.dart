@@ -138,7 +138,7 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
             children: [
               SizedBox(
                 height: getVerticalSize(
-                  736,
+                  734,
                 ),
                 width: double.maxFinite,
                 child: Stack(
@@ -281,8 +281,8 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
                                       ),
                                       child: InkWell(
                                         onTap: () {
-                                          /*       Navigator.pushNamed(context,
-                                              AppRoutes.vercitasScreen); */
+                                          Navigator.pushNamed(context,
+                                              AppRoutes.vercitaspaseadorScreen);
                                         },
                                         child: Row(
                                           children: [

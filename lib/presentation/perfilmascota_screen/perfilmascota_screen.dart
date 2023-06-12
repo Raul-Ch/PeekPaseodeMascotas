@@ -900,7 +900,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                             375,
                           ),
                           margin: getMargin(
-                            top: 55,
+                            top: 65,
                           ),
                         ),
                       ],
@@ -913,9 +913,10 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                     margin: getMargin(
                       left: 0,
                       top: 0,
-                      bottom: 750,
+                      bottom: 780,
                     ),
                     padding: getPadding(
+                      top: 0,
                       left: 18,
                       right: 18,
                     ),
@@ -933,7 +934,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                             98,
                           ),
                           margin: getMargin(
-                            top: 10,
+                            top: 5,
                           ),
                         ),
                         Padding(
@@ -958,7 +959,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                               ),
                               Container(
                                 margin: getMargin(
-                                  top: 5,
+                                  top: 0,
                                 ),
                                 decoration: AppDecoration.txtOutlineBlack90066,
                                 child: Text(

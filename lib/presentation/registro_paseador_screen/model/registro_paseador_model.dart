@@ -14,6 +14,8 @@ addPaseadorDetails(
   String mun,
   String city,
   bool onoff,
+  int tarifa,
+  String exp,
 ) async {
   final paseador = FirebaseAuth.instance.currentUser!;
   FirebaseFirestore.instance.collection('paseadores').doc(paseador.uid).set({
@@ -30,5 +32,7 @@ addPaseadorDetails(
     'Ciudad': city,
     'ID': paseador.uid,
     'Activo': onoff,
+    'Tarifa': tarifa,
+    'Experiencia': exp,
   });
 }
