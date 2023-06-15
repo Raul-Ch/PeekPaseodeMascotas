@@ -28,7 +28,7 @@ class _VercomentariosScreen extends State<VercomentariosScreen> {
   String name = ' ';
   String lastname = '';
   String lastnameone = '';
-  bool _Enable = false;
+  final bool _Enable = false;
   String _apellidos = '';
 
   @override
@@ -72,7 +72,7 @@ class _VercomentariosScreen extends State<VercomentariosScreen> {
           _apellidos = ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + uid);
+        print("Document does not exist on the database uid:  $uid");
       }
     });
   }

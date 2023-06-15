@@ -3,18 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:peek_app/core/app_export.dart';
-import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
+import 'package:peek_app/presentation/paseoduenioterminada_screen/paseoduenioterminada_screen.dart';
 import 'package:peek_app/presentation/perfilduenio_screen/perfilduenio_screen.dart';
-//import 'package:peek_app/presentation/vercitasduenio_screen/widgets/vercitas_item_agendado_widget.dart';
-//import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
 
-
-class PaseoduenioagendadasScreen extends StatefulWidget {
-  const PaseoduenioagendadasScreen({Key? key}) : super(key: key);
+class PaseoduenioterminadasScreen extends StatefulWidget {
+  const PaseoduenioterminadasScreen({Key? key}) : super(key: key);
 
   @override
-  State<PaseoduenioagendadasScreen> createState() =>
-      _PaseoduenioagendadasScreen();
+  State<PaseoduenioterminadasScreen> createState() =>
+      _PaseoduenioterminadasScreen();
 }
 
 //Paseador
@@ -34,7 +31,7 @@ bool enfermedades = false;
 String sexo = '';
 String personalidad = '';
 
-class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
+class _PaseoduenioterminadasScreen extends State<PaseoduenioterminadasScreen> {
   final __paseadoresuid = TextEditingController();
 
   //El método Dispose limpia todos los objetos,
@@ -109,7 +106,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
         .doc(uid)
         .collection("citas")
         .doc("status")
-        .collection("agendadas")
+        .collection("terminadas")
         .get()
         .then((snapshot) => snapshot.docs.forEach((element) {
               //print(document.reference.id);
@@ -121,7 +118,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
   }
 
   Future<void> _handleRefresh() async {
-    Navigator.popAndPushNamed(context, AppRoutes.paseoduenioagendadasScreen);
+    Navigator.popAndPushNamed(context, AppRoutes.paseoduenioterminadasScreen);
 /*     showDialog(
         context: context,
         builder: (context) {
@@ -179,7 +176,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                           children: [
                             Padding(
                               padding: getPadding(top: 20),
-                              child: Text("CITAS AGENDADAS",
+                              child: Text("CITAS TERMINADAS",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
                                   style: AppStyle.txtArtographieMedium30),
@@ -206,7 +203,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        PaseoduenioagendadaScreen(
+                                                        PaseoduenioterminadaScreen(
                                                             citaID: items[index]
                                                                 ["ID"],
                                                             paseadorID: items[
@@ -250,7 +247,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                             .spaceAround,
                                                     children: [
                                                       Text(
-                                                        "Agendado",
+                                                        "Terminado",
                                                         overflow: TextOverflow
                                                             .ellipsis,
                                                         textAlign:
@@ -265,7 +262,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                         child: CustomImageView(
                                                           imagePath:
                                                               ImageConstant
-                                                                  .imgagendado,
+                                                                  .imgbandera,
                                                           height: getSize(
                                                             75,
                                                           ),
@@ -369,6 +366,9 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                                 items[index][
                                                                     "Paseador"],
                                                                 maxLines: null,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 textAlign:
                                                                     TextAlign
                                                                         .left,
@@ -436,7 +436,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                             Padding(
                                                               padding:
                                                                   const EdgeInsets
-                                                                      .all(0.0),
+                                                                      .all(1.0),
                                                               child: Text(
                                                                 "Fecha:",
                                                                 maxLines: null,
@@ -471,9 +471,9 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                             Padding(
                                                               padding:
                                                                   const EdgeInsets
-                                                                      .all(5.0),
+                                                                      .all(2.0),
                                                               child: Text(
-                                                                "Hora:",
+                                                                "Duración:",
                                                                 maxLines: null,
                                                                 textAlign:
                                                                     TextAlign
@@ -488,7 +488,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                           children: [
                                                             Text(
                                                               items[index]
-                                                                  ["Hora"],
+                                                                  ["Duración"],
                                                               maxLines: null,
                                                               overflow:
                                                                   TextOverflow

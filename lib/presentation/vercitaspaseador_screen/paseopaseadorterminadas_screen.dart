@@ -3,22 +3,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:peek_app/core/app_export.dart';
-import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
-import 'package:peek_app/presentation/perfilduenio_screen/perfilduenio_screen.dart';
-//import 'package:peek_app/presentation/vercitasduenio_screen/widgets/vercitas_item_agendado_widget.dart';
-//import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
+import 'package:peek_app/presentation/paseopaseadorterminada_screen/paseopaseadorterminada_screen.dart';
+import 'package:peek_app/presentation/perfilpaseador_screen/perfilpaseador_screen.dart';
 
-
-class PaseoduenioagendadasScreen extends StatefulWidget {
-  const PaseoduenioagendadasScreen({Key? key}) : super(key: key);
+class PaseopaseadorterminadasScreen extends StatefulWidget {
+  const PaseopaseadorterminadasScreen({Key? key}) : super(key: key);
 
   @override
-  State<PaseoduenioagendadasScreen> createState() =>
-      _PaseoduenioagendadasScreen();
+  State<PaseopaseadorterminadasScreen> createState() =>
+      _PaseopaseadorterminadasScreen();
 }
 
-//Paseador
-int tarifa = 0;
+//Dueño
 String name = ' ';
 String lastname = '';
 String lastnameone = '';
@@ -34,7 +30,8 @@ bool enfermedades = false;
 String sexo = '';
 String personalidad = '';
 
-class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
+class _PaseopaseadorterminadasScreen
+    extends State<PaseopaseadorterminadasScreen> {
   final __paseadoresuid = TextEditingController();
 
   //El método Dispose limpia todos los objetos,
@@ -46,7 +43,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
 
   @override
   void initState() {
-    mascotas();
+    //mascotas();
     super.initState();
   }
 
@@ -56,60 +53,17 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
 
   late var myFuture = getcitas();
 
-  Future mascotas() async {
-    user = FirebaseAuth.instance.currentUser!;
-    uid = FirebaseAuth.instance.currentUser!.uid;
-    FirebaseFirestore.instance
-        .collection("duenios")
-        .doc(uid)
-        .collection("mascotas")
-        .doc(uid)
-        .get()
-        .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        Map<String, dynamic>? data =
-            documentSnapshot.data() as Map<String, dynamic>?;
-        var Nombrepet = data?['Nombre'];
-        var Tamanio = data?['Tamaño'];
-        var Raza = data?['Raza'];
-        var Peso = data?['Peso'];
-        var Edad = data?['Edad'];
-        var Enfermedades = data?['Enfermedades'];
-        var Sexo = data?['Genero'];
-        var Personalidad = data?['Personalidad'];
-        //var GCorreo = data?['Email'];
-        print('Document data: ${documentSnapshot.data()}');
-        //Set the relevant data to variables as needed
-        //print(Nombre1);
-        setState(() {
-          nombre = Nombrepet;
-          tamanio = Tamanio;
-          raza = Raza;
-          peso = Peso;
-          edad = Edad;
-          enfermedades = Enfermedades;
-          sexo = Sexo;
-          personalidad = Personalidad;
-          //correo = GCorreo;
-          //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
-        });
-      } else {
-        print("Document does not exist on the database uid:  $uid");
-      }
-    });
-  }
-
 //para cada lugar vamos a añadirlo a nuestra lista de lugares para poder hacer display del nombre del lugar en forma de listview
   Future getcitas() async {
     user = FirebaseAuth.instance.currentUser!;
     uid = FirebaseAuth.instance.currentUser!.uid;
     //final uid = user.uid;
     await FirebaseFirestore.instance
-        .collection('duenios')
+        .collection('paseadores')
         .doc(uid)
         .collection("citas")
         .doc("status")
-        .collection("agendadas")
+        .collection("terminadas")
         .get()
         .then((snapshot) => snapshot.docs.forEach((element) {
               //print(document.reference.id);
@@ -121,7 +75,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
   }
 
   Future<void> _handleRefresh() async {
-    Navigator.popAndPushNamed(context, AppRoutes.paseoduenioagendadasScreen);
+    Navigator.popAndPushNamed(context, AppRoutes.paseopaseadorterminadasScreen);
 /*     showDialog(
         context: context,
         builder: (context) {
@@ -150,6 +104,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
           height: 150,
           backgroundColor: Colors.orange,
           animSpeedFactor: 1,
+          //showChildOpacityTransition: false,
           child: SizedBox(
             height: getVerticalSize(
               1168,
@@ -179,7 +134,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                           children: [
                             Padding(
                               padding: getPadding(top: 20),
-                              child: Text("CITAS AGENDADAS",
+                              child: Text("CITAS TERMINADAS",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
                                   style: AppStyle.txtArtographieMedium30),
@@ -206,7 +161,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        PaseoduenioagendadaScreen(
+                                                        PaseopaseadorterminadaScreen(
                                                             citaID: items[index]
                                                                 ["ID"],
                                                             paseadorID: items[
@@ -250,7 +205,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                             .spaceAround,
                                                     children: [
                                                       Text(
-                                                        "Agendado",
+                                                        "Terminado",
                                                         overflow: TextOverflow
                                                             .ellipsis,
                                                         textAlign:
@@ -265,7 +220,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                         child: CustomImageView(
                                                           imagePath:
                                                               ImageConstant
-                                                                  .imgagendado,
+                                                                  .imgbandera,
                                                           height: getSize(
                                                             75,
                                                           ),
@@ -306,7 +261,8 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                               right: 0,
                                                             ),
                                                             child: Text(
-                                                              nombre,
+                                                              items[index]
+                                                                  ["Mascota"],
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -366,8 +322,8 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                                 63,
                                                               ),
                                                               child: Text(
-                                                                items[index][
-                                                                    "Paseador"],
+                                                                items[index]
+                                                                    ["Dueño"],
                                                                 maxLines: null,
                                                                 textAlign:
                                                                     TextAlign
@@ -379,7 +335,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                             CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
-                                                                      .imgPaseador,
+                                                                      .imgduenio,
                                                               height:
                                                                   getVerticalSize(
                                                                 29,
@@ -471,9 +427,9 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                             Padding(
                                                               padding:
                                                                   const EdgeInsets
-                                                                      .all(5.0),
+                                                                      .all(2.0),
                                                               child: Text(
-                                                                "Hora:",
+                                                                "Duracion:",
                                                                 maxLines: null,
                                                                 textAlign:
                                                                     TextAlign
@@ -488,7 +444,7 @@ class _PaseoduenioagendadasScreen extends State<PaseoduenioagendadasScreen> {
                                                           children: [
                                                             Text(
                                                               items[index]
-                                                                  ["Hora"],
+                                                                  ["Duración"],
                                                               maxLines: null,
                                                               overflow:
                                                                   TextOverflow

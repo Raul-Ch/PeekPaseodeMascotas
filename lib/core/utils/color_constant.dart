@@ -44,6 +44,10 @@ class ColorConstant {
 
   static Color whiteA700 = fromHex('#ffffff');
 
+  static Color blacktransparent = Color.fromARGB(176, 0, 0, 0);
+
+  static Color whitetransparent = Color.fromARGB(175, 255, 255, 255);
+
   static Color fromHex(String hexString) {
     final buffer = StringBuffer();
     if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');

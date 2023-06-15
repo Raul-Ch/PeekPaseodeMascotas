@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/presentation/vercitaspaseador_screen/paseopaseadoragendadas_screen.dart';
 import 'package:peek_app/widgets/custom_button.dart';
+import 'package:peek_app/widgets/custom_text_form_field.dart';
 
 class PaseopaseadoragendadaScreen extends StatefulWidget {
   String paseadorID;
@@ -24,14 +25,25 @@ class PaseopaseadoragendadaScreen extends StatefulWidget {
 class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
   var user = FirebaseAuth.instance.currentUser!;
   var uid = FirebaseAuth.instance.currentUser!.uid;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController tarifaController = TextEditingController();
+  TextEditingController phonenumberController = TextEditingController();
+
+  TextEditingController dateController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
+
+  late var numstreetController = TextEditingController();
+  late var streetController = TextEditingController();
+  late var municipalityController = TextEditingController();
+  late var cityController = TextEditingController();
 
   late String paseadorIDs = widget.paseadorID;
   late String duenioIDs = widget.duenioID;
   late String citaIDs = widget.citaID;
 
-  bool _Enable = false;
-  bool _Button = true;
-  bool _Button2 = false;
+  final bool _Enable = false;
+  final bool _Button = true;
+  final bool _Button2 = false;
 
   bool activo = true;
 
@@ -73,7 +85,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
           print(paseando);
         });
       } else {
-        print("Document does not exist on the database uid:  " + duenioIDs);
+        print("Document does not exist on the database uid:  $duenioIDs");
       }
     });
   }
@@ -103,7 +115,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + duenioIDs);
+        print("Document does not exist on the database uid:  $duenioIDs");
       }
     });
   }
@@ -146,7 +158,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + duenioIDs);
+        print("Document does not exist on the database uid:  $duenioIDs");
       }
     });
   }
@@ -192,11 +204,12 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
           pname = Paseador;
         });
       } else {
-        print("Document does not exist on the database uid:  " + citaIDs);
+        print("Document does not exist on the database uid:  $citaIDs");
       }
     });
   }
 
+  @override
   void initState() {
     getCitas();
     mascotas();
@@ -231,7 +244,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
     String timenow;
     timenow =
         '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';
-    CollectionReference ref = await FirebaseFirestore.instance
+    CollectionReference ref = FirebaseFirestore.instance
         .collection('paseadores')
         .doc(uid)
         .collection("citas")
@@ -300,12 +313,12 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
           ),
         ),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: getVerticalSize(
                   734,
                 ),
@@ -315,7 +328,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                   children: [
                     Align(
                       alignment: Alignment.center,
-                      child: Container(
+                      child: SizedBox(
                         height: (MediaQuery.of(context).size.height),
                         width: double.maxFinite,
                         child: Stack(
@@ -361,7 +374,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                                 bottom: 29,
                                               ),
                                               child: Text(
-                                                "Paseas con: " + nombre,
+                                                "Paseas con: $nombre",
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.left,
                                                 style: AppStyle
@@ -393,8 +406,6 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                         right: 20,
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
                                         children: [
                                           Padding(
                                             padding: getPadding(
@@ -429,8 +440,6 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                       ),
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
                                       children: [
                                         Padding(
                                           padding: getPadding(
@@ -447,7 +456,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                         ),
                                         Padding(
                                           padding: getPadding(
-                                            left: 12,
+                                            left: 0,
                                             top: 2,
                                           ),
                                           child: Text(
@@ -597,7 +606,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                       alignment: Alignment.center,
                                       child: Padding(
                                         padding: getPadding(
-                                          top: 26,
+                                          top: 17,
                                         ),
                                         child: Text(
                                           "CITA:",
@@ -608,118 +617,118 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                         ),
                                       ),
                                     ),
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Padding(
-                                        padding: getPadding(
-                                          top: 20,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Padding(
+                                          padding: getPadding(
+                                            top: 16,
+                                            left: 10,
+                                            right: 0,
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Padding(
+                                                padding: getPadding(
+                                                  top: 1,
+                                                  left: 7,
+                                                ),
+                                                child: Text(
+                                                  "Fecha:",
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.left,
+                                                  style: AppStyle
+                                                      .txtUrbanistRomanMedium16,
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  CustomTextFormField(
+                                                    enabled: false,
+                                                    width: getHorizontalSize(
+                                                      90,
+                                                    ),
+                                                    controller: dateController =
+                                                        TextEditingController(
+                                                            text: date),
+                                                    hintText: "Fecha",
+                                                    margin: getMargin(
+                                                      left: 6,
+                                                    ),
+                                                    padding:
+                                                        TextFormFieldPadding
+                                                            .PaddingT6,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding: getPadding(
-                                                top: 1,
-                                              ),
-                                              child: Text(
-                                                "Fecha:",
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.left,
-                                                style: AppStyle
-                                                    .txtUrbanistRomanMedium16,
-                                              ),
+                                        Padding(
+                                          padding: getPadding(
+                                            top: 18,
+                                            left: 20,
+                                          ),
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Padding(
+                                                  padding: getPadding(
+                                                    top: 1,
+                                                    left: 0,
+                                                  ),
+                                                  child: Text(
+                                                    "Hora:",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    textAlign: TextAlign.center,
+                                                    style: AppStyle
+                                                        .txtUrbanistRomanMedium16,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    CustomTextFormField(
+                                                      enabled: false,
+                                                      width: getHorizontalSize(
+                                                        80,
+                                                      ),
+                                                      controller: timeController =
+                                                          TextEditingController(
+                                                              text: time),
+                                                      hintText: "Tiempo",
+                                                      margin: getMargin(
+                                                        left: 12,
+                                                      ),
+                                                      padding:
+                                                          TextFormFieldPadding
+                                                              .PaddingT6,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
-                                            Container(
-                                              width: getHorizontalSize(
-                                                131,
-                                              ),
-                                              margin: getMargin(
-                                                left: 12,
-                                              ),
-                                              padding: getPadding(
-                                                left: 30,
-                                                top: 1,
-                                                right: 57,
-                                                bottom: 1,
-                                              ),
-                                              decoration: AppDecoration
-                                                  .txtOutlineIndigo50
-                                                  .copyWith(
-                                                borderRadius: BorderRadiusStyle
-                                                    .txtRoundedBorder8,
-                                              ),
-                                              child: Text(
-                                                "10",
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.left,
-                                                style: AppStyle
-                                                    .txtUrbanistRomanMedium15,
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Padding(
-                                        padding: getPadding(
-                                          top: 18,
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding: getPadding(
-                                                top: 1,
-                                              ),
-                                              child: Text(
-                                                "Hora:",
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.left,
-                                                style: AppStyle
-                                                    .txtUrbanistRomanMedium16,
-                                              ),
-                                            ),
-                                            Container(
-                                              width: getHorizontalSize(
-                                                126,
-                                              ),
-                                              margin: getMargin(
-                                                left: 21,
-                                              ),
-                                              padding: getPadding(
-                                                left: 30,
-                                                top: 1,
-                                                right: 52,
-                                                bottom: 1,
-                                              ),
-                                              decoration: AppDecoration
-                                                  .txtOutlineIndigo50
-                                                  .copyWith(
-                                                borderRadius: BorderRadiusStyle
-                                                    .txtRoundedBorder8,
-                                              ),
-                                              child: Text(
-                                                "06",
-                                                overflow: TextOverflow.ellipsis,
-                                                textAlign: TextAlign.left,
-                                                style: AppStyle
-                                                    .txtUrbanistRomanMedium15,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                      ],
                                     ),
                                     Padding(
                                       padding: getPadding(
-                                        left: 1,
-                                        top: 19,
+                                        left: 15,
+                                        top: 15,
+                                        right: 15,
                                       ),
                                       child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Padding(
                                             padding: getPadding(
@@ -733,36 +742,35 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                                   .txtUrbanistRomanMedium16,
                                             ),
                                           ),
-                                          Container(
+                                          CustomTextFormField(
                                             width: getHorizontalSize(
-                                              125,
+                                              253,
                                             ),
-                                            margin: getMargin(
-                                              left: 11,
-                                            ),
-                                            padding: getPadding(
-                                              left: 30,
-                                              top: 1,
-                                              right: 37,
-                                              bottom: 1,
-                                            ),
-                                            decoration: AppDecoration
-                                                .txtOutlineIndigo50
-                                                .copyWith(
-                                              borderRadius: BorderRadiusStyle
-                                                  .txtRoundedBorder8,
-                                            ),
-                                            child: Text(
-                                              "Álamo",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle
-                                                  .txtUrbanistRomanMedium15,
-                                            ),
+                                            enabled: _Enable,
+                                            controller: streetController =
+                                                TextEditingController(
+                                                    text: street),
+                                            hintText: "Calle",
+                                            variant: TextFormFieldVariant
+                                                .OutlineIndigo50_1,
+                                            padding:
+                                                TextFormFieldPadding.PaddingT6,
+                                            margin: getMargin(left: 10),
                                           ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: getPadding(
+                                        left: 15,
+                                        top: 15,
+                                        right: 15,
+                                      ),
+                                      child: Row(
+                                        children: [
                                           Padding(
                                             padding: getPadding(
-                                              left: 25,
+                                              left: 0,
                                               bottom: 1,
                                             ),
                                             child: Text(
@@ -773,48 +781,37 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                                   .txtUrbanistRomanMedium16,
                                             ),
                                           ),
-                                          Container(
+                                          CustomTextFormField(
                                             width: getHorizontalSize(
-                                              54,
+                                              75,
                                             ),
+                                            enabled: _Enable,
+                                            controller: numstreetController =
+                                                TextEditingController(
+                                                    text: numstreet.toString()),
+                                            hintText: "Núm. Calle",
                                             margin: getMargin(
-                                              left: 17,
+                                              left: 10,
                                             ),
-                                            padding: getPadding(
-                                              left: 14,
-                                              top: 1,
-                                              right: 14,
-                                              bottom: 1,
-                                            ),
-                                            decoration: AppDecoration
-                                                .txtOutlineIndigo50
-                                                .copyWith(
-                                              borderRadius: BorderRadiusStyle
-                                                  .txtRoundedBorder8,
-                                            ),
-                                            child: Text(
-                                              "212",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle
-                                                  .txtUrbanistRomanMedium15,
-                                            ),
+                                            padding:
+                                                TextFormFieldPadding.PaddingT6,
                                           ),
                                         ],
                                       ),
                                     ),
                                     Padding(
                                       padding: getPadding(
-                                        top: 18,
+                                        left: 15,
+                                        top: 15,
+                                        right: 15,
                                       ),
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.center,
                                         children: [
                                           Padding(
                                             padding: getPadding(
-                                              top: 2,
-                                            ),
+                                                top: 0, right: 2, bottom: 5),
                                             child: Text(
                                               "Municipio:",
                                               overflow: TextOverflow.ellipsis,
@@ -823,68 +820,27 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                                   .txtUrbanistRomanMedium16,
                                             ),
                                           ),
-                                          Container(
-                                            height: getVerticalSize(
-                                              22,
-                                            ),
+                                          CustomTextFormField(
                                             width: getHorizontalSize(
-                                              248,
+                                              221,
                                             ),
-                                            child: Stack(
-                                              alignment: Alignment.bottomCenter,
-                                              children: [
-                                                Align(
-                                                  alignment: Alignment.center,
-                                                  child: Container(
-                                                    height: getVerticalSize(
-                                                      22,
-                                                    ),
-                                                    width: getHorizontalSize(
-                                                      248,
-                                                    ),
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          ColorConstant.gray50,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        getHorizontalSize(
-                                                          8,
-                                                        ),
-                                                      ),
-                                                      border: Border.all(
-                                                        color: ColorConstant
-                                                            .indigo50,
-                                                        width:
-                                                            getHorizontalSize(
-                                                          1,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      Alignment.bottomCenter,
-                                                  child: Text(
-                                                    "Naucalpan de Juarez",
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtUrbanistRomanMedium15,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+                                            enabled: _Enable,
+                                            controller: municipalityController =
+                                                TextEditingController(
+                                                    text: mun),
+                                            hintText: "Municipio",
+                                            padding:
+                                                TextFormFieldPadding.PaddingT6,
+                                            margin: getMargin(left: 10),
                                           ),
                                         ],
                                       ),
                                     ),
                                     Padding(
                                       padding: getPadding(
-                                        left: 1,
+                                        left: 15,
                                         top: 17,
-                                        right: 1,
+                                        right: 15,
                                       ),
                                       child: Row(
                                         mainAxisAlignment:
@@ -895,36 +851,27 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                               bottom: 1,
                                             ),
                                             child: Text(
-                                              "Colonia:",
+                                              "Ciudad:",
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.left,
                                               style: AppStyle
                                                   .txtUrbanistRomanMedium16,
                                             ),
                                           ),
-                                          Container(
+                                          CustomTextFormField(
                                             width: getHorizontalSize(
-                                              248,
+                                              238,
                                             ),
-                                            padding: getPadding(
-                                              left: 30,
-                                              top: 1,
-                                              right: 82,
-                                              bottom: 1,
-                                            ),
-                                            decoration: AppDecoration
-                                                .txtOutlineIndigo50
-                                                .copyWith(
-                                              borderRadius: BorderRadiusStyle
-                                                  .txtRoundedBorder8,
-                                            ),
-                                            child: Text(
-                                              "Santa Cruz",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle
-                                                  .txtUrbanistRomanMedium15,
-                                            ),
+                                            enabled: _Enable,
+                                            controller: cityController =
+                                                TextEditingController(
+                                                    text: city),
+                                            hintText: "Ciudad",
+                                            padding:
+                                                TextFormFieldPadding.PaddingT6,
+                                            textInputAction:
+                                                TextInputAction.done,
+                                            margin: getMargin(left: 10),
                                           ),
                                         ],
                                       ),
@@ -934,7 +881,7 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
                                       child: Padding(
                                         padding: getPadding(
                                           left: 18,
-                                          top: 27,
+                                          top: 10,
                                           right: 18,
                                         ),
                                         child: Row(
@@ -1053,9 +1000,9 @@ class _PaseopaseadoragendadaScreen extends State<PaseopaseadoragendadaScreen> {
         copycita(now);
         Navigator.pop(context);
         ispaseando();
-//        Navigator.popUntil(
-        //          context, ModalRoute.withName(AppRoutes.vercitaspaseadorScreen));
-        //Navigator.pushNamed(context, AppRoutes.paseoduenioagendadasScreen);
+        Navigator.popUntil(
+            context, ModalRoute.withName(AppRoutes.vercitaspaseadorScreen));
+        Navigator.pushNamed(context, AppRoutes.paseopaseadorprogresoScreen);
       },
       child: const Text("Iniciar"),
     );

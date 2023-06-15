@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:peek_app/core/app_export.dart';
-import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioagendadas_screen.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
@@ -91,7 +90,7 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
           phone = Telefono;
         });
       } else {
-        print("Document does not exist on the database uid:  " + citaIDs);
+        print("Document does not exist on the database uid:  $citaIDs");
       }
     });
   }
@@ -129,11 +128,12 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
           city = Ciudad;
         });
       } else {
-        print("Document does not exist on the database uid:  " + citaIDs);
+        print("Document does not exist on the database uid:  $citaIDs");
       }
     });
   }
 
+  @override
   void initState() {
     getCitas();
     getPaseador();
@@ -141,7 +141,7 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
   }
 
   Future Actualizar() async {
-    await FirebaseFirestore.instance
+    FirebaseFirestore.instance
         .collection('duenios')
         .doc(duenioIDs)
         .collection("citas")
@@ -213,7 +213,7 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: getVerticalSize(
                   736,
                 ),
@@ -223,7 +223,7 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
                   children: [
                     Align(
                       alignment: Alignment.center,
-                      child: Container(
+                      child: SizedBox(
                         height: getVerticalSize(
                           750,
                         ),
@@ -267,7 +267,7 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
                                               bottom: 27,
                                             ),
                                             child: Text(
-                                              pet + " pasea con:",
+                                              "$pet pasea con:",
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.left,
                                               style: AppStyle
@@ -652,8 +652,8 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
                                                             onTapFechaone(
                                                                 context);
                                                           },
-                                                          icon:
-                                                              Icon(Icons.edit)),
+                                                          icon: const Icon(
+                                                              Icons.edit)),
                                                     )
                                                   ]),
                                                 ],
@@ -710,8 +710,8 @@ class _PaseoduenioagendadaScreen extends State<PaseoduenioagendadaScreen> {
                                                             openTimePickerDialog(
                                                                 context);
                                                           },
-                                                          icon:
-                                                              Icon(Icons.edit)),
+                                                          icon: const Icon(
+                                                              Icons.edit)),
                                                     )
                                                   ]),
                                                 ],

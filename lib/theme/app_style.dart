@@ -331,6 +331,33 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle txtArtographieMediumtitle = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      90,
+    ),
+    fontFamily: 'Artographie Medium',
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle txtArtographieMediumscreens = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      80,
+    ),
+    fontFamily: 'Artographie Medium',
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle txtArtographieMediumsubscreens = TextStyle(
+    color: ColorConstant.gray900,
+    fontSize: getFontSize(
+      20,
+    ),
+    fontFamily: 'Artographie Medium',
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle txtUrbanistRomanCom = TextStyle(
     color: ColorConstant.black900,
     fontSize: getFontSize(

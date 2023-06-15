@@ -35,6 +35,7 @@ class _BuscarpaseadorScreen extends State<BuscarpaseadorScreen> {
     super.dispose();
   }
 
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -75,7 +76,7 @@ class _BuscarpaseadorScreen extends State<BuscarpaseadorScreen> {
           ),
         ),
         backgroundColor: ColorConstant.whiteA700,
-        body: Container(
+        body: SizedBox(
           height: getVerticalSize(1366),
           width: double.maxFinite,
           child: Stack(
@@ -168,17 +169,20 @@ class _BuscarpaseadorScreen extends State<BuscarpaseadorScreen> {
                                                         Container(
                                                             width:
                                                                 getHorizontalSize(
-                                                                    81),
+                                                                    100),
                                                             margin: getMargin(
                                                                 left: 2),
                                                             child: Text(
                                                                 items[index][
                                                                         "Nombre"] +
-                                                                    " " +
+                                                                    "\n" +
                                                                     items[index]
                                                                         [
                                                                         "Apellido Paterno"],
                                                                 maxLines: null,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 textAlign:
                                                                     TextAlign
                                                                         .left,
@@ -189,11 +193,7 @@ class _BuscarpaseadorScreen extends State<BuscarpaseadorScreen> {
                                                             padding: getPadding(
                                                                 left: 2),
                                                             child: Text(
-                                                                "Tarifa: \$" +
-                                                                    items[index]
-                                                                            [
-                                                                            "Tarifa"]
-                                                                        .toString(),
+                                                                "Tarifa: \$${items[index]["Tarifa"]}",
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
@@ -203,14 +203,11 @@ class _BuscarpaseadorScreen extends State<BuscarpaseadorScreen> {
                                                                 style: AppStyle
                                                                     .txtUrbanistRomanBold18),
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 10,
                                                           ),
                                                           Text(
-                                                              "Tel.: " +
-                                                                  items[index][
-                                                                          "Telefono"]
-                                                                      .toString(),
+                                                              "Tel.: ${items[index]["Telefono"]}",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,

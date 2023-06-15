@@ -80,7 +80,7 @@ class WelcomeScreen extends StatelessWidget {
                                                                           TextAlign
                                                                               .center,
                                                                       style: AppStyle
-                                                                          .txtArtographieMedium25)),
+                                                                          .txtArtographieMediumtitle)),
                                                               Text(
                                                                   " Paseo de Mascotas",
                                                                   overflow:
@@ -119,6 +119,7 @@ class WelcomeScreen extends StatelessWidget {
                                                   ButtonPadding.PaddingAll19,
                                               fontStyle: ButtonFontStyle
                                                   .UrbanistRomanMedium15,
+                                              variant: ButtonVariant.Iniciob,
                                               onTap: () {
                                                 LoginIn(context);
                                               }),
@@ -127,7 +128,7 @@ class WelcomeScreen extends StatelessWidget {
                                               text: "Registrarme",
                                               margin: getMargin(
                                                   left: 23, top: 20, right: 21),
-                                              variant: ButtonVariant.White,
+                                              variant: ButtonVariant.Iniciow,
                                               padding:
                                                   ButtonPadding.PaddingAll19,
                                               fontStyle: ButtonFontStyle

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -136,7 +134,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + uid);
+        print("Document does not exist on the database uid:  $uid");
       }
     });
   }
@@ -295,14 +293,14 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
         )),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: true,
-        body: Container(
+        body: SizedBox(
           height: (MediaQuery.of(context).size.height),
           width: double.maxFinite,
           child: ListView(shrinkWrap: true, children: [
             Stack(
               alignment: Alignment.center,
               children: [
-                Align(
+                const Align(
                   alignment: Alignment.center,
                 ),
                 Align(
@@ -320,7 +318,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: 130.0),
+                        const SizedBox(height: 130.0),
                         //Spacer(),
                         Align(
                           alignment: Alignment.topCenter,
@@ -348,7 +346,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                                 ),
                                 Container(
                                   width: 300,
-                                  padding: EdgeInsets.only(left: 70),
+                                  padding: const EdgeInsets.only(left: 70),
                                   child: Column(
                                     // alignment: Alignment.bottomLeft,
                                     children: [
@@ -369,7 +367,8 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                                       Row(
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(left: 20),
+                                            padding:
+                                                const EdgeInsets.only(left: 20),
                                             child: CustomImageView(
                                               imagePath:
                                                   ImageConstant.imgCanelita,
@@ -857,7 +856,7 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          PerfilmascotaScreen()));
+                                                          const PerfilmascotaScreen()));
                                             });
                                           },
                                     text: "Actualizar",
@@ -928,19 +927,17 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                         CustomImageView(
                           imagePath: ImageConstant.imgPeek299x96,
                           height: getVerticalSize(
-                            100,
+                            110,
                           ),
                           width: getHorizontalSize(
-                            98,
+                            96,
                           ),
-                          margin: getMargin(
-                            top: 5,
-                          ),
+                          alignment: Alignment.bottomRight,
                         ),
                         Padding(
                           padding: getPadding(
                             right: 1,
-                            bottom: 10,
+                            bottom: 2,
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -950,23 +947,34 @@ class _PerfilmascotaScreen extends State<PerfilmascotaScreen> {
                                   207,
                                 ),
                                 decoration: AppDecoration.txtOutlineBlack90066,
-                                child: Text(
-                                  "Peek ",
-                                  maxLines: null,
-                                  textAlign: TextAlign.center,
-                                  style: AppStyle.txtArtographieMedium25,
-                                ),
-                              ),
-                              Container(
-                                margin: getMargin(
-                                  top: 0,
-                                ),
-                                decoration: AppDecoration.txtOutlineBlack90066,
-                                child: Text(
-                                  " Paseo de Mascotas",
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                  style: AppStyle.txtArtographieMedium25,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      margin: getMargin(
+                                        top: 0,
+                                        bottom: 0,
+                                      ),
+                                      child: Text(
+                                        "Peek'",
+                                        maxLines: null,
+                                        textAlign: TextAlign.center,
+                                        style: AppStyle
+                                            .txtArtographieMediumscreens,
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: getMargin(
+                                        top: 0,
+                                      ),
+                                      child: Text(
+                                        "Paseo de Mascotas",
+                                        maxLines: null,
+                                        textAlign: TextAlign.center,
+                                        style: AppStyle
+                                            .txtArtographieMediumsubscreens,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

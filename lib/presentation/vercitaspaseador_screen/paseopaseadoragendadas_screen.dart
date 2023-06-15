@@ -3,13 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:peek_app/core/app_export.dart';
-import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
 import 'package:peek_app/presentation/paseopaseadoragendada_screen/paseopaseadoragendada_screen.dart';
-import 'package:peek_app/presentation/perfilduenio_screen/perfilduenio_screen.dart';
-//import 'package:peek_app/presentation/vercitasduenio_screen/widgets/vercitas_item_agendado_widget.dart';
-import 'package:peek_app/widgets/custom_button.dart';
-import 'package:peek_app/widgets/custom_text_form_field.dart';
-//import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
+import 'package:peek_app/presentation/perfilpaseador_screen/perfilpaseador_screen.dart';
 
 class PaseopaseadoragendadasScreen extends StatefulWidget {
   const PaseopaseadoragendadasScreen({Key? key}) : super(key: key);
@@ -46,6 +41,7 @@ class _PaseopaseadoragendadasScreen
     super.dispose();
   }
 
+  @override
   void initState() {
     //mascotas();
     super.initState();
@@ -86,7 +82,7 @@ class _PaseopaseadoragendadasScreen
           return Center(child: CircularProgressIndicator());
         });
     Navigator.of(context).pop(); */
-    return await Future.delayed(Duration(seconds: 1));
+    return await Future.delayed(const Duration(seconds: 1));
   }
 
   @override
@@ -109,7 +105,7 @@ class _PaseopaseadoragendadasScreen
           backgroundColor: Colors.orange,
           animSpeedFactor: 1,
           //showChildOpacityTransition: false,
-          child: Container(
+          child: SizedBox(
             height: getVerticalSize(
               1168,
             ),
@@ -158,7 +154,7 @@ class _PaseopaseadoragendadasScreen
                                     itemCount: items.length,
                                     itemBuilder: (context, index) {
                                       return Padding(
-                                        padding: EdgeInsets.all(4),
+                                        padding: const EdgeInsets.all(4),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
@@ -320,7 +316,7 @@ class _PaseopaseadoragendadasScreen
                                                               MainAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            Container(
+                                                            SizedBox(
                                                               width:
                                                                   getHorizontalSize(
                                                                 63,

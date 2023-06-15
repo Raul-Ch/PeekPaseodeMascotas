@@ -1,9 +1,70 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 
-class PaseosmenupaseadorScreen extends StatelessWidget {
-  const PaseosmenupaseadorScreen({super.key});
+bool progreso = false;
+
+class PaseosmenupaseadorScreen extends StatefulWidget {
+  const PaseosmenupaseadorScreen({Key? key}) : super(key: key);
+
+  @override
+  State<PaseosmenupaseadorScreen> createState() => _PaseosmenupaseadorScreen();
+}
+
+sinprogreso(BuildContext context) {
+  // set up the button
+  Widget okButton = TextButton(
+    onPressed: () {
+      //Funcion
+      Navigator.pop(context);
+    },
+    child: const Text("Ok"),
+  );
+
+  AlertDialog alert = AlertDialog(
+    title: const Text("No tienes un paseo activo"),
+    content: const Text(
+        textAlign: TextAlign.center,
+        "Tenemos registrado que no tienes un paseo activo, si estas seguro de que tienes unosi estas seguro de que tienes uno, accede desde: Ver Citas y da click en Progreso "),
+    actions: [
+      okButton,
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+class _PaseosmenupaseadorScreen extends State<PaseosmenupaseadorScreen> {
+  late var myFuture = paseando();
+  Future paseando() async {
+    var user = FirebaseAuth.instance.currentUser!;
+    var uid = FirebaseAuth.instance.currentUser!.uid;
+
+    final snapshot = await FirebaseFirestore.instance
+        .collection('paseadores')
+        .doc(uid)
+        .collection("citas")
+        .doc("status")
+        .collection("progreso")
+        .get();
+
+    if (snapshot.size == 0) {
+      progreso = false;
+    } else {
+      progreso = true;
+    }
+  }
+
+  @override
+  void initState() {
+    myFuture;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -331,43 +392,56 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
                                         borderRadius:
                                             BorderRadiusStyle.roundedBorder22,
                                       ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          CustomImageView(
-                                            imagePath:
-                                                ImageConstant.imgVerpaseo,
-                                            height: getVerticalSize(
-                                              94,
+                                      child: InkWell(
+                                        onTap: () {
+                                          paseando();
+                                          if (progreso == true) {
+                                            Navigator.pushNamed(
+                                                context,
+                                                AppRoutes
+                                                    .paseopaseadorprogresoScreen);
+                                          } else {
+                                            sinprogreso(context);
+                                          }
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            CustomImageView(
+                                              imagePath:
+                                                  ImageConstant.imgVerpaseo,
+                                              height: getVerticalSize(
+                                                94,
+                                              ),
+                                              width: getHorizontalSize(
+                                                180,
+                                              ),
+                                              margin: getMargin(
+                                                bottom: 5,
+                                              ),
                                             ),
-                                            width: getHorizontalSize(
-                                              180,
+                                            Container(
+                                              width: getHorizontalSize(
+                                                112,
+                                              ),
+                                              margin: getMargin(
+                                                top: 7,
+                                                bottom: 6,
+                                                right: 15,
+                                              ),
+                                              child: Text(
+                                                "Ver \nPaseo",
+                                                maxLines: null,
+                                                textAlign: TextAlign.right,
+                                                style: AppStyle
+                                                    .txtMontserratAlternatesSemiBold35,
+                                              ),
                                             ),
-                                            margin: getMargin(
-                                              bottom: 5,
-                                            ),
-                                          ),
-                                          Container(
-                                            width: getHorizontalSize(
-                                              112,
-                                            ),
-                                            margin: getMargin(
-                                              top: 7,
-                                              bottom: 6,
-                                              right: 15,
-                                            ),
-                                            child: Text(
-                                              "Ver \nPaseo",
-                                              maxLines: null,
-                                              textAlign: TextAlign.right,
-                                              style: AppStyle
-                                                  .txtMontserratAlternatesSemiBold35,
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -384,7 +458,7 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
                         margin: getMargin(
                           left: 0,
                           top: 0,
-                          bottom: 624,
+                          bottom: 605,
                         ),
                         padding: getPadding(
                           left: 18,
@@ -398,18 +472,19 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
                             CustomImageView(
                               imagePath: ImageConstant.imgPeek299x96,
                               height: getVerticalSize(
-                                100,
+                                130,
                               ),
                               width: getHorizontalSize(
-                                98,
+                                130,
                               ),
                               margin: getMargin(
-                                top: 12,
+                                top: 0,
                               ),
                             ),
                             Padding(
                               padding: getPadding(
                                 right: 1,
+                                top: 0,
                                 bottom: 10,
                               ),
                               child: Column(
@@ -421,24 +496,34 @@ class PaseosmenupaseadorScreen extends StatelessWidget {
                                     ),
                                     decoration:
                                         AppDecoration.txtOutlineBlack90066,
-                                    child: Text(
-                                      "Peek ",
-                                      maxLines: null,
-                                      textAlign: TextAlign.center,
-                                      style: AppStyle.txtArtographieMedium25,
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: getMargin(
-                                      top: 5,
-                                    ),
-                                    decoration:
-                                        AppDecoration.txtOutlineBlack90066,
-                                    child: Text(
-                                      " Paseo de Mascotas",
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.center,
-                                      style: AppStyle.txtArtographieMedium25,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          margin: getMargin(
+                                            top: 0,
+                                            bottom: 0,
+                                          ),
+                                          child: Text(
+                                            "Peek'",
+                                            maxLines: null,
+                                            textAlign: TextAlign.center,
+                                            style: AppStyle
+                                                .txtArtographieMediumscreens,
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: getMargin(
+                                            top: 0,
+                                          ),
+                                          child: Text(
+                                            "Paseo de Mascotas",
+                                            maxLines: null,
+                                            textAlign: TextAlign.center,
+                                            style: AppStyle
+                                                .txtArtographieMediumsubscreens,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],

@@ -158,17 +158,18 @@ class ComentariosScreen extends StatelessWidget {
                             margin: getMargin(
                               top: 6,
                               bottom: 14,
+                              left: 15,
                             ),
                             child: Stack(
-                              alignment: Alignment.topLeft,
+                              alignment: Alignment.topRight,
                               children: [
                                 CustomImageView(
                                   imagePath: ImageConstant.imgPeek299x96,
                                   height: getVerticalSize(
-                                    99,
+                                    120,
                                   ),
                                   width: getHorizontalSize(
-                                    96,
+                                    120,
                                   ),
                                   alignment: Alignment.bottomRight,
                                 ),
@@ -192,14 +193,49 @@ class ComentariosScreen extends StatelessWidget {
                             ),
                             margin: getMargin(
                               left: 12,
-                              bottom: 11,
+                              bottom: 5,
                             ),
                             decoration: AppDecoration.txtOutlineBlack90066,
-                            child: Text(
-                              "Peek’ \nPaseo de Mascotas",
-                              maxLines: null,
-                              textAlign: TextAlign.center,
-                              style: AppStyle.txtArtographieMedium25,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: getHorizontalSize(
+                                    207,
+                                  ),
+                                  decoration:
+                                      AppDecoration.txtOutlineBlack90066,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        margin: getMargin(
+                                          top: 0,
+                                          bottom: 0,
+                                        ),
+                                        child: Text(
+                                          "Peek'",
+                                          maxLines: null,
+                                          textAlign: TextAlign.center,
+                                          style: AppStyle
+                                              .txtArtographieMediumscreens,
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: getMargin(
+                                          top: 0,
+                                        ),
+                                        child: Text(
+                                          "Paseo de Mascotas",
+                                          maxLines: null,
+                                          textAlign: TextAlign.center,
+                                          style: AppStyle
+                                              .txtArtographieMediumsubscreens,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

@@ -138,7 +138,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + uid);
+        print("Document does not exist on the database uid:  $uid");
       }
     });
   }
@@ -275,7 +275,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
         )),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: true,
-        body: Container(
+        body: SizedBox(
           height: (MediaQuery.of(context).size.height),
           width: double.maxFinite,
           child: ListView(shrinkWrap: true, children: [
@@ -294,7 +294,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: (MediaQuery.of(context).size.height),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -1022,7 +1022,7 @@ class _PerfilpaseadorScreen extends State<PerfilpaseadorScreen> {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          PerfilpaseadorScreen()));
+                                                          const PerfilpaseadorScreen()));
                                             });
                                           },
                                     variant: ButtonVariant.OutlineBlack9003f_2,

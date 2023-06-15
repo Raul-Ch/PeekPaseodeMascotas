@@ -131,7 +131,7 @@ class _PerfilduenioScreen extends State<PerfilduenioScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + uid);
+        print("Document does not exist on the database uid:  $uid");
       }
     });
   }
@@ -295,7 +295,7 @@ class _PerfilduenioScreen extends State<PerfilduenioScreen> {
         )),
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: true,
-        body: Container(
+        body: SizedBox(
           height: (MediaQuery.of(context).size.height),
           width: double.maxFinite,
           child: ListView(
@@ -330,7 +330,7 @@ class _PerfilduenioScreen extends State<PerfilduenioScreen> {
                                 top: 56,
                                 right: 33,
                               ),
-                              child: Container(
+                              child: SizedBox(
                                 height: (MediaQuery.of(context).size.height),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -819,7 +819,7 @@ class _PerfilduenioScreen extends State<PerfilduenioScreen> {
                                                             MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        PerfilduenioScreen()));
+                                                                        const PerfilduenioScreen()));
                                                       });
                                                     },
                                               text: "Actualizar",

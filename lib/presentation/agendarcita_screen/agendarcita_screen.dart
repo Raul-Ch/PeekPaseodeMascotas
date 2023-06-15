@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:peek_app/core/app_export.dart';
-import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioagendadas_screen.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 
 import '../../widgets/custom_text_form_field.dart';
@@ -29,9 +28,9 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
   String date = '';
   String time = '';
 
-  bool _Enable = false;
-  bool _Button = true;
-  bool _Button2 = false;
+  final bool _Enable = false;
+  final bool _Button = true;
+  final bool _Button2 = false;
 
   //late var myFuture = Agendarcita2();
 
@@ -101,7 +100,7 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + uid);
+        print("Document does not exist on the database uid:  $uid");
       }
     });
   }
@@ -144,7 +143,7 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + uid);
+        print("Document does not exist on the database uid:  $uid");
       }
     });
   }
@@ -152,7 +151,7 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
   Future Agendarcita() async {
     user = FirebaseAuth.instance.currentUser!;
     uid = FirebaseAuth.instance.currentUser!.uid;
-    CollectionReference ref = await FirebaseFirestore.instance
+    CollectionReference ref = FirebaseFirestore.instance
         .collection('duenios')
         .doc(uid)
         .collection("citas")
@@ -354,9 +353,9 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
                                       padding: getPadding(
                                           top: 0, left: 100, right: 100),
                                       child: IconButton(
-                                        icon: Icon(Icons.edit_calendar),
+                                        icon: const Icon(Icons.edit_calendar),
                                         color:
-                                            Color.fromARGB(255, 249, 166, 71),
+                                            const Color.fromARGB(255, 249, 166, 71),
                                         iconSize: 60,
                                         onPressed: () {
                                           onTapFechaone(context);
@@ -393,9 +392,9 @@ class _AgendarcitaScreen extends State<AgendarcitaScreen> {
                                       padding: getPadding(
                                           top: 6, left: 100, right: 100),
                                       child: IconButton(
-                                        icon: Icon(Icons.more_time_rounded),
+                                        icon: const Icon(Icons.more_time_rounded),
                                         color:
-                                            Color.fromARGB(255, 249, 166, 71),
+                                            const Color.fromARGB(255, 249, 166, 71),
                                         iconSize: 60,
                                         onPressed: () {
                                           openTimePickerDialog(context);

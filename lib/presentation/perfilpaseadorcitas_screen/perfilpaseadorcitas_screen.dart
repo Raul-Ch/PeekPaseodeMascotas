@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:peek_app/core/app_export.dart';
 import 'package:peek_app/presentation/agendarcita_screen/agendarcita_screen.dart';
-import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioagendadas_screen.dart';
 import 'package:peek_app/widgets/custom_button.dart';
 import 'package:peek_app/widgets/custom_text_form_field.dart';
 
@@ -119,7 +117,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
           //_appBarTitle = Nombre + " " + ApellidoP + " " + ApellidoM;
         });
       } else {
-        print("Document does not exist on the database uid:  " + paseadorIDs);
+        print("Document does not exist on the database uid:  $paseadorIDs");
       }
     });
   }
@@ -174,7 +172,7 @@ class _PerfilpaseadorcitasScreen extends State<PerfilpaseadorcitasScreen> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       CustomButton(

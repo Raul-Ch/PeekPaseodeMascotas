@@ -44,7 +44,24 @@ class AppDecoration {
       20,
     ),
   );
-
+  static BoxDecoration get outlineBlack9003f1 => BoxDecoration(
+        color: ColorConstant.lightGreen20001,
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstant.black9003f,
+            spreadRadius: getHorizontalSize(
+              2,
+            ),
+            blurRadius: getHorizontalSize(
+              2,
+            ),
+            offset: Offset(
+              0,
+              4,
+            ),
+          ),
+        ],
+      );
   static BoxDecoration get fillLightgreen20001 => BoxDecoration(
         color: ColorConstant.lightGreen20001,
       );

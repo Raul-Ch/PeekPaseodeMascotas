@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:peek_app/presentation/login_screen/login_screen.dart';
 import 'package:peek_app/presentation/paseoduenioagendada_screen/paseoduenioagendada_screen.dart';
+import 'package:peek_app/presentation/paseoduenioprogreso_screen/paseoduenioprogreso_screen.dart';
+import 'package:peek_app/presentation/paseoduenioterminada_screen/paseoduenioterminada_screen.dart';
 import 'package:peek_app/presentation/paseopaseadoragendada_screen/paseopaseadoragendada_screen.dart';
+import 'package:peek_app/presentation/paseopaseadorterminada_screen/paseopaseadorterminada_screen.dart';
+import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioaterminadas_screen.dart';
 import 'package:peek_app/presentation/vercitaspaseador_screen/paseopaseadoragendadas_screen.dart';
+import 'package:peek_app/presentation/vercitaspaseador_screen/paseopaseadorterminadas_screen.dart';
 import 'package:peek_app/presentation/welcome_screen/welcome_screen.dart';
 import 'package:peek_app/presentation/registro_screen/registro_screen.dart';
 import 'package:peek_app/presentation/registro_duenio_screen/registro_duenio_screen.dart';
@@ -25,7 +30,6 @@ import '../presentation/perfilpaseador_screen/perfilpaseador_screen.dart';
 import '../presentation/perfilduenio_screen/perfilduenio_screen.dart';
 import '../presentation/perfilpaseadorcitas_screen/perfilpaseadorcitas_screen.dart';
 import '../presentation/vercomentarios_screen/vercomentarios_screen.dart';
-import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioprogreso_screen.dart';
 import 'package:peek_app/presentation/vercitasduenio_screen/paseoduenioagendadas_screen.dart';
 import 'package:peek_app/presentation/paseopaseadorprogreso_screen/paseopaseadorprogreso_screen.dart';
 
@@ -88,17 +92,31 @@ class AppRoutes {
   static const String paseopaseadorprogresoScreen =
       '/paseopaseadorprogreso_screen';
 
-  //Citas Agendadas
+  //Citas DAgendadas
   static const String paseoduenioagendadasScreen =
       '/paseoduenioagendadas_screen';
   static const String paseoduenioagendadaScreen = '/paseoduenioagendada_screen';
 
-  //Citas Agendadas
+  //Citas PAgendadas
   static const String paseopaseadorgendadasScreen =
       '/paseopaseadorgendadas_screen';
   static const String paseopaseadoragendadaScreen =
       '/paseopaseadorgendada_screen';
 
+//Citas DTerminadas
+  static const String paseoduenioterminadasScreen =
+      '/paseoduenioterminadas_screen';
+  static const String paseoduenioterminadaScreen =
+      '/paseoduenioterminada_screen';
+
+//Citas PTerminadas
+  static const String paseopaseadorterminadasScreen =
+      '/paseopaseadorterminadas_screen';
+  static const String paseopaseadorterminadaScreen =
+      '/paseopaseadorterminada_screen';
+
+////
+////
   static Map<String, WidgetBuilder> routes = {
     loginScreen: (context) => const LoginScreen(),
     welcomeScreen: (context) => const WelcomeScreen(),
@@ -114,9 +132,9 @@ class AppRoutes {
     menuDuenioScreen: (context) => const MenuDuenioScreen(),
     menuPaseadorScreen: (context) => const MenuPaseadorScreen(),
     comentariosScreen: (context) => ComentariosScreen(),
-    perfilpaseadorScreen: (context) => PerfilpaseadorScreen(),
-    perfilduenioScreen: (context) => PerfilduenioScreen(),
-    perfilmascotaScreen: (context) => PerfilmascotaScreen(),
+    perfilpaseadorScreen: (context) => const PerfilpaseadorScreen(),
+    perfilduenioScreen: (context) => const PerfilduenioScreen(),
+    perfilmascotaScreen: (context) => const PerfilmascotaScreen(),
 
     //Paseos
     paseosmenuduenioScreen: (context) => const PaseosmenuduenioScreen(),
@@ -125,7 +143,7 @@ class AppRoutes {
     perfilpaseadorcitasScreen: (context) => PerfilpaseadorcitasScreen(
           paseadorID: '',
         ),
-    vercomentariosScreen: (context) => VercomentariosScreen(),
+    vercomentariosScreen: (context) => const VercomentariosScreen(),
 
     //Citas
     agendarcitaScreen: (context) => AgendarcitaScreen(
@@ -135,19 +153,38 @@ class AppRoutes {
     vercitasduenioScreen: (context) => const VercitasduenioScreen(),
     vercitaspaseadorScreen: (context) => const VercitaspaseadorScreen(),
     //Progreso
-    paseoduenioprogresoScreen: (context) => PaseoduenioprogresoScreen(),
     paseopaseadorprogresoScreen: (context) =>
         const PaseopaseadorprogresoScreen(),
+    paseoduenioprogresoScreen: (context) => const PaseoduenioprogresoScreen(),
+
     //Agendadas
-    paseoduenioagendadasScreen: (context) => PaseoduenioagendadasScreen(),
+    paseoduenioagendadasScreen: (context) => const PaseoduenioagendadasScreen(),
     paseoduenioagendadaScreen: (context) => PaseoduenioagendadaScreen(
           citaID: '',
           duenioID: '',
           paseadorID: '',
         ),
 
-    paseopaseadorgendadasScreen: (context) => PaseopaseadoragendadasScreen(),
+    paseopaseadorgendadasScreen: (context) =>
+        const PaseopaseadoragendadasScreen(),
     paseopaseadoragendadaScreen: (context) => PaseopaseadoragendadaScreen(
+          citaID: '',
+          duenioID: '',
+          paseadorID: '',
+        ),
+
+    //Terminadas
+    paseoduenioterminadasScreen: (context) =>
+        const PaseoduenioterminadasScreen(),
+    paseoduenioterminadaScreen: (context) => PaseoduenioterminadaScreen(
+          citaID: '',
+          duenioID: '',
+          paseadorID: '',
+        ),
+
+    paseopaseadorterminadasScreen: (context) =>
+        const PaseopaseadorterminadasScreen(),
+    paseopaseadorterminadaScreen: (context) => PaseopaseadorterminadaScreen(
           citaID: '',
           duenioID: '',
           paseadorID: '',

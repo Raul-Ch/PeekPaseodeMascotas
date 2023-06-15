@@ -124,6 +124,10 @@ class CustomButton extends StatelessWidget {
 
   _setColor() {
     switch (variant) {
+      case ButtonVariant.Iniciob:
+        return ColorConstant.blacktransparent;
+      case ButtonVariant.Iniciow:
+        return ColorConstant.whitetransparent;
       case ButtonVariant.White:
         return ColorConstant.whiteA700;
       case ButtonVariant.FillIndigo50:
@@ -328,6 +332,8 @@ enum ButtonPadding {
 }
 
 enum ButtonVariant {
+  Iniciob,
+  Iniciow,
   FillGray900,
   White,
   FillIndigo50,
